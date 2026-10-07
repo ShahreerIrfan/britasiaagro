@@ -4,13 +4,13 @@
 # Stage 1: Base image
 # -----------------------------------------------------------------------------
 FROM node:20-alpine AS base
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # -----------------------------------------------------------------------------
 # Stage 2: Install dependencies
 # -----------------------------------------------------------------------------
 FROM base AS deps
-RUN apk add --no-cache libc6-compat
 COPY package.json package-lock.json ./
 RUN npm ci
 
@@ -23,6 +23,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 
 RUN npm run build
 
