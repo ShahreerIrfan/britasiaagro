@@ -732,7 +732,6 @@ export default function HomePage() {
                   />
                   <div className="product-card-overlay"></div>
                   <div className="product-card-content">
-                    <span className="product-category-tag">{item.badge}</span>
                     <h3 className="product-card-title">{item.name}</h3>
                     <p className="product-card-desc">{item.desc}</p>
                     <button
