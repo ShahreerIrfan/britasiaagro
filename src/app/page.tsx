@@ -851,26 +851,18 @@ export default function HomePage() {
               </div>
 
               <div className="rfq-box-card">
-                <h3 style={{ fontSize: 20, fontWeight: 800, marginBottom: 18, color: "#ffffff" }}>
+                <h3 className="rfq-card-heading">
                   Instant Trade Inquiry Form
                 </h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  <div>
-                    <label style={{ fontSize: 13, color: "#cbd5e1", fontWeight: 700, display: "block", marginBottom: 6 }}>
+                <div className="rfq-form-body">
+                  <div className="rfq-form-group">
+                    <label className="rfq-form-label">
                       Target Commodity / Division
                     </label>
                     <select
                       value={rfqCommodity}
                       onChange={(e) => setRfqCommodity(e.target.value)}
-                      style={{
-                        width: "100%",
-                        padding: "12px 14px",
-                        borderRadius: 8,
-                        background: "rgba(15, 23, 42, 0.8)",
-                        color: "#ffffff",
-                        border: "1px solid rgba(255, 255, 255, 0.2)",
-                        fontSize: 14,
-                      }}
+                      className="rfq-select"
                     >
                       {products.map((p) => (
                         <option key={p.id} value={p.name} style={{ background: "#0f172a", color: "#ffffff" }}>
@@ -880,30 +872,21 @@ export default function HomePage() {
                     </select>
                   </div>
 
-                  <div>
-                    <label style={{ fontSize: 13, color: "#cbd5e1", fontWeight: 700, display: "block", marginBottom: 6 }}>
+                  <div className="rfq-form-group">
+                    <label className="rfq-form-label">
                       Estimated Order Volume (Metric Tons)
                     </label>
                     <input
                       type="number"
                       value={rfqVolume}
                       onChange={(e) => setRfqVolume(e.target.value)}
-                      style={{
-                        width: "100%",
-                        padding: "12px 14px",
-                        borderRadius: 8,
-                        background: "rgba(15, 23, 42, 0.8)",
-                        color: "#ffffff",
-                        border: "1px solid rgba(255, 255, 255, 0.2)",
-                        fontSize: 14,
-                      }}
+                      className="rfq-input"
                     />
                   </div>
 
                   <button
                     onClick={() => openInquiryModal(rfqCommodity)}
-                    className="btn-primary"
-                    style={{ width: "100%", marginTop: 8, padding: "14px" }}
+                    className="btn-primary rfq-submit-btn"
                   >
                     <span>Request Quotation for {rfqCommodity}</span>
                     {SvgIcons.arrowRight}

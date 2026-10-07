@@ -1289,11 +1289,12 @@ button {
 
 .rfq-perk-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   font-size: 15px;
   color: var(--white);
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .rfq-perk-item svg {
@@ -1301,6 +1302,7 @@ button {
   height: 18px;
   fill: #34d399;
   flex-shrink: 0;
+  margin-top: 3px;
 }
 
 .rfq-box-card {
@@ -1309,6 +1311,63 @@ button {
   border-radius: var(--radius-xl);
   padding: 36px;
   backdrop-filter: blur(16px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.rfq-card-heading {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: var(--white);
+}
+
+.rfq-form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rfq-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.rfq-form-label {
+  font-size: 13px;
+  color: var(--slate-300);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.rfq-select,
+.rfq-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast);
+}
+
+.rfq-select:focus,
+.rfq-input:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(200, 30, 38, 0.25);
+}
+
+.rfq-submit-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 18px;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.35;
 }
 
 /* ==========================================================================
@@ -2000,6 +2059,10 @@ button {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   .top-bar {
     display: none;
   }
@@ -2146,39 +2209,110 @@ button {
     gap: 10px;
   }
   .product-card {
-    height: 285px;
+    height: 140px;
     border-radius: var(--radius-md);
   }
   .product-card-content {
-    padding: 12px 10px 12px;
+    padding: 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   .product-category-tag {
-    font-size: 9px;
-    padding: 2px 6px;
-    margin-bottom: 4px;
+    font-size: 8px;
+    padding: 2px 5px;
+    margin-bottom: 2px;
+    letter-spacing: 0.3px;
+    line-height: 1.1;
   }
   .product-card-title {
-    font-size: 14.5px;
+    font-size: 13px;
     margin-bottom: 4px;
-    line-height: 1.25;
+    line-height: 1.15;
+    font-weight: 800;
   }
   .product-card-desc {
-    font-size: 11px;
-    line-height: 1.35;
-    margin-bottom: 10px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    display: none;
   }
   .product-card-cta {
-    padding: 6px 10px;
-    font-size: 11px;
-    gap: 4px;
+    padding: 3px 8px;
+    font-size: 10px;
+    gap: 3px;
+    border-radius: var(--radius-full);
   }
   .product-card-cta svg {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Direct Commercial Trade Desk & RFQ Section Mobile Alignment */
+  .rfq-calculator-section {
+    padding: 44px 0 40px;
+  }
+  .rfq-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .rfq-info-col {
+    text-align: left;
+    width: 100%;
+  }
+  .rfq-info-col h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    word-break: break-word;
+  }
+  .rfq-info-col p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    color: var(--slate-300);
+    word-break: break-word;
+  }
+  .rfq-perks-list {
+    gap: 12px;
+  }
+  .rfq-perk-item {
+    font-size: 13px;
+    line-height: 1.45;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .rfq-perk-item svg {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .rfq-box-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .rfq-card-heading {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+  .rfq-form-body {
+    gap: 12px;
+  }
+  .rfq-form-label {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .rfq-select,
+  .rfq-input {
+    padding: 10px 12px;
+    font-size: 13.5px;
+  }
+  .rfq-submit-btn {
+    padding: 12px 14px;
+    font-size: 13px;
+    margin-top: 4px;
   }
 
   .mv-grid {
