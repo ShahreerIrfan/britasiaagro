@@ -484,10 +484,6 @@ export default function HomePage() {
           <div className="container">
             <div className="hero-grid">
               <div className="hero-content">
-                <div className="hero-pill-badge">
-                  {SvgIcons.globe}
-                  <span>Global Commodity &amp; Steel Trading Hub</span>
-                </div>
                 <h1 className="hero-title">
                   British Merchants Worldwide <span className="title-gradient">Commodity &amp; Steel Trade</span>
                 </h1>
