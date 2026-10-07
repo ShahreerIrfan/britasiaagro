@@ -96,7 +96,7 @@ const products = [
     id: "grocery",
     name: "Fresh Grocery",
     desc: "Quality essentials delivered fresh and on time.",
-    image: "/assets/product-grocery.png",
+    image: "/assets/product-grocery.svg",
     category: "commodities",
     badge: "Bulk Commodities",
   },
@@ -104,7 +104,7 @@ const products = [
     id: "agro",
     name: "Agro",
     desc: "Strategic guidance delivering smart, sustainable business solutions.",
-    image: "/assets/product-agro.png",
+    image: "/assets/product-agro.svg",
     category: "agro",
     badge: "Agriculture",
   },
@@ -112,7 +112,7 @@ const products = [
     id: "hms",
     name: "HMS 1&2",
     desc: "Strategic guidance delivering smart, sustainable business solutions.",
-    image: "/assets/product-hms.webp",
+    image: "/assets/product-hms.svg",
     category: "steel",
     badge: "Steel & Metals",
   },
@@ -120,7 +120,7 @@ const products = [
     id: "steel",
     name: "Strong Steel",
     desc: "High-quality metals built for durability and strength",
-    image: "/assets/product-steel.png",
+    image: "/assets/product-steel.svg",
     category: "steel",
     badge: "Steel & Metals",
   },
@@ -128,7 +128,7 @@ const products = [
     id: "sugar",
     name: "Pure Sugar",
     desc: "Clean sweetness for every kitchen.",
-    image: "/assets/product-sugar.png",
+    image: "/assets/product-sugar.svg",
     category: "commodities",
     badge: "Bulk Commodities",
   },
@@ -136,7 +136,7 @@ const products = [
     id: "spices",
     name: "Natural Spices",
     desc: "Rich aroma and authentic flavor from farm to table.",
-    image: "/assets/product-spices.png",
+    image: "/assets/product-spices.svg",
     category: "commodities",
     badge: "Bulk Commodities",
   },
@@ -144,7 +144,7 @@ const products = [
     id: "fertilizer",
     name: "Quality Fertilizer",
     desc: "Enhance soil health and support strong, sustainable plant growth for better yields and greener results.",
-    image: "/assets/product-fertilizer.png",
+    image: "/assets/product-fertilizer.svg",
     category: "agro",
     badge: "Agriculture",
   },
@@ -240,7 +240,7 @@ const leaders = [
   {
     name: "Mohammed H. Rahman",
     role: "Chairman",
-    photo: "/assets/leader-rahman.jpg",
+    photo: "/assets/leader-rahman.svg",
     bio: [
       "Mr. Rahman is a highly energetic management and accounting graduate with extensive knowledge in trade and corporate finance, commodities, steel and metals, land development, and precious metals mining.",
       "He is a financial analyst specializing in accounting and new business development, with more than 20 years of experience in the financial services and commodities sectors. He combines strong analytical expertise with practical business insight, consistently contributing to organizational growth and strengthening the company's bottom line.",
@@ -249,7 +249,7 @@ const leaders = [
   {
     name: "Rahat F. Chowdhury",
     role: "Managing Director",
-    photo: "/assets/leader-chowdhury.jpg",
+    photo: "/assets/leader-chowdhury.svg",
     bio: [
       "Mr. Chowdhury brings over 20 years of extensive professional experience in property management, the hospitality sector, and corporate security services. Throughout his career, he has developed a strong and versatile business portfolio, including active involvement in import and export operations across various industries.",
       "With his broad strategic insight and operational expertise, Mr. Chowdhury has now dedicated his full experience and leadership capabilities to strengthening and advancing British Merchants Limited as a dynamic new venture.",
@@ -258,7 +258,7 @@ const leaders = [
   {
     name: "Kaikobad MM Meah",
     role: "Director",
-    photo: "/assets/leader-meah.jpg",
+    photo: "/assets/leader-meah.svg",
     bio: [
       "Mr. Meah serves as the International Development Manager at British Merchants Limited. He is responsible for formulating and executing strategies that expand the company's local and international business operations, sales performance, and service capabilities. He plays a central role in strengthening the company's global market presence while promoting a culture of consistently high service standards that delivers measurable value and a superior experience to clients worldwide.",
       "Prior to joining British Merchants Limited, Mr. Meah worked as a market analyst and professional trader in the global financial markets, bringing strong analytical discipline and in-depth market expertise to his leadership responsibilities. He holds a Bachelor of Business Administration (BBA), a Higher Diploma in Management and Leadership, and a Master of Business Administration (MBA) in Entrepreneurship. He has also completed specialized studies in the Business of Mining at Curtin University and Social Sciences at the University of Oxford.",
@@ -267,7 +267,7 @@ const leaders = [
   {
     name: "Mohammed Mizanur Rahman Chowdhury",
     role: "Director",
-    photo: "/assets/leader-mizanur.png",
+    photo: "/assets/leader-mizanur.svg",
     bio: [
       "Mr. Chowdhury serves as the Director and Company Administrator of British Merchants Limited. In his leadership role, he oversees strategic planning, corporate governance, and overall administrative operations to ensure the company functions with efficiency and compliance. With strong organizational capabilities and practical business insight, he plays a key role in coordinating internal management, regulatory matters, and operational execution. His guidance supports the company's structured growth and reinforces its commitment to professionalism and reliability in both local and international markets.",
     ],
@@ -275,7 +275,7 @@ const leaders = [
   {
     name: "Junior Salahuddin Sanjee",
     role: "Chief Executive Officer(CEO)",
-    photo: "/assets/leader-sanjee.png",
+    photo: "/assets/leader-sanjee.svg",
     bio: [
       "Mr. Sanjee has results-driven commercial leader with over 19 years of progressive experience in Telecom, Consumer electronics, Technology, FMCG sectors and Enterprise Software Industries. Proven track record of delivering accelerated revenue growth, market expansion, and operational excellence across national and international markets. Experienced in full P&L ownership, strategic sales transformation, channel development, and high-performance team leadership.Recognized for visionary leadership, execution excellence, and the ability to convert competitive challenges into growth opportunities.",
     ],
@@ -366,7 +366,7 @@ export default function HomePage() {
         <div className="container header-container">
           <a href="#" className="brand-logo-link" aria-label="British Merchants Home">
             <img
-              src="/assets/Logo.png"
+              src="/assets/Logo.svg"
               alt="British Merchants Connecting The Dots..."
               className="brand-logo-img"
             />
@@ -632,7 +632,7 @@ export default function HomePage() {
               <div className="about-visual-col">
                 <div className="about-image-frame">
                   <img
-                    src="/assets/about-engineers.png"
+                    src="/assets/about-engineers.svg"
                     alt="Engineers and stakeholders at British Merchants industrial operations"
                   />
                 </div>
@@ -784,7 +784,7 @@ export default function HomePage() {
             <div className="reliability-grid">
               <div className="graphic-showcase-box">
                 <img
-                  src="/assets/testimonial-cargo.webp"
+                  src="/assets/testimonial-cargo.svg"
                   alt="Import and export logistics illustration"
                 />
               </div>
@@ -980,13 +980,13 @@ export default function HomePage() {
             <div className="partner-cards-row">
               <div className="partner-brand-box">
                 <img
-                  src="/assets/partner-eezymart.png"
+                  src="/assets/partner-eezymart.svg"
                   alt="EezyMart - Trusted Retail Supply Chain Partner"
                 />
               </div>
               <div className="partner-brand-box">
                 <img
-                  src="/assets/partner-pristine.webp"
+                  src="/assets/partner-pristine.svg"
                   alt="Pristine Security Service Limited - Corporate Security & Logistics Partner"
                 />
               </div>
@@ -1036,7 +1036,7 @@ export default function HomePage() {
         <section className="headquarters-section" id="contact">
           <div className="hq-map-banner">
             <img
-              src="/assets/dhaka-map.png"
+              src="/assets/dhaka-map.svg"
               alt="British Merchants Location - Mohakhali DOHS Road 29 Dhaka"
               className="hq-map-img"
             />
@@ -1070,7 +1070,7 @@ export default function HomePage() {
           <div className="footer-top-grid">
             <div className="footer-brand-col">
               <img
-                src="/assets/Logo.png"
+                src="/assets/Logo.svg"
                 alt="British Merchants"
                 className="footer-brand-logo"
               />
