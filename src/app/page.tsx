@@ -474,44 +474,6 @@ export default function HomePage() {
                   </a>
                 </div>
               </div>
-
-              {/* Floating Live Metric Card */}
-              <div className="hero-glass-card">
-                <div className="glass-card-header">
-                  <div className="glass-card-title">
-                    {SvgIcons.layers}
-                    <span>Commercial Divisions</span>
-                  </div>
-                  <span style={{ fontSize: 12, color: "#38bdf8", fontWeight: 700, letterSpacing: 0.5 }}>ACTIVE</span>
-                </div>
-
-                <div className="glass-stat-row">
-                  <div className="glass-stat-box">
-                    <div className="glass-stat-number">20+</div>
-                    <div className="glass-stat-label">Years Stakeholder Industry Experience</div>
-                  </div>
-                  <div className="glass-stat-box">
-                    <div className="glass-stat-number">2</div>
-                    <div className="glass-stat-label">Core Divisions: Commodity &amp; Steel Metals</div>
-                  </div>
-                </div>
-
-                <div className="glass-stat-row">
-                  <div className="glass-stat-box">
-                    <div className="glass-stat-number">100%</div>
-                    <div className="glass-stat-label">Pre-Shipment Quality Inspections</div>
-                  </div>
-                  <div className="glass-stat-box">
-                    <div className="glass-stat-number">Local + Global</div>
-                    <div className="glass-stat-label">Domestic Distribution &amp; World Ports</div>
-                  </div>
-                </div>
-
-                <div className="glass-card-footer">
-                  {SvgIcons.checkShield}
-                  <span>Incorporated with Registrar of Joint Stock Companies (RJSC)</span>
-                </div>
-              </div>
             </div>
           </div>
         </section>
