@@ -330,37 +330,6 @@ export default function HomePage() {
 
   return (
     <div className="page-wrapper">
-      {/* ================= TOP CORPORATE STATUS BAR ================= */}
-      <div className="top-bar">
-        <div className="container top-bar-container">
-          <div className="top-bar-left">
-            <div className="top-status-badge">
-              <span className="status-dot-pulse"></span>
-              Live Trade Operations
-            </div>
-            <div className="top-bar-item">
-              {SvgIcons.checkShield}
-              <span>RJSC Incorporated: C-207932/2026</span>
-            </div>
-            <div className="top-bar-item">
-              {SvgIcons.clock}
-              <span>Trading Hours: 09:00 - 18:00 (BST)</span>
-            </div>
-          </div>
-
-          <div className="top-bar-right">
-            <a href="tel:+8801711034971" className="top-bar-link">
-              {SvgIcons.phone}
-              <span>+8801711034971</span>
-            </a>
-            <div className="top-bar-item">
-              {SvgIcons.mapPin}
-              <span>Mohakhali DOHS, Dhaka</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ================= MAIN NAVIGATION ================= */}
       <header className="site-header">
         <div className="container header-container">
