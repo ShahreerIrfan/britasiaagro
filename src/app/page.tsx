@@ -366,7 +366,7 @@ export default function HomePage() {
         <div className="container header-container">
           <a href="#" className="brand-logo-link" aria-label="British Merchants Home">
             <img
-              src="/assets/logo.png"
+              src="/assets/Logo.png"
               alt="British Merchants Connecting The Dots..."
               className="brand-logo-img"
             />
@@ -1070,7 +1070,7 @@ export default function HomePage() {
           <div className="footer-top-grid">
             <div className="footer-brand-col">
               <img
-                src="/assets/logo.png"
+                src="/assets/Logo.png"
                 alt="British Merchants"
                 className="footer-brand-logo"
               />

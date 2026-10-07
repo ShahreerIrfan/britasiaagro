@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable}`}>
       <head>
-        <link rel="icon" href="/assets/logo.png" />
+        <link rel="icon" href="/assets/Logo.png" />
       </head>
       <body>{children}</body>
     </html>
