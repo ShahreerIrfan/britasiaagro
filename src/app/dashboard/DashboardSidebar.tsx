@@ -37,8 +37,11 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
           name: "Dashboard",
           href: "/dashboard",
           icon: (
-            <svg viewBox="0 0 24 24">
-              <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <rect x="3" y="3" width="7" height="7" rx="1.5" />
+              <rect x="14" y="3" width="7" height="7" rx="1.5" />
+              <rect x="3" y="14" width="7" height="7" rx="1.5" />
+              <rect x="14" y="14" width="7" height="7" rx="1.5" />
             </svg>
           ),
         },
@@ -51,8 +54,10 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
           name: "Services & Products",
           href: "/dashboard/services",
           icon: (
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" strokeLinecap="round" />
+              <path d="M2 12l10 5 10-5" strokeLinecap="round" />
             </svg>
           ),
         },
@@ -62,8 +67,9 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
                 name: "Add New Service",
                 href: "/dashboard/services/new",
                 icon: (
-                  <svg viewBox="0 0 24 24">
-                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="12" y1="5" x2="12" y2="19" strokeLinecap="round" />
+                    <line x1="5" y1="12" x2="19" y2="12" strokeLinecap="round" />
                   </svg>
                 ),
               },
@@ -74,8 +80,9 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
           href: "/dashboard/inquiries",
           badge: "Live",
           icon: (
-            <svg viewBox="0 0 24 24">
-              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
             </svg>
           ),
         },
@@ -88,8 +95,11 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
           name: "Users & Roles",
           href: "/dashboard/users",
           icon: (
-            <svg viewBox="0 0 24 24">
-              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
           ),
         },
@@ -98,8 +108,10 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
           href: "/",
           external: true,
           icon: (
-            <svg viewBox="0 0 24 24">
-              <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
             </svg>
           ),
         },
@@ -109,22 +121,19 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
 
   return (
     <aside className="dashboard-sidebar">
+      {/* Top Header with Logo & Admin Suite Badge */}
       <div className="sidebar-header">
         <Link href="/dashboard" className="sidebar-brand-link">
           <img
             src="/assets/Logo.svg"
-            alt="British Merchants"
+            alt="British Merchants Connecting The Dots..."
             className="sidebar-logo"
           />
-          <div>
-            <div className="sidebar-brand-name">British Merchants</div>
-            <span className="sidebar-brand-badge">
-              {isSuperAdmin ? "Admin Suite" : "Viewer Mode"}
-            </span>
-          </div>
         </Link>
+        <span className="sidebar-admin-badge">ADMIN SUITE</span>
       </div>
 
+      {/* Nav Menu */}
       <div className="sidebar-nav-container">
         {navLinks.map((section, idx) => (
           <div key={idx}>
@@ -141,11 +150,16 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
                       href={item.href}
                       target={item.external ? "_blank" : undefined}
                     >
-                      {item.icon}
-                      <span>{item.name}</span>
+                      <div className="sidebar-item-left">
+                        {item.icon}
+                        <span>{item.name}</span>
+                      </div>
+
                       {item.badge && (
-                        <span className="sidebar-badge">{item.badge}</span>
+                        <span className="sidebar-live-badge">{item.badge}</span>
                       )}
+
+                      <span className="chevron-icon">›</span>
                     </Link>
                   </li>
                 );
@@ -155,6 +169,7 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
         ))}
       </div>
 
+      {/* Footer Profile with Red Avatar and Sign Out Icon */}
       <div className="sidebar-footer">
         <div className="sidebar-user-avatar">
           {user.name.charAt(0).toUpperCase()}
@@ -164,7 +179,7 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
             {user.name}
           </div>
           <div className="sidebar-user-role">
-            {isSuperAdmin ? "👑 Super Admin" : "👁️ Viewer"}
+            {isSuperAdmin ? "Super Admin" : "Viewer"}
           </div>
         </div>
         <button
@@ -173,8 +188,10 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
           title="Sign Out"
           aria-label="Sign Out"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
           </svg>
         </button>
       </div>

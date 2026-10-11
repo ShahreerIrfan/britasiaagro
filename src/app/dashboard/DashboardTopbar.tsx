@@ -4,8 +4,6 @@ import { SessionUser } from "@/lib/auth";
 import Link from "next/link";
 
 export default function DashboardTopbar({ user }: { user: SessionUser }) {
-  const isSuperAdmin = user.role === "SUPER_ADMIN";
-
   return (
     <header className="dashboard-topbar">
       <div className="topbar-left">
@@ -20,19 +18,20 @@ export default function DashboardTopbar({ user }: { user: SessionUser }) {
           <span>Live Operations</span>
         </div>
 
-        <div className="topbar-time-pill">
+        <div className="topbar-rjsc-badge">
           RJSC: C-207932/2026
         </div>
 
         <Link
           href="/"
           target="_blank"
-          className="dash-btn-secondary"
-          style={{ fontSize: "12px", padding: "6px 12px" }}
+          className="topbar-website-btn"
         >
           <span>View Website</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
           </svg>
         </Link>
       </div>
