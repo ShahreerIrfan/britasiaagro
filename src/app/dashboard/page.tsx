@@ -89,13 +89,6 @@ export default async function DashboardPage() {
             Real-time overview of British Merchants commodity trading operations &amp; inquiries
           </p>
         </div>
-
-        {isSuperAdmin && (
-          <Link href="/dashboard/services/new" className="btn-add-service-red">
-            <span>+</span>
-            <span>Add New Service</span>
-          </Link>
-        )}
       </div>
 
       {/* Row 1: 4 KPI Metric Cards with Mini Bar Charts & Chevrons */}
