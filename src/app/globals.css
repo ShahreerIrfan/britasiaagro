@@ -1,3 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dash-bg: #F6F8FB;
+  --color-dash-card-bg: #FFFFFF;
+  --color-dash-sidebar-bg: #FFFFFF;
+  --color-dash-sidebar-border: #E8EDF4;
+  --color-dash-text-main: #0F172A;
+  --color-dash-text-muted: #64748B;
+  --color-dash-primary: #D7192D;
+  --color-dash-primary-hover: #BF1525;
+  --color-dash-primary-light: #FEE2E2;
+  --color-dash-border: #E8EDF4;
+  --color-primary-red: #c81e26;
+  --color-primary-red-hover: #b0151c;
+  --color-primary-red-dark: #8c0d13;
+  --color-primary-red-light: #fef2f2;
+  --color-primary-red-border: #fecaca;
+  --color-accent-gold: #d97706;
+  --color-accent-blue: #0284c7;
+  --color-navy-950: #060911;
+  --color-navy-900: #0b1120;
+  --color-navy-850: #0f172a;
+  --color-navy-800: #1e293b;
+  --color-navy-700: #334155;
+  --color-navy-600: #475569;
+  --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-heading), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 :root {
   --primary-red: #c81e26;
   --primary-red-hover: #b0151c;
