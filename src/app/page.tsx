@@ -291,6 +291,7 @@ export default function HomePage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Dynamic products loaded from PostgreSQL database
   const [productsList, setProductsList] = useState(defaultProducts);
@@ -305,6 +306,18 @@ export default function HomePage() {
   const [buyerPhone, setBuyerPhone] = useState("");
   const [buyerSpecs, setBuyerSpecs] = useState("");
   const [isSubmittingInquiry, setIsSubmittingInquiry] = useState(false);
+
+  useEffect(() => {
+    // Check if user is logged in
+    fetch("/api/auth/me")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.user) {
+          setIsLoggedIn(true);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     // Dynamically fetch services from DB
@@ -442,7 +455,7 @@ export default function HomePage() {
 
           <div className="header-actions">
             <a
-              href="/login"
+              href={isLoggedIn ? "/dashboard" : "/login"}
               style={{
                 fontSize: "13px",
                 fontWeight: 600,
@@ -456,7 +469,7 @@ export default function HomePage() {
                 gap: "6px",
               }}
             >
-              <span>Portal</span>
+              <span>{isLoggedIn ? "Dashboard" : "Login"}</span>
             </a>
             <button
               onClick={() => openInquiryModal()}
@@ -507,6 +520,15 @@ export default function HomePage() {
               <li>
                 <a href="#leadership" onClick={() => setMobileMenuOpen(false)} style={{ fontWeight: 600, color: "var(--navy-800)" }}>
                   Management &amp; Leadership
+                </a>
+              </li>
+              <li>
+                <a
+                  href={isLoggedIn ? "/dashboard" : "/login"}
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{ fontWeight: 600, color: "var(--navy-800)" }}
+                >
+                  {isLoggedIn ? "Dashboard" : "Login"}
                 </a>
               </li>
               <li style={{ paddingTop: "8px" }}>
@@ -1125,7 +1147,9 @@ export default function HomePage() {
               <span>&bull;</span>
               <a href="#">Compliance</a>
               <span>&bull;</span>
-              <a href="/login" style={{ color: "#38bdf8", fontWeight: 700 }}>Staff / Client Portal</a>
+              <a href={isLoggedIn ? "/dashboard" : "/login"} style={{ color: "#38bdf8", fontWeight: 700 }}>
+                {isLoggedIn ? "Dashboard" : "Staff / Client Login"}
+              </a>
             </div>
           </div>
         </div>
