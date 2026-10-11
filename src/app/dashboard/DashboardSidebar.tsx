@@ -1,8 +1,30 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { SessionUser } from "@/lib/auth";
+
+interface SubNavItem {
+  name: string;
+  href: string;
+  external?: boolean;
+}
+
+interface NavItem {
+  id: string;
+  name: string;
+  href?: string;
+  icon: React.ReactNode;
+  badge?: string;
+  external?: boolean;
+  children?: SubNavItem[];
+}
+
+interface NavSection {
+  title: string;
+  items: NavItem[];
+}
 
 export default function DashboardSidebar({ user }: { user: SessionUser }) {
   const pathname = usePathname();
@@ -16,24 +38,34 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
 
   const isSuperAdmin = user.role === "SUPER_ADMIN";
 
-  interface NavItem {
-    name: string;
-    href: string;
-    icon: React.ReactNode;
-    badge?: string;
-    external?: boolean;
-  }
+  // Collapsible parent menu state
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    commerce: true,
+    system: true,
+  });
 
-  interface NavSection {
-    title: string;
-    items: NavItem[];
-  }
+  // Ensure active section is automatically open when navigating
+  useEffect(() => {
+    if (pathname.startsWith("/dashboard/services")) {
+      setOpenSections((prev) => ({ ...prev, commerce: true }));
+    } else if (pathname.startsWith("/dashboard/users")) {
+      setOpenSections((prev) => ({ ...prev, system: true }));
+    }
+  }, [pathname]);
+
+  const toggleSection = (id: string) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   const navLinks: NavSection[] = [
     {
       title: "OVERVIEW",
       items: [
         {
+          id: "dashboard",
           name: "Dashboard",
           href: "/dashboard",
           icon: (
@@ -51,8 +83,8 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
       title: "COMMERCE & SERVICES",
       items: [
         {
+          id: "commerce",
           name: "Services & Products",
-          href: "/dashboard/services",
           icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path d="M12 2L2 7l10 5 10-5-10-5z" />
@@ -60,22 +92,23 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
               <path d="M2 12l10 5 10-5" strokeLinecap="round" />
             </svg>
           ),
+          children: [
+            {
+              name: "All Services & Products",
+              href: "/dashboard/services",
+            },
+            ...(isSuperAdmin
+              ? [
+                  {
+                    name: "Add new Services & Products",
+                    href: "/dashboard/services/new",
+                  },
+                ]
+              : []),
+          ],
         },
-        ...(isSuperAdmin
-          ? [
-              {
-                name: "Add New Service",
-                href: "/dashboard/services/new",
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="12" y1="5" x2="12" y2="19" strokeLinecap="round" />
-                    <line x1="5" y1="12" x2="19" y2="12" strokeLinecap="round" />
-                  </svg>
-                ),
-              },
-            ]
-          : []),
         {
+          id: "inquiries",
           name: "Trade Inquiries / RFQ",
           href: "/dashboard/inquiries",
           badge: "Live",
@@ -92,8 +125,8 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
       title: "SYSTEM & ACCESS",
       items: [
         {
-          name: "Users & Roles",
-          href: "/dashboard/users",
+          id: "system",
+          name: "System & Access",
           icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -102,8 +135,15 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
               <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
           ),
+          children: [
+            {
+              name: "Users & Roles",
+              href: "/dashboard/users",
+            },
+          ],
         },
         {
+          id: "live-website",
           name: "Live Website",
           href: "/",
           external: true,
@@ -140,22 +180,104 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
             <div className="sidebar-section-title">{section.title}</div>
             <ul className="sidebar-nav-list">
               {section.items.map((item) => {
+                // If item has children, render as collapsible parent
+                if (item.children) {
+                  const isOpen = !!openSections[item.id];
+                  const hasActiveChild = item.children.some((child) => {
+                    if (child.href === "/dashboard/services/new") {
+                      return pathname === "/dashboard/services/new";
+                    }
+                    if (child.href === "/dashboard/services") {
+                      return (
+                        pathname === "/dashboard/services" ||
+                        (pathname.startsWith("/dashboard/services/") &&
+                          pathname !== "/dashboard/services/new")
+                      );
+                    }
+                    return pathname === child.href;
+                  });
+
+                  return (
+                    <li
+                      key={item.id}
+                      className={`sidebar-nav-item sidebar-parent-item ${
+                        hasActiveChild ? "has-active-child" : ""
+                      }`}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => toggleSection(item.id)}
+                        className={`sidebar-parent-btn ${isOpen ? "expanded" : ""}`}
+                        aria-expanded={isOpen}
+                      >
+                        <div className="sidebar-item-left">
+                          {item.icon}
+                          <span>{item.name}</span>
+                        </div>
+
+                        <svg
+                          className={`sidebar-chevron-arrow ${isOpen ? "rotated" : ""}`}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                      </button>
+
+                      {/* Collapsible Submenu */}
+                      <div
+                        className={`sidebar-submenu-wrapper ${
+                          isOpen ? "open" : "collapsed"
+                        }`}
+                      >
+                        <ul className="sidebar-submenu-list">
+                          {item.children.map((sub) => {
+                            const isSubActive =
+                              sub.href === "/dashboard/services/new"
+                                ? pathname === "/dashboard/services/new"
+                                : sub.href === "/dashboard/services"
+                                ? pathname === "/dashboard/services" ||
+                                  (pathname.startsWith("/dashboard/services/") &&
+                                    pathname !== "/dashboard/services/new")
+                                : pathname === sub.href;
+
+                            return (
+                              <li key={sub.href} className="sidebar-submenu-item">
+                                <Link
+                                  href={sub.href}
+                                  className={`sidebar-submenu-link ${
+                                    isSubActive ? "active" : ""
+                                  }`}
+                                >
+                                  <span className="sidebar-submenu-dot" />
+                                  <span>{sub.name}</span>
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    </li>
+                  );
+                }
+
+                // Standard flat menu link
                 const isActive =
                   item.href === "/dashboard"
                     ? pathname === "/dashboard"
-                    : item.href === "/dashboard/services/new"
-                    ? pathname === "/dashboard/services/new"
-                    : pathname === item.href ||
-                      (item.href === "/dashboard/services" &&
-                        pathname.startsWith("/dashboard/services/") &&
-                        pathname !== "/dashboard/services/new");
+                    : pathname === item.href;
+
                 return (
                   <li
-                    key={item.href}
+                    key={item.href || item.id}
                     className={`sidebar-nav-item ${isActive ? "active" : ""}`}
                   >
                     <Link
-                      href={item.href}
+                      href={item.href || "/dashboard"}
                       target={item.external ? "_blank" : undefined}
                     >
                       <div className="sidebar-item-left">

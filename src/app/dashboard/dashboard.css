@@ -186,6 +186,132 @@ body {
   flex-shrink: 0;
 }
 
+/* Collapsible Parent Item & Submenu */
+.sidebar-parent-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #33475B;
+  background: transparent;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.sidebar-parent-btn:hover {
+  background: #F6F8FB;
+  color: #0F172A;
+}
+
+.sidebar-parent-item.has-active-child .sidebar-parent-btn {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.sidebar-parent-item.has-active-child .sidebar-parent-btn svg:not(.sidebar-chevron-arrow) {
+  color: #D7192D;
+}
+
+.sidebar-chevron-arrow {
+  width: 15px;
+  height: 15px;
+  color: #8A9AB5;
+  transition: transform 0.2s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-chevron-arrow.rotated {
+  transform: rotate(180deg);
+  color: #0F172A;
+}
+
+/* Submenu container */
+.sidebar-submenu-wrapper {
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar-submenu-wrapper.collapsed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-submenu-wrapper.open {
+  max-height: 300px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-submenu-list {
+  list-style: none;
+  padding: 0;
+  margin: 3px 0 6px 0;
+  border-left: 1.5px solid #EAEFF5;
+  margin-left: 15px;
+  padding-left: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-submenu-item {
+  width: 100%;
+}
+
+.sidebar-submenu-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #56708F;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.sidebar-submenu-link:hover {
+  background: #F6F8FB;
+  color: #0F172A;
+  font-weight: 600;
+}
+
+.sidebar-submenu-link.active {
+  background: #FEF2F2;
+  color: #D7192D;
+  font-weight: 700;
+}
+
+.sidebar-submenu-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #CBD5E1;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.sidebar-submenu-link:hover .sidebar-submenu-dot {
+  background: #94A3B8;
+}
+
+.sidebar-submenu-link.active .sidebar-submenu-dot {
+  background: #D7192D;
+  transform: scale(1.3);
+}
+
 .sidebar-footer {
   padding: 16px;
   border-top: 1px solid var(--dash-sidebar-border);
