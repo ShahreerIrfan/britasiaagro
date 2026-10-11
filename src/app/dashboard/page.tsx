@@ -5,12 +5,23 @@ import { InquiryStatus } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
 
+function getCommodityThumb(commodity: string) {
+  const c = (commodity || "").toLowerCase();
+  if (c.includes("steel")) return "/assets/product-steel.svg";
+  if (c.includes("hms") || c.includes("scrap")) return "/assets/product-hms.svg";
+  if (c.includes("sugar")) return "/assets/product-sugar.svg";
+  if (c.includes("agro") || c.includes("fertilizer")) return "/assets/product-agro.svg";
+  if (c.includes("spice")) return "/assets/product-spices.svg";
+  if (c.includes("grocery") || c.includes("fresh")) return "/assets/product-grocery.svg";
+  return "/assets/product-steel.svg";
+}
+
 export default async function DashboardPage() {
   const user = await getSessionUser();
   const isSuperAdmin = user?.role === "SUPER_ADMIN";
 
-  // Fetch real-time metrics from PostgreSQL
-  const [totalServices, totalInquiries, newInquiries, recentInquiries] = await Promise.all([
+  // Fetch real-time metrics & 4 latest services from PostgreSQL
+  const [totalServices, totalInquiries, newInquiries, recentInquiries, latestServices] = await Promise.all([
     prisma.service.count(),
     prisma.tradeInquiry.count(),
     prisma.tradeInquiry.count({ where: { status: InquiryStatus.NEW } }),
@@ -18,9 +29,55 @@ export default async function DashboardPage() {
       orderBy: { createdAt: "desc" },
       take: 6,
     }),
+    prisma.service.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 4,
+    }),
   ]);
 
   const activeServices = await prisma.service.count({ where: { isActive: true } });
+
+  // Standard fallback defaults matching Image 4 if fewer than 4 services exist
+  const defaultServices = [
+    {
+      id: "def-agro",
+      name: "Agro & Fertilizers",
+      badge: "Sustainable Supply",
+      desc: "Sustainable Supply",
+      image: "/assets/product-agro.svg",
+      category: "agro",
+    },
+    {
+      id: "def-steel",
+      name: "Steel & Metals",
+      badge: "HMS 1&2 & Deformed",
+      desc: "HMS 1&2 & Deformed",
+      image: "/assets/product-steel.svg",
+      category: "steel",
+    },
+    {
+      id: "def-shipping",
+      name: "CIF / FOB Shipping",
+      badge: "Chittagong & Mongla",
+      desc: "Chittagong & Mongla",
+      image: "/assets/testimonial-cargo.svg",
+      category: "shipping",
+    },
+    {
+      id: "def-inspection",
+      name: "100% Inspected",
+      badge: "Grade & SGS Compliant",
+      desc: "Grade & SGS Compliant",
+      image: "/assets/about-engineers.svg",
+      category: "inspection",
+    },
+  ];
+
+  // Merge the 4 latest services added with fallback defaults if fewer than 4
+  const displayedServices = [
+    ...latestServices,
+    ...defaultServices.slice(latestServices.length),
+  ].slice(0, 4);
 
   return (
     <div className="dashboard-page-view">
@@ -41,7 +98,7 @@ export default async function DashboardPage() {
         )}
       </div>
 
-      {/* Row 1: 4 KPI Metric Cards with Mini Bar Charts */}
+      {/* Row 1: 4 KPI Metric Cards with Mini Bar Charts & Chevrons */}
       <div className="kpi-cards-grid">
         {/* Card 1: Total Inquiries */}
         <div className="kpi-card">
@@ -53,6 +110,7 @@ export default async function DashboardPage() {
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
               </div>
+              <span className="kpi-chevron">›</span>
             </div>
             <div className="kpi-title">TOTAL INQUIRIES</div>
             <div className="kpi-value-row">
@@ -94,6 +152,7 @@ export default async function DashboardPage() {
                   <circle cx="12" cy="7" r="4" />
                 </svg>
               </div>
+              <span className="kpi-chevron">›</span>
             </div>
             <div className="kpi-title">NEW LEADS</div>
             <div className="kpi-value-row">
@@ -136,6 +195,7 @@ export default async function DashboardPage() {
                   <polyline points="2 12 12 17 22 12" />
                 </svg>
               </div>
+              <span className="kpi-chevron">›</span>
             </div>
             <div className="kpi-title">COMMODITIES &amp; SERVICES</div>
             <div className="kpi-value-row">
@@ -180,6 +240,7 @@ export default async function DashboardPage() {
                   <polyline points="10 9 9 9 8 9" />
                 </svg>
               </div>
+              <span className="kpi-chevron">›</span>
             </div>
             <div className="kpi-title">TOTAL CATALOG</div>
             <div className="kpi-value-row">
@@ -212,83 +273,83 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      {/* Row 2: 4 Division Quick Cards (Matches Redesign Middle Row) */}
+      {/* Row 2: 4 Latest Services Added (Matches Image 4) */}
       <div className="divisions-grid">
-        {/* Division 1: Agro & Fertilizers */}
-        <div className="division-card agro">
-          <div className="division-stripes">
-            <div className="division-stripe"></div>
-            <div className="division-stripe"></div>
-            <div className="division-stripe"></div>
-          </div>
-          <div className="division-circle-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        {displayedServices.map((service, index) => {
+          let theme = "agro";
+          let icon = (
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 2a9 9 0 0 1 9 9c0 6-9 11-9 11S3 17 3 11a9 9 0 0 1 9-9z" />
               <path d="M12 12c-2 0-3-1-3-3s2-4 3-4 3 2 3 4-1 3-3 3z" />
             </svg>
-          </div>
-          <div className="division-text">
-            <h4>Agro &amp; Fertilizers</h4>
-            <span>Sustainable Supply</span>
-          </div>
-        </div>
+          );
 
-        {/* Division 2: Steel & Metals */}
-        <div className="division-card steel">
-          <div className="division-stripes">
-            <div className="division-stripe"></div>
-            <div className="division-stripe"></div>
-            <div className="division-stripe"></div>
-          </div>
-          <div className="division-circle-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-              <line x1="12" y1="22.08" x2="12" y2="12" />
-            </svg>
-          </div>
-          <div className="division-text">
-            <h4>Steel &amp; Metals</h4>
-            <span>HMS 1&amp;2 &amp; Deformed</span>
-          </div>
-        </div>
+          if (index === 1 || service.category === "steel") {
+            theme = "steel";
+            icon = (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+            );
+          } else if (index === 2 || service.category === "shipping") {
+            theme = "shipping";
+            icon = (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="12 2 19 21 12 17 5 21 12 2" />
+              </svg>
+            );
+          } else if (index === 3 || service.category === "inspection") {
+            theme = "inspection";
+            icon = (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 12 11 14 15 10" />
+              </svg>
+            );
+          } else if (service.category === "commodities") {
+            theme = "groceries";
+            icon = (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+            );
+          }
 
-        {/* Division 3: CIF / FOB Shipping */}
-        <div className="division-card shipping">
-          <div className="division-stripes">
-            <div className="division-stripe"></div>
-            <div className="division-stripe"></div>
-            <div className="division-stripe"></div>
-          </div>
-          <div className="division-circle-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="12 2 19 21 12 17 5 21 12 2" />
-            </svg>
-          </div>
-          <div className="division-text">
-            <h4>CIF / FOB Shipping</h4>
-            <span>Chittagong &amp; Mongla</span>
-          </div>
-        </div>
+          const thumb = service.image || defaultServices[index % 4].image;
 
-        {/* Division 4: 100% Inspected */}
-        <div className="division-card inspection">
-          <div className="division-stripes">
-            <div className="division-stripe"></div>
-            <div className="division-stripe"></div>
-            <div className="division-stripe"></div>
-          </div>
-          <div className="division-circle-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              <polyline points="9 12 11 14 15 10" />
-            </svg>
-          </div>
-          <div className="division-text">
-            <h4>100% Inspected</h4>
-            <span>Grade &amp; SGS Compliant</span>
-          </div>
-        </div>
+          return (
+            <Link
+              key={service.id || index}
+              href="/dashboard/services"
+              className="division-card"
+            >
+              <div className="division-thumb-wrapper">
+                <img
+                  src={thumb}
+                  alt={service.name}
+                  className="division-thumb-img"
+                />
+              </div>
+
+              <div className={`division-circle-icon ${theme}`}>
+                {icon}
+              </div>
+
+              <div className="division-text">
+                <h4 title={service.name}>{service.name}</h4>
+                <span title={service.badge || service.desc}>
+                  {service.badge || service.desc || "Sustainable Supply"}
+                </span>
+              </div>
+
+              <span className="division-arrow">›</span>
+            </Link>
+          );
+        })}
       </div>
 
       {/* Row 3: Recent Trade Inquiries (RFQ) Card */}
@@ -324,7 +385,7 @@ export default async function DashboardPage() {
                   <th>PHONE / COMPANY</th>
                   <th>STATUS</th>
                   <th>DATE</th>
-                  <th style={{ width: "40px" }}></th>
+                  <th style={{ textAlign: "right" }}>ACTIONS</th>
                 </tr>
               </thead>
               <tbody>
@@ -342,9 +403,11 @@ export default async function DashboardPage() {
                     <tr key={inq.id}>
                       <td>
                         <div className="commodity-cell">
-                          <div className="commodity-icon-box">
-                            📦
-                          </div>
+                          <img
+                            src={getCommodityThumb(inq.commodity)}
+                            alt={inq.commodity}
+                            className="commodity-thumb-img"
+                          />
                           <span className="commodity-name-text">{inq.commodity}</span>
                         </div>
                       </td>

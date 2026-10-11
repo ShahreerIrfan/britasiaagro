@@ -179,7 +179,7 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
             {user.name}
           </div>
           <div className="sidebar-user-role">
-            {isSuperAdmin ? "Super Admin" : "Viewer"}
+            {isSuperAdmin ? "👑 Super Admin" : "Viewer"}
           </div>
         </div>
         <button

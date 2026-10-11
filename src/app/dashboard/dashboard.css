@@ -32,8 +32,8 @@ body {
 
 /* ================= SIDEBAR ================= */
 .dashboard-sidebar {
-  width: 240px;
-  min-width: 240px;
+  width: 260px;
+  min-width: 260px;
   background: var(--dash-sidebar-bg);
   border-right: 1px solid var(--dash-sidebar-border);
   display: flex;
@@ -78,12 +78,12 @@ body {
 }
 
 .sidebar-nav-container {
-  padding: 16px 12px;
+  padding: 16px 14px;
   flex: 1;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .sidebar-section-title {
@@ -92,7 +92,7 @@ body {
   color: #8A9AB5;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding-left: 12px;
+  padding-left: 10px;
   margin-bottom: 6px;
 }
 
@@ -102,16 +102,23 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+}
+
+.sidebar-nav-item {
+  border-bottom: 1px solid #EEF2F6;
+  padding: 2px 0;
 }
 
 .sidebar-nav-item a,
 .sidebar-nav-item button {
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
-  border-radius: 10px;
+  padding: 0 12px;
+  border-radius: 9px;
   font-size: 13.5px;
   font-weight: 600;
   color: #33475B;
@@ -121,6 +128,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   cursor: pointer;
+  white-space: nowrap;
   transition: all 0.15s ease;
 }
 
@@ -148,7 +156,8 @@ body {
 .sidebar-item-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  white-space: nowrap;
 }
 
 .sidebar-item-left svg {
@@ -160,19 +169,21 @@ body {
 
 .chevron-icon {
   color: #8A9AB5;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .sidebar-live-badge {
   background: #ECFDF5;
   color: #047857;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 12px;
   margin-left: auto;
   margin-right: 8px;
+  flex-shrink: 0;
 }
 
 .sidebar-footer {
@@ -256,6 +267,30 @@ body {
   justify-content: space-between;
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar-menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.topbar-menu-toggle:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
 .topbar-greeting {
   font-size: 14px;
   color: #475569;
@@ -269,7 +304,7 @@ body {
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .topbar-status-pill {
@@ -319,15 +354,59 @@ body {
   border-color: #94A3B8;
 }
 
-/* ================= PAGE CONTENT ================= */
+.topbar-bell-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748B;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.topbar-bell-btn:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+.topbar-bell-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 7px;
+  height: 7px;
+  background: #DC2626;
+  border-radius: 50%;
+  border: 1.5px solid #FFFFFF;
+}
+
+.topbar-user-avatar-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #E2E8F0;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ================= PAGE CONTENT (FULL WIDTH) ================= */
 .dashboard-content {
-  padding: 28px 32px 40px 32px;
+  padding: 24px 32px 40px 32px;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 1400px;
-  box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .dashboard-page-view {
@@ -401,8 +480,20 @@ body {
 .kpi-card-top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 12px;
+}
+
+.kpi-chevron {
+  color: #94A3B8;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+
+.kpi-card:hover .kpi-chevron {
+  color: #0F172A;
+  transform: translateX(2px);
 }
 
 .kpi-icon-box {
@@ -516,61 +607,55 @@ body {
   color: #DC2626;
 }
 
-/* ================= MIDDLE DIVISION CARDS ================= */
+/* ================= 4 LATEST SERVICES CARDS (MATCHING IMAGE 4) ================= */
 .divisions-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+  width: 100%;
 }
 
 .division-card {
   border-radius: 12px;
-  padding: 14px 16px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 1px solid #E8EDF4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  position: relative;
 }
 
-.division-card.agro {
-  background: #F0FDF4;
-  border: 1px solid #DCFCE7;
+.division-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  border-color: #CBD5E1;
 }
 
-.division-card.steel {
-  background: #FAF5FF;
-  border: 1px solid #F3E8FF;
-}
-
-.division-card.shipping {
-  background: #F0F9FF;
-  border: 1px solid #E0F2FE;
-}
-
-.division-card.inspection {
-  background: #F8FAFC;
+.division-thumb-wrapper {
+  width: 76px;
+  height: 54px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #F1F5F9;
   border: 1px solid #E2E8F0;
 }
 
-.division-stripes {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+.division-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
-.division-stripe {
-  width: 24px;
-  height: 3px;
-  border-radius: 2px;
-}
-
-.division-card.agro .division-stripe { background: #BBF7D0; }
-.division-card.steel .division-stripe { background: #E9D5FF; }
-.division-card.shipping .division-stripe { background: #BAE6FD; }
-.division-card.inspection .division-stripe { background: #CBD5E1; }
 
 .division-circle-icon {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -578,21 +663,49 @@ body {
   flex-shrink: 0;
 }
 
-.division-card.agro .division-circle-icon { background: #DCFCE7; color: #16A34A; }
-.division-card.steel .division-circle-icon { background: #F3E8FF; color: #9333EA; }
-.division-card.shipping .division-circle-icon { background: #E0F2FE; color: #0284C7; }
-.division-card.inspection .division-circle-icon { background: #EDE9FE; color: #6366F1; }
+.division-circle-icon.agro { background: #DCFCE7; color: #16A34A; }
+.division-circle-icon.steel { background: #F3E8FF; color: #9333EA; }
+.division-circle-icon.shipping { background: #FEE2E2; color: #DC2626; }
+.division-circle-icon.inspection { background: #DBEAFE; color: #2563EB; }
+.division-circle-icon.groceries { background: #FEF3C7; color: #D97706; }
+
+.division-text {
+  flex: 1;
+  min-width: 0;
+}
 
 .division-text h4 {
   margin: 0;
   font-size: 13.5px;
   font-weight: 700;
   color: #0F172A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .division-text span {
   font-size: 11.5px;
   color: #64748B;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.division-arrow {
+  color: #94A3B8;
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.division-card:hover .division-arrow {
+  color: #0F172A;
+  transform: translateX(2px);
 }
 
 /* ================= RECENT INQUIRIES TABLE CARD ================= */
@@ -688,12 +801,23 @@ body {
 .commodity-cell {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+
+.commodity-thumb-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  flex-shrink: 0;
+  display: block;
 }
 
 .commodity-icon-box {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   border-radius: 8px;
   background: #F1F5F9;
   display: flex;
