@@ -12,7 +12,7 @@ WORKDIR /app
 # -----------------------------------------------------------------------------
 FROM base AS deps
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 # -----------------------------------------------------------------------------
 # Stage 3: Build the application
@@ -50,6 +50,8 @@ COPY --from=builder /app/public ./public
 # Copy Next.js standalone build and static chunks
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 
 USER nextjs
 
