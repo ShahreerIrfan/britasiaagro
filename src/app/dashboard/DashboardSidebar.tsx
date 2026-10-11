@@ -111,7 +111,6 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
           id: "inquiries",
           name: "Trade Inquiries / RFQ",
           href: "/dashboard/inquiries",
-          badge: "Live",
           icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
