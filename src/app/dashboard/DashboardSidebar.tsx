@@ -283,11 +283,10 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
                       <div className="sidebar-item-left">
                         {item.icon}
                         <span>{item.name}</span>
+                        {item.badge && (
+                          <span className="sidebar-live-badge">{item.badge}</span>
+                        )}
                       </div>
-
-                      {item.badge && (
-                        <span className="sidebar-live-badge">{item.badge}</span>
-                      )}
 
                       <svg
                         className="sidebar-chevron-arrow"

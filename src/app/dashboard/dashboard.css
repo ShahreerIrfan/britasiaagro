@@ -111,13 +111,14 @@ body {
 
 .sidebar-nav-item > a,
 .sidebar-nav-item > button {
-  height: 48px;
-  min-height: 48px;
-  max-height: 48px;
+  position: relative;
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 12px;
+  justify-content: flex-start;
+  padding: 0 32px 0 12px;
   border-radius: 9px;
   font-size: 13.5px;
   font-weight: 600;
@@ -162,6 +163,8 @@ body {
   align-items: center;
   gap: 10px;
   white-space: nowrap;
+  flex: 1;
+  min-width: 0;
 }
 
 .sidebar-item-left svg {
@@ -185,18 +188,21 @@ body {
   font-weight: 700;
   padding: 2px 7px;
   border-radius: 12px;
-  margin-left: auto;
-  margin-right: 8px;
+  margin-left: 6px;
   flex-shrink: 0;
+  line-height: 1.2;
 }
 
 /* Collapsible Parent Item & Submenu */
 .sidebar-parent-btn {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 40px;
-  padding: 0 12px;
+  justify-content: flex-start;
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  padding: 0 32px 0 12px;
   border-radius: 9px;
   font-size: 13.5px;
   font-weight: 600;
@@ -225,16 +231,20 @@ body {
 }
 
 .sidebar-chevron-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 14px;
   height: 14px;
   color: #8A9AB5;
   transition: transform 0.2s ease, color 0.15s ease;
   flex-shrink: 0;
-  margin-left: auto;
+  pointer-events: none;
 }
 
 .sidebar-chevron-arrow.open {
-  transform: rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);
   color: #0F172A;
 }
 
