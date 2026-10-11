@@ -6,17 +6,20 @@ import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [mode, setMode] = useState<"signin" | "register">("signin");
+  const [mode, setMode] = useState<"signin" | "signup">("signin");
 
   // Sign In state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
 
-  // Register state
+  // Sign Up state
   const [name, setName] = useState("");
   const [regEmail, setRegEmail] = useState("");
   const [regPassword, setRegPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showRegPassword, setShowRegPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -85,11 +88,11 @@ export default function LoginPage() {
         return;
       }
 
-      setSuccessMsg("Account created successfully! Redirecting to dashboard...");
+      setSuccessMsg("Account created! Redirecting to portal...");
       setTimeout(() => {
         router.push("/dashboard");
         router.refresh();
-      }, 900);
+      }, 800);
     } catch (err) {
       setError("An unexpected error occurred during registration.");
       setLoading(false);
@@ -97,352 +100,464 @@ export default function LoginPage() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "linear-gradient(135deg, #0b1120 0%, #0f172a 100%)",
-        padding: "24px",
-        fontFamily: "var(--font-sans), sans-serif",
-      }}
-    >
+    <div style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
+      {/* ============================================================== */}
+      {/* 1. BACKGROUND LAYER: Simulated Live Website Content (Blurred)   */}
+      {/* ============================================================== */}
       <div
+        aria-hidden="true"
         style={{
-          width: "100%",
-          maxWidth: "460px",
-          background: "#ffffff",
-          borderRadius: "20px",
-          padding: "36px 32px",
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)",
+          position: "fixed",
+          inset: 0,
+          zIndex: 1,
+          overflowY: "auto",
+          background: "#f8fafc",
+          filter: "blur(9px)",
+          transform: "scale(1.03)",
+          pointerEvents: "none",
+          userSelect: "none",
         }}
       >
-        {/* Header / Brand */}
-        <div style={{ textAlign: "center", marginBottom: "24px" }}>
-          <Link href="/" style={{ display: "inline-block", marginBottom: "14px" }}>
+        {/* Header Preview */}
+        <header
+          style={{
+            background: "#ffffff",
+            borderBottom: "1px solid #e2e8f0",
+            padding: "16px 40px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <img src="/assets/Logo.svg" alt="" style={{ height: "42px" }} />
+          <div style={{ display: "flex", gap: "24px", color: "#475569", fontWeight: 600 }}>
+            <span>Home</span>
+            <span>About Us</span>
+            <span>Products &amp; Commodities</span>
+            <span>Logistics &amp; Process</span>
+            <span>Management</span>
+            <span>Contact</span>
+          </div>
+          <div
+            style={{
+              padding: "10px 20px",
+              background: "#c81e26",
+              color: "#fff",
+              borderRadius: "8px",
+              fontWeight: 700,
+            }}
+          >
+            Inquiry Products
+          </div>
+        </header>
+
+        {/* Hero Section Preview */}
+        <div
+          style={{
+            padding: "80px 40px",
+            background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+            color: "#fff",
+            display: "grid",
+            gridTemplateColumns: "1.2fr 0.8fr",
+            gap: "40px",
+            minHeight: "480px",
+          }}
+        >
+          <div>
+            <div style={{ color: "#38bdf8", fontWeight: 700, letterSpacing: "1px", marginBottom: "16px" }}>
+              GLOBAL COMMODITY &amp; STEEL MERCHANTS
+            </div>
+            <h1 style={{ fontSize: "44px", fontWeight: 800, lineHeight: 1.2, margin: "0 0 20px 0" }}>
+              Connecting Global Supply Chains with Proven Logistics
+            </h1>
+            <p style={{ color: "#cbd5e1", fontSize: "16px", maxWidth: "600px", lineHeight: 1.6 }}>
+              Specializing in high-tonnage agricultural bulk, industrial scrap HMS 1&amp;2, sugar, and structured metals.
+            </p>
+          </div>
+          <div
+            style={{
+              background: "rgba(255,255,255,0.06)",
+              borderRadius: "16px",
+              border: "1px solid rgba(255,255,255,0.12)",
+              padding: "24px",
+            }}
+          >
+            <div style={{ height: "240px", borderRadius: "12px", background: "rgba(255,255,255,0.04)" }}></div>
+          </div>
+        </div>
+
+        {/* Products Grid Preview */}
+        <div style={{ padding: "60px 40px", background: "#f8fafc" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px" }}>
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                style={{
+                  height: "220px",
+                  background: "#fff",
+                  borderRadius: "14px",
+                  border: "1px solid #e2e8f0",
+                }}
+              ></div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ============================================================== */}
+      {/* 2. FROSTED GLASS BACKDROP OVERLAY                              */}
+      {/* ============================================================== */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 10,
+          background: "rgba(15, 23, 42, 0.45)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px",
+        }}
+        onClick={() => router.push("/")}
+      >
+        {/* ============================================================ */}
+        {/* 3. POPUP MODAL CARD (Matches EezzyMart Reference)             */}
+        {/* ============================================================ */}
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            maxWidth: "440px",
+            background: "#ffffff",
+            borderRadius: "20px",
+            padding: "36px 32px 32px 32px",
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.35)",
+            boxSizing: "border-box",
+            animation: "modalFadeIn 0.22s ease-out",
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Top-Right Close Button ✕ */}
+          <button
+            onClick={() => router.push("/")}
+            aria-label="Close modal"
+            style={{
+              position: "absolute",
+              top: "16px",
+              right: "18px",
+              background: "transparent",
+              border: "none",
+              color: "#94a3b8",
+              fontSize: "20px",
+              fontWeight: 400,
+              cursor: "pointer",
+              padding: "4px 8px",
+              lineHeight: 1,
+              borderRadius: "50%",
+              transition: "color 0.15s ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#0f172a")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
+          >
+            ✕
+          </button>
+
+          {/* Centered Brand Logo */}
+          <div style={{ textAlign: "center", marginBottom: "18px" }}>
             <img
               src="/assets/Logo.svg"
               alt="British Merchants Limited"
-              style={{ height: "46px", width: "auto" }}
+              style={{ height: "46px", width: "auto", display: "inline-block" }}
             />
-          </Link>
-          <h1
-            style={{
-              fontSize: "22px",
-              fontWeight: 800,
-              color: "#0f172a",
-              marginBottom: "4px",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {mode === "signin" ? "Management Portal" : "Client Registration"}
-          </h1>
-          <p style={{ fontSize: "13.5px", color: "#64748b", margin: 0 }}>
-            {mode === "signin"
-              ? "Sign in with your Super Admin or Viewer account"
-              : "Create a Customer / Viewer account for portal access"}
-          </p>
-        </div>
+          </div>
 
-        {/* Tab Switcher */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "6px",
-            background: "#f1f5f9",
-            padding: "4px",
-            borderRadius: "10px",
-            marginBottom: "22px",
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => {
-              setMode("signin");
-              setError("");
-              setSuccessMsg("");
-            }}
-            style={{
-              padding: "9px 0",
-              fontSize: "13px",
-              fontWeight: 700,
-              borderRadius: "8px",
-              border: "none",
-              cursor: "pointer",
-              background: mode === "signin" ? "#ffffff" : "transparent",
-              color: mode === "signin" ? "#0f172a" : "#64748b",
-              boxShadow: mode === "signin" ? "0 2px 6px rgba(0,0,0,0.06)" : "none",
-              transition: "all 0.15s ease",
-            }}
-          >
-            Sign In
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setMode("register");
-              setError("");
-              setSuccessMsg("");
-            }}
-            style={{
-              padding: "9px 0",
-              fontSize: "13px",
-              fontWeight: 700,
-              borderRadius: "8px",
-              border: "none",
-              cursor: "pointer",
-              background: mode === "register" ? "#ffffff" : "transparent",
-              color: mode === "register" ? "#0f172a" : "#64748b",
-              boxShadow: mode === "register" ? "0 2px 6px rgba(0,0,0,0.06)" : "none",
-              transition: "all 0.15s ease",
-            }}
-          >
-            Create Account
-          </button>
-        </div>
-
-        {/* Feedback Alerts */}
-        {error && (
+          {/* Underline Tabs: Sign In / Sign Up */}
           <div
             style={{
-              background: "#fef2f2",
-              border: "1px solid #fecaca",
-              color: "#dc2626",
-              padding: "11px 14px",
-              borderRadius: "10px",
-              fontSize: "13px",
-              fontWeight: 600,
-              marginBottom: "18px",
               display: "flex",
-              alignItems: "center",
-              gap: "8px",
+              justifyContent: "center",
+              gap: "48px",
+              borderBottom: "1px solid #e2e8f0",
+              marginBottom: "24px",
             }}
           >
-            <span>⚠️</span>
-            <span>{error}</span>
-          </div>
-        )}
-
-        {successMsg && (
-          <div
-            style={{
-              background: "#f0fdf4",
-              border: "1px solid #bbf7d0",
-              color: "#16a34a",
-              padding: "11px 14px",
-              borderRadius: "10px",
-              fontSize: "13px",
-              fontWeight: 600,
-              marginBottom: "18px",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}
-          >
-            <span>✓</span>
-            <span>{successMsg}</span>
-          </div>
-        )}
-
-        {/* Mode 1: Sign In */}
-        {mode === "signin" && (
-          <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <div>
-              <label
-                style={{
-                  display: "block",
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  color: "#334155",
-                  marginBottom: "6px",
-                }}
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="e.g. name@company.com"
-                required
-                style={{
-                  width: "100%",
-                  padding: "12px 14px",
-                  borderRadius: "10px",
-                  border: "1px solid #cbd5e1",
-                  fontSize: "14px",
-                  boxSizing: "border-box",
-                  outline: "none",
-                }}
-              />
-            </div>
-
-            <div>
-              <label
-                style={{
-                  display: "block",
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  color: "#334155",
-                  marginBottom: "6px",
-                }}
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••••••"
-                required
-                style={{
-                  width: "100%",
-                  padding: "12px 14px",
-                  borderRadius: "10px",
-                  border: "1px solid #cbd5e1",
-                  fontSize: "14px",
-                  boxSizing: "border-box",
-                  outline: "none",
-                }}
-              />
-            </div>
-
             <button
-              type="submit"
-              disabled={loading}
+              type="button"
+              onClick={() => {
+                setMode("signin");
+                setError("");
+                setSuccessMsg("");
+              }}
               style={{
-                background: "#c81e26",
-                color: "#ffffff",
-                padding: "13px",
-                borderRadius: "10px",
+                background: "none",
                 border: "none",
-                fontWeight: 700,
-                fontSize: "14.5px",
-                cursor: loading ? "not-allowed" : "pointer",
-                opacity: loading ? 0.7 : 1,
-                marginTop: "4px",
-                boxShadow: "0 4px 12px rgba(200, 30, 38, 0.3)",
-                transition: "background 0.2s ease",
+                fontSize: "15px",
+                fontWeight: mode === "signin" ? 700 : 500,
+                color: mode === "signin" ? "#0f172a" : "#64748b",
+                paddingBottom: "10px",
+                marginBottom: "-1px",
+                cursor: "pointer",
+                borderBottom: mode === "signin" ? "2.5px solid #c81e26" : "2.5px solid transparent",
+                transition: "all 0.15s ease",
               }}
             >
-              {loading ? "Authenticating..." : "Sign In to Dashboard"}
+              Sign In
             </button>
+            <button
+              type="button"
+              onClick={() => {
+                setMode("signup");
+                setError("");
+                setSuccessMsg("");
+              }}
+              style={{
+                background: "none",
+                border: "none",
+                fontSize: "15px",
+                fontWeight: mode === "signup" ? 700 : 500,
+                color: mode === "signup" ? "#0f172a" : "#64748b",
+                paddingBottom: "10px",
+                marginBottom: "-1px",
+                cursor: "pointer",
+                borderBottom: mode === "signup" ? "2.5px solid #c81e26" : "2.5px solid transparent",
+                transition: "all 0.15s ease",
+              }}
+            >
+              Sign Up
+            </button>
+          </div>
 
-            <div style={{ textAlign: "center", marginTop: "12px" }}>
-              <span style={{ fontSize: "13px", color: "#64748b" }}>
-                Don&apos;t have an account?{" "}
-              </span>
-              <button
-                type="button"
-                onClick={() => {
-                  setMode("register");
-                  setError("");
-                  setSuccessMsg("");
-                }}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#0f766e",
-                  fontWeight: 700,
-                  fontSize: "13px",
-                  cursor: "pointer",
-                  padding: 0,
-                  textDecoration: "underline",
-                }}
-              >
-                Create Customer / Viewer Account
-              </button>
+          {/* Feedback Messages */}
+          {error && (
+            <div
+              style={{
+                background: "#fef2f2",
+                border: "1px solid #fecaca",
+                color: "#dc2626",
+                padding: "10px 14px",
+                borderRadius: "10px",
+                fontSize: "13px",
+                fontWeight: 600,
+                marginBottom: "18px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <span>⚠️</span>
+              <span>{error}</span>
             </div>
-          </form>
-        )}
+          )}
 
-        {/* Mode 2: Register (Customer / Viewer Role) */}
-        {mode === "register" && (
-          <form onSubmit={handleRegister} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-            <div>
-              <label
-                style={{
-                  display: "block",
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  color: "#334155",
-                  marginBottom: "5px",
-                }}
-              >
-                Full Name / Organization
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. John Doe / Global Traders Inc."
-                required
-                style={{
-                  width: "100%",
-                  padding: "11px 14px",
-                  borderRadius: "10px",
-                  border: "1px solid #cbd5e1",
-                  fontSize: "14px",
-                  boxSizing: "border-box",
-                  outline: "none",
-                }}
-              />
+          {successMsg && (
+            <div
+              style={{
+                background: "#f0fdf4",
+                border: "1px solid #bbf7d0",
+                color: "#16a34a",
+                padding: "10px 14px",
+                borderRadius: "10px",
+                fontSize: "13px",
+                fontWeight: 600,
+                marginBottom: "18px",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <span>✓</span>
+              <span>{successMsg}</span>
             </div>
+          )}
 
-            <div>
-              <label
-                style={{
-                  display: "block",
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  color: "#334155",
-                  marginBottom: "5px",
-                }}
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                value={regEmail}
-                onChange={(e) => setRegEmail(e.target.value)}
-                placeholder="e.g. buyer@company.com"
-                required
-                style={{
-                  width: "100%",
-                  padding: "11px 14px",
-                  borderRadius: "10px",
-                  border: "1px solid #cbd5e1",
-                  fontSize: "14px",
-                  boxSizing: "border-box",
-                  outline: "none",
-                }}
-              />
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-              <div>
-                <label
+          {/* ================= MODE 1: SIGN IN ================= */}
+          {mode === "signin" && (
+            <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              {/* Email Input with Mail Icon */}
+              <div style={{ position: "relative" }}>
+                <span
                   style={{
-                    display: "block",
-                    fontSize: "13px",
-                    fontWeight: 700,
-                    color: "#334155",
-                    marginBottom: "5px",
+                    position: "absolute",
+                    left: "14px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#94a3b8",
+                    fontSize: "16px",
+                    lineHeight: 1,
                   }}
                 >
-                  Password
-                </label>
+                  ✉
+                </span>
                 <input
-                  type="password"
-                  value={regPassword}
-                  onChange={(e) => setRegPassword(e.target.value)}
-                  placeholder="Min 6 chars"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="name@company.com"
                   required
                   style={{
                     width: "100%",
-                    padding: "11px 14px",
+                    padding: "13px 14px 13px 40px",
+                    borderRadius: "10px",
+                    border: "1px solid #cbd5e1",
+                    fontSize: "14px",
+                    boxSizing: "border-box",
+                    outline: "none",
+                    transition: "border-color 0.15s ease",
+                  }}
+                  onFocus={(e) => (e.target.style.borderColor = "#c81e26")}
+                  onBlur={(e) => (e.target.style.borderColor = "#cbd5e1")}
+                />
+              </div>
+
+              {/* Password Input with Lock Icon and Eye Toggle */}
+              <div style={{ position: "relative" }}>
+                <span
+                  style={{
+                    position: "absolute",
+                    left: "14px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#94a3b8",
+                    fontSize: "15px",
+                    lineHeight: 1,
+                  }}
+                >
+                  🔒
+                </span>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••••••"
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "13px 42px 13px 40px",
+                    borderRadius: "10px",
+                    border: "1px solid #cbd5e1",
+                    fontSize: "14px",
+                    boxSizing: "border-box",
+                    outline: "none",
+                    transition: "border-color 0.15s ease",
+                  }}
+                  onFocus={(e) => (e.target.style.borderColor = "#c81e26")}
+                  onBlur={(e) => (e.target.style.borderColor = "#cbd5e1")}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: "absolute",
+                    right: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: "#94a3b8",
+                    fontSize: "15px",
+                    padding: 0,
+                  }}
+                  title={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? "👁️" : "👁"}
+                </button>
+              </div>
+
+              {/* Remember Me & Forgot Password Row */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  fontSize: "13px",
+                  marginTop: "-2px",
+                }}
+              >
+                <label
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    color: "#475569",
+                    cursor: "pointer",
+                    userSelect: "none",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    style={{ accentColor: "#c81e26", cursor: "pointer" }}
+                  />
+                  <span>Remember me</span>
+                </label>
+
+                <a
+                  href="tel:+8801711034971"
+                  style={{
+                    color: "#c81e26",
+                    textDecoration: "none",
+                    fontWeight: 600,
+                  }}
+                >
+                  Forgot your password?
+                </a>
+              </div>
+
+              {/* Red Submit Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  background: "#c81e26",
+                  color: "#ffffff",
+                  padding: "13px",
+                  borderRadius: "10px",
+                  border: "none",
+                  fontWeight: 700,
+                  fontSize: "15px",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  opacity: loading ? 0.75 : 1,
+                  boxShadow: "0 4px 14px rgba(200, 30, 38, 0.35)",
+                  transition: "background 0.2s ease, transform 0.1s ease",
+                  marginTop: "4px",
+                }}
+              >
+                {loading ? "Signing in..." : "Sign in"}
+              </button>
+            </form>
+          )}
+
+          {/* ================= MODE 2: SIGN UP ================= */}
+          {mode === "signup" && (
+            <form onSubmit={handleRegister} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+              {/* Full Name */}
+              <div style={{ position: "relative" }}>
+                <span
+                  style={{
+                    position: "absolute",
+                    left: "14px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#94a3b8",
+                    fontSize: "15px",
+                    lineHeight: 1,
+                  }}
+                >
+                  👤
+                </span>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Full Name / Company Name"
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 14px 12px 40px",
                     borderRadius: "10px",
                     border: "1px solid #cbd5e1",
                     fontSize: "14px",
@@ -452,27 +567,114 @@ export default function LoginPage() {
                 />
               </div>
 
-              <div>
-                <label
+              {/* Email */}
+              <div style={{ position: "relative" }}>
+                <span
                   style={{
-                    display: "block",
-                    fontSize: "13px",
-                    fontWeight: 700,
-                    color: "#334155",
-                    marginBottom: "5px",
+                    position: "absolute",
+                    left: "14px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#94a3b8",
+                    fontSize: "16px",
+                    lineHeight: 1,
                   }}
                 >
-                  Confirm Password
-                </label>
+                  ✉
+                </span>
+                <input
+                  type="email"
+                  value={regEmail}
+                  onChange={(e) => setRegEmail(e.target.value)}
+                  placeholder="buyer@company.com"
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 14px 12px 40px",
+                    borderRadius: "10px",
+                    border: "1px solid #cbd5e1",
+                    fontSize: "14px",
+                    boxSizing: "border-box",
+                    outline: "none",
+                  }}
+                />
+              </div>
+
+              {/* Password */}
+              <div style={{ position: "relative" }}>
+                <span
+                  style={{
+                    position: "absolute",
+                    left: "14px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#94a3b8",
+                    fontSize: "15px",
+                    lineHeight: 1,
+                  }}
+                >
+                  🔒
+                </span>
+                <input
+                  type={showRegPassword ? "text" : "password"}
+                  value={regPassword}
+                  onChange={(e) => setRegPassword(e.target.value)}
+                  placeholder="Password (min 6 chars)"
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "12px 42px 12px 40px",
+                    borderRadius: "10px",
+                    border: "1px solid #cbd5e1",
+                    fontSize: "14px",
+                    boxSizing: "border-box",
+                    outline: "none",
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowRegPassword(!showRegPassword)}
+                  style={{
+                    position: "absolute",
+                    right: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: "#94a3b8",
+                    fontSize: "15px",
+                    padding: 0,
+                  }}
+                >
+                  {showRegPassword ? "👁️" : "👁"}
+                </button>
+              </div>
+
+              {/* Confirm Password */}
+              <div style={{ position: "relative" }}>
+                <span
+                  style={{
+                    position: "absolute",
+                    left: "14px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    color: "#94a3b8",
+                    fontSize: "15px",
+                    lineHeight: 1,
+                  }}
+                >
+                  ✓
+                </span>
                 <input
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="Repeat password"
+                  placeholder="Confirm Password"
                   required
                   style={{
                     width: "100%",
-                    padding: "11px 14px",
+                    padding: "12px 14px 12px 40px",
                     borderRadius: "10px",
                     border: "1px solid #cbd5e1",
                     fontSize: "14px",
@@ -481,97 +683,65 @@ export default function LoginPage() {
                   }}
                 />
               </div>
-            </div>
 
-            {/* Role Notice */}
-            <div
-              style={{
-                padding: "8px 12px",
-                background: "#f0fdf4",
-                border: "1px solid #bbf7d0",
-                borderRadius: "8px",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                fontSize: "12px",
-                color: "#166534",
-              }}
-            >
-              <span>👤</span>
-              <span>
-                Account Role: <strong>Customer / Viewer</strong> (Trade Tracking &amp; Inquiries)
-              </span>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              style={{
-                background: "#0f766e",
-                color: "#ffffff",
-                padding: "13px",
-                borderRadius: "10px",
-                border: "none",
-                fontWeight: 700,
-                fontSize: "14.5px",
-                cursor: loading ? "not-allowed" : "pointer",
-                opacity: loading ? 0.7 : 1,
-                marginTop: "4px",
-                boxShadow: "0 4px 12px rgba(15, 118, 110, 0.3)",
-                transition: "background 0.2s ease",
-              }}
-            >
-              {loading ? "Creating Account..." : "Register Customer Account"}
-            </button>
-
-            <div style={{ textAlign: "center", marginTop: "10px" }}>
-              <span style={{ fontSize: "13px", color: "#64748b" }}>
-                Already registered?{" "}
-              </span>
-              <button
-                type="button"
-                onClick={() => {
-                  setMode("signin");
-                  setError("");
-                  setSuccessMsg("");
-                }}
+              {/* Customer / Viewer Role Note */}
+              <div
                 style={{
-                  background: "none",
-                  border: "none",
-                  color: "#c81e26",
-                  fontWeight: 700,
-                  fontSize: "13px",
-                  cursor: "pointer",
-                  padding: 0,
-                  textDecoration: "underline",
+                  padding: "8px 12px",
+                  background: "#f0fdf4",
+                  border: "1px solid #bbf7d0",
+                  borderRadius: "8px",
+                  fontSize: "12px",
+                  color: "#166534",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
                 }}
               >
-                Sign In to Portal
-              </button>
-            </div>
-          </form>
-        )}
+                <span>👤</span>
+                <span>
+                  Role: <strong>Customer / Viewer</strong> (Trade tracking &amp; RFQs)
+                </span>
+              </div>
 
-        {/* Back to Home Link */}
-        <div
-          style={{
-            marginTop: "24px",
-            paddingTop: "16px",
-            borderTop: "1px solid #f1f5f9",
-            textAlign: "center",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              fontSize: "12.5px",
-              color: "#94a3b8",
-              textDecoration: "none",
-              fontWeight: 600,
-            }}
-          >
-            ← Return to British Merchants Website
-          </Link>
+              {/* Red Submit Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                style={{
+                  background: "#c81e26",
+                  color: "#ffffff",
+                  padding: "13px",
+                  borderRadius: "10px",
+                  border: "none",
+                  fontWeight: 700,
+                  fontSize: "15px",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  opacity: loading ? 0.75 : 1,
+                  boxShadow: "0 4px 14px rgba(200, 30, 38, 0.35)",
+                  transition: "background 0.2s ease",
+                  marginTop: "2px",
+                }}
+              >
+                {loading ? "Creating Account..." : "Sign Up"}
+              </button>
+            </form>
+          )}
+
+          {/* Bottom helper */}
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <Link
+              href="/"
+              style={{
+                fontSize: "12.5px",
+                color: "#94a3b8",
+                textDecoration: "none",
+                fontWeight: 600,
+              }}
+            >
+              ← Back to Homepage
+            </Link>
+          </div>
         </div>
       </div>
     </div>
