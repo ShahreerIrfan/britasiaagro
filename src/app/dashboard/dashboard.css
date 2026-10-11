@@ -785,6 +785,7 @@ body {
   letter-spacing: 0.6px;
   text-transform: uppercase;
   border-bottom: 1px solid #F1F5F9;
+  white-space: nowrap;
 }
 
 .redesigned-table td {
@@ -792,6 +793,7 @@ body {
   font-size: 13.5px;
   color: #334155;
   border-bottom: 1px solid #F8FAFC;
+  vertical-align: middle;
 }
 
 .redesigned-table tbody tr:hover {
@@ -804,9 +806,12 @@ body {
   gap: 12px;
 }
 
-.commodity-thumb-img {
-  width: 38px;
-  height: 38px;
+.commodity-cell .commodity-thumb-img,
+img.commodity-thumb-img {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  max-width: 38px !important;
   border-radius: 8px;
   object-fit: cover;
   background: #F1F5F9;
@@ -2200,10 +2205,12 @@ body {
   justify-content: center;
 }
 
-.commodity-thumb-img {
+.commodity-thumb-container .commodity-thumb-img,
+.commodity-thumb-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .commodity-text-block {

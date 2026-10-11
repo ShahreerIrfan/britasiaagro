@@ -407,6 +407,15 @@ export default async function DashboardPage() {
                             src={getCommodityThumb(inq.commodity)}
                             alt={inq.commodity}
                             className="commodity-thumb-img"
+                            style={{
+                              width: "38px",
+                              height: "38px",
+                              minWidth: "38px",
+                              maxWidth: "38px",
+                              borderRadius: "8px",
+                              objectFit: "cover",
+                              flexShrink: 0,
+                            }}
                           />
                           <span className="commodity-name-text">{inq.commodity}</span>
                         </div>
