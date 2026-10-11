@@ -4,7 +4,7 @@
 # Stage 1: Base image
 # -----------------------------------------------------------------------------
 FROM node:20-alpine AS base
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 
 # -----------------------------------------------------------------------------
@@ -12,7 +12,6 @@ WORKDIR /app
 # -----------------------------------------------------------------------------
 FROM base AS deps
 COPY package.json package-lock.json ./
-COPY prisma ./prisma/
 RUN npm ci
 
 # -----------------------------------------------------------------------------
@@ -25,6 +24,7 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=2048"
+ENV DATABASE_URL="postgresql://postgres:nyWf75NYpnPkoB59IgZO@britishmerchants-britishmerchants-tmndcg:5432/BritishMerchantsDB"
 
 RUN npx prisma generate
 RUN npm run build
