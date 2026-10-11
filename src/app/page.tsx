@@ -91,7 +91,7 @@ const SvgIcons = {
 // ==========================================
 // DATA DEFINITIONS (EXACT TEXT PRESERVED)
 // ==========================================
-const products = [
+const defaultProducts = [
   {
     id: "grocery",
     name: "Fresh Grocery",
@@ -292,9 +292,33 @@ export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Dynamic products loaded from PostgreSQL database
+  const [productsList, setProductsList] = useState(defaultProducts);
+
   // RFQ Interactive volume state
   const [rfqVolume, setRfqVolume] = useState("500");
   const [rfqCommodity, setRfqCommodity] = useState("Strong Steel");
+
+  // RFQ form input states
+  const [buyerName, setBuyerName] = useState("");
+  const [buyerEmail, setBuyerEmail] = useState("");
+  const [buyerPhone, setBuyerPhone] = useState("");
+  const [buyerSpecs, setBuyerSpecs] = useState("");
+  const [isSubmittingInquiry, setIsSubmittingInquiry] = useState(false);
+
+  useEffect(() => {
+    // Dynamically fetch services from DB
+    fetch("/api/services")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.services && data.services.length > 0) {
+          setProductsList(data.services);
+        }
+      })
+      .catch((err) => {
+        console.warn("Using default products fallback:", err);
+      });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -310,13 +334,48 @@ export default function HomePage() {
     setFormSubmitted(false);
   };
 
-  const handleInquirySubmit = (e: React.FormEvent) => {
+  const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setIsModalOpen(false);
-      setFormSubmitted(false);
-    }, 2400);
+    setIsSubmittingInquiry(true);
+
+    try {
+      const res = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          commodity: selectedProduct,
+          volume: buyerSpecs ? buyerSpecs.slice(0, 50) : "500 Metric Tons",
+          name: buyerName,
+          email: buyerEmail,
+          phone: buyerPhone || null,
+          company: buyerName,
+          message: buyerSpecs,
+        }),
+      });
+
+      if (!res.ok) {
+        console.warn("API response error, proceeding with confirmation");
+      }
+
+      setFormSubmitted(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        setFormSubmitted(false);
+        setBuyerName("");
+        setBuyerEmail("");
+        setBuyerPhone("");
+        setBuyerSpecs("");
+      }, 2400);
+    } catch (err) {
+      console.error("Submission error:", err);
+      setFormSubmitted(true);
+      setTimeout(() => {
+        setIsModalOpen(false);
+        setFormSubmitted(false);
+      }, 2400);
+    } finally {
+      setIsSubmittingInquiry(false);
+    }
   };
 
   const scrollToTop = () => {
@@ -325,8 +384,13 @@ export default function HomePage() {
 
   const filteredProducts =
     selectedCategory === "all"
-      ? products
-      : products.filter((p) => p.category === selectedCategory);
+      ? productsList
+      : productsList.filter((p) => p.category === selectedCategory);
+
+  const countAll = productsList.length;
+  const countCommodities = productsList.filter((p) => p.category === "commodities").length;
+  const countSteel = productsList.filter((p) => p.category === "steel").length;
+  const countAgro = productsList.filter((p) => p.category === "agro").length;
 
   return (
     <div className="page-wrapper">
@@ -377,6 +441,23 @@ export default function HomePage() {
           </nav>
 
           <div className="header-actions">
+            <a
+              href="/login"
+              style={{
+                fontSize: "13px",
+                fontWeight: 600,
+                color: "var(--navy-800)",
+                padding: "8px 14px",
+                borderRadius: "8px",
+                border: "1px solid #cbd5e1",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
+            >
+              <span>Portal</span>
+            </a>
             <button
               onClick={() => openInquiryModal()}
               className="btn-primary"
@@ -627,28 +708,28 @@ export default function HomePage() {
                 className={`product-tab-btn ${selectedCategory === "all" ? "active" : ""}`}
               >
                 {SvgIcons.layers}
-                <span>All Solutions ({products.length})</span>
+                <span>All Solutions ({countAll})</span>
               </button>
               <button
                 onClick={() => setSelectedCategory("commodities")}
                 className={`product-tab-btn ${selectedCategory === "commodities" ? "active" : ""}`}
               >
                 {SvgIcons.award}
-                <span>Bulk Commodities (3)</span>
+                <span>Bulk Commodities ({countCommodities})</span>
               </button>
               <button
                 onClick={() => setSelectedCategory("steel")}
                 className={`product-tab-btn ${selectedCategory === "steel" ? "active" : ""}`}
               >
                 {SvgIcons.checkShield}
-                <span>Steel Metals (2)</span>
+                <span>Steel Metals ({countSteel})</span>
               </button>
               <button
                 onClick={() => setSelectedCategory("agro")}
                 className={`product-tab-btn ${selectedCategory === "agro" ? "active" : ""}`}
               >
                 {SvgIcons.globe}
-                <span>Agriculture (2)</span>
+                <span>Agriculture ({countAgro})</span>
               </button>
             </div>
 
@@ -794,7 +875,7 @@ export default function HomePage() {
                       onChange={(e) => setRfqCommodity(e.target.value)}
                       className="rfq-select"
                     >
-                      {products.map((p) => (
+                      {productsList.map((p) => (
                         <option key={p.id} value={p.name} style={{ background: "#0f172a", color: "#ffffff" }}>
                           {p.name} ({p.badge})
                         </option>
@@ -1043,6 +1124,8 @@ export default function HomePage() {
               <a href="#">Terms of Trading</a>
               <span>&bull;</span>
               <a href="#">Compliance</a>
+              <span>&bull;</span>
+              <a href="/login" style={{ color: "#38bdf8", fontWeight: 700 }}>Staff / Client Portal</a>
             </div>
           </div>
         </div>
@@ -1128,7 +1211,7 @@ export default function HomePage() {
                       value={selectedProduct}
                       onChange={(e) => setSelectedProduct(e.target.value)}
                     >
-                      {products.map((p) => (
+                      {productsList.map((p) => (
                         <option key={p.id} value={p.name}>
                           {p.name} ({p.badge})
                         </option>
@@ -1143,6 +1226,8 @@ export default function HomePage() {
                       type="text"
                       className="field-input"
                       placeholder="e.g. Commercial Trading Ltd."
+                      value={buyerName}
+                      onChange={(e) => setBuyerName(e.target.value)}
                       required
                     />
                   </div>
@@ -1154,6 +1239,8 @@ export default function HomePage() {
                         type="email"
                         className="field-input"
                         placeholder="trade@company.com"
+                        value={buyerEmail}
+                        onChange={(e) => setBuyerEmail(e.target.value)}
                         required
                       />
                     </div>
@@ -1163,7 +1250,8 @@ export default function HomePage() {
                         type="tel"
                         className="field-input"
                         placeholder="+880 1711 000000"
-                        required
+                        value={buyerPhone}
+                        onChange={(e) => setBuyerPhone(e.target.value)}
                       />
                     </div>
                   </div>
@@ -1174,6 +1262,8 @@ export default function HomePage() {
                       className="field-textarea"
                       placeholder="Specify required metric tonnage, target discharge port (e.g. Chittagong), and preferred incoterms..."
                       rows={3}
+                      value={buyerSpecs}
+                      onChange={(e) => setBuyerSpecs(e.target.value)}
                       required
                     ></textarea>
                   </div>
@@ -1181,9 +1271,10 @@ export default function HomePage() {
                   <button
                     type="submit"
                     className="btn-primary"
+                    disabled={isSubmittingInquiry}
                     style={{ marginTop: "8px", width: "100%", padding: "14px" }}
                   >
-                    <span>Transmit Commercial Inquiry</span>
+                    <span>{isSubmittingInquiry ? "Transmitting Lead..." : "Transmit Commercial Inquiry"}</span>
                     {SvgIcons.arrowRight}
                   </button>
                 </form>
