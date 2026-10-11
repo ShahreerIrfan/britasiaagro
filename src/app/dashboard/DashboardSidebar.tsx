@@ -216,7 +216,7 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
                         </div>
 
                         <svg
-                          className={`sidebar-chevron-arrow ${isOpen ? "rotated" : ""}`}
+                          className={`sidebar-chevron-arrow ${isOpen ? "open" : ""}`}
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -224,7 +224,7 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         >
-                          <polyline points="6 9 12 15 18 9" />
+                          <polyline points="9 18 15 12 9 6" />
                         </svg>
                       </button>
 
@@ -289,7 +289,17 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
                         <span className="sidebar-live-badge">{item.badge}</span>
                       )}
 
-                      <span className="chevron-icon">›</span>
+                      <svg
+                        className="sidebar-chevron-arrow"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="9 18 15 12 9 6" />
+                      </svg>
                     </Link>
                   </li>
                 );

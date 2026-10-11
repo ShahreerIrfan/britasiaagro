@@ -151,7 +151,8 @@ body {
   stroke: #FFFFFF;
 }
 
-.sidebar-nav-item.active .chevron-icon {
+.sidebar-nav-item.active .chevron-icon,
+.sidebar-nav-item.active .sidebar-chevron-arrow {
   color: #FFFFFF;
   opacity: 0.9;
 }
@@ -224,15 +225,16 @@ body {
 }
 
 .sidebar-chevron-arrow {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   color: #8A9AB5;
   transition: transform 0.2s ease, color 0.15s ease;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
-.sidebar-chevron-arrow.rotated {
-  transform: rotate(180deg);
+.sidebar-chevron-arrow.open {
+  transform: rotate(90deg);
   color: #0F172A;
 }
 
@@ -257,7 +259,7 @@ body {
 .sidebar-submenu-list {
   list-style: none;
   padding: 0;
-  margin: 4px 0 8px 0;
+  margin: 3px 0 6px 0;
   border-left: 1.5px solid #EAEFF5;
   margin-left: 14px;
   padding-left: 6px;
@@ -274,10 +276,10 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: flex-start !important;
-  gap: 8px !important;
-  padding: 7px 8px !important;
+  gap: 6px !important;
+  padding: 5px 8px !important;
   border-radius: 6px;
-  font-size: 12.5px !important;
+  font-size: 10.5px !important;
   font-weight: 500;
   color: #56708F !important;
   text-decoration: none !important;
@@ -309,8 +311,8 @@ body {
 }
 
 .sidebar-submenu-dot {
-  width: 5px !important;
-  height: 5px !important;
+  width: 4px !important;
+  height: 4px !important;
   border-radius: 50%;
   background: #CBD5E1;
   flex-shrink: 0;
