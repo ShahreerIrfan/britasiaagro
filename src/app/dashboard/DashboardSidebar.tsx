@@ -140,7 +140,15 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
             <div className="sidebar-section-title">{section.title}</div>
             <ul className="sidebar-nav-list">
               {section.items.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive =
+                  item.href === "/dashboard"
+                    ? pathname === "/dashboard"
+                    : item.href === "/dashboard/services/new"
+                    ? pathname === "/dashboard/services/new"
+                    : pathname === item.href ||
+                      (item.href === "/dashboard/services" &&
+                        pathname.startsWith("/dashboard/services/") &&
+                        pathname !== "/dashboard/services/new");
                 return (
                   <li
                     key={item.href}
