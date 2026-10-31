@@ -13,9 +13,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
 
-  let service = await prisma.service.findUnique({
-    where: { slug },
-  });
+  let service = null;
+  try {
+    service = await prisma.service.findUnique({
+      where: { slug },
+    });
+  } catch (err) {
+    console.warn("DB unreachable in generateMetadata, using fallback:", err);
+  }
 
   if (!service) {
     service = fallbackServices.find((s) => s.slug === slug) as any;

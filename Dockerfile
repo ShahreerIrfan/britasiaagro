@@ -27,7 +27,7 @@ ENV NODE_OPTIONS="--max-old-space-size=2048"
 ENV DATABASE_URL="postgresql://postgres:nyWf75NYpnPkoB59IgZO@britishmerchants-britishmerchants-tmndcg:5432/BritishMerchantsDB"
 
 RUN npx prisma generate
-RUN npm run build
+RUN npm run build || npm run build
 
 # -----------------------------------------------------------------------------
 # Stage 4: Production runner (minimal, secure, non-root)
