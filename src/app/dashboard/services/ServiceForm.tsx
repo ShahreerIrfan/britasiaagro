@@ -11,6 +11,12 @@ interface ServiceData {
   image: string;
   category: string;
   badge: string;
+  breed?: string;
+  farmingMethod?: string;
+  processingMethod?: string;
+  packaging?: string;
+  certifications?: string;
+  logistics?: string;
   order: number;
   isActive: boolean;
 }
@@ -29,6 +35,12 @@ export default function ServiceForm({
   const [image, setImage] = useState(initialData?.image || "/assets/product-grocery.svg");
   const [category, setCategory] = useState(initialData?.category || "commodities");
   const [badge, setBadge] = useState(initialData?.badge || "Bulk Commodities");
+  const [breed, setBreed] = useState(initialData?.breed || "");
+  const [farmingMethod, setFarmingMethod] = useState(initialData?.farmingMethod || "");
+  const [processingMethod, setProcessingMethod] = useState(initialData?.processingMethod || "");
+  const [packaging, setPackaging] = useState(initialData?.packaging || "");
+  const [certifications, setCertifications] = useState(initialData?.certifications || "");
+  const [logistics, setLogistics] = useState(initialData?.logistics || "");
   const [order, setOrder] = useState<number>(initialData?.order ?? 0);
   const [isActive, setIsActive] = useState(initialData?.isActive ?? true);
 
@@ -103,6 +115,12 @@ export default function ServiceForm({
         image,
         category,
         badge,
+        breed,
+        farmingMethod,
+        processingMethod,
+        packaging,
+        certifications,
+        logistics,
         order: Number(order),
         isActive,
       };
@@ -357,6 +375,107 @@ export default function ServiceForm({
                   />
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 2.5 Middle Row: Corporate Agro & Service Specifications Card */}
+        <div className="form-section-card" style={{ marginTop: "24px" }}>
+          <div className="form-card-header">
+            <div className="form-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div className="form-card-title-group">
+              <h3>Service Specifications &amp; Export Details (Corporate Agro)</h3>
+              <p>Key attributes displayed on the single service details page according to Corporate Agro Profile.</p>
+            </div>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "16px", marginTop: "16px" }}>
+            {/* Breed / Species */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Breed / Species / Variety</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. American Brahman Crosses, Black Bengal Goat"
+                value={breed}
+                onChange={(e) => setBreed(e.target.value)}
+              />
+            </div>
+
+            {/* Farming & Rearing Method */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Farming &amp; Husbandry Method</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. 90-120 Day TMR Feedlot, RFID Individual Tracking"
+                value={farmingMethod}
+                onChange={(e) => setFarmingMethod(e.target.value)}
+              />
+            </div>
+
+            {/* Processing & Cold Chain */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Processing &amp; Cold-Chain Tech</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. Certified Halal Abattoir, -40°C IQF Blast Freeze"
+                value={processingMethod}
+                onChange={(e) => setProcessingMethod(e.target.value)}
+              />
+            </div>
+
+            {/* Cuts & Packaging */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Cuts &amp; Packaging Formats</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. Prime Ribeye, Chops, Vacuum Skin & 5-Ply Box"
+                value={packaging}
+                onChange={(e) => setPackaging(e.target.value)}
+              />
+            </div>
+
+            {/* Certifications & Food Safety */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Certifications &amp; Standards</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. 100% Halal Certified, HACCP, ISO 22000, DLS Pass"
+                value={certifications}
+                onChange={(e) => setCertifications(e.target.value)}
+              />
+            </div>
+
+            {/* Logistics & Shipping */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Export Logistics &amp; Shipping</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. 40ft High-Cube Reefer (-20°C), Air Freight (0-2°C) to UK/GCC"
+                value={logistics}
+                onChange={(e) => setLogistics(e.target.value)}
+              />
             </div>
           </div>
         </div>

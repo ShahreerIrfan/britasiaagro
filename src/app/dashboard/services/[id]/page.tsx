@@ -33,6 +33,12 @@ export default async function EditServicePage({
         image: service.image,
         category: service.category,
         badge: service.badge,
+        breed: service.breed || "",
+        farmingMethod: service.farmingMethod || "",
+        processingMethod: service.processingMethod || "",
+        packaging: service.packaging || "",
+        certifications: service.certifications || "",
+        logistics: service.logistics || "",
         order: service.order,
         isActive: service.isActive,
       }}

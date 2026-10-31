@@ -31,17 +31,23 @@ model User {
 }
 
 model Service {
-  id        String   @id @default(cuid())
-  slug      String   @unique
-  name      String
-  desc      String
-  image     String
-  category  String   // "commodities", "steel", "agro"
-  badge     String   // "Bulk Commodities", "Steel & Metals", "Agriculture"
-  isActive  Boolean  @default(true)
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  name             String
+  desc             String
+  image            String
+  category         String   // "commodities", "steel", "agro"
+  badge            String   // "Bulk Commodities", "Steel & Metals", "Agriculture"
+  breed            String?  // Breed / Species / Variety
+  farmingMethod    String?  // Farming & Husbandry Method
+  processingMethod String?  // Processing & Cold-Chain Technology
+  packaging        String?  // Available Cuts & Packaging Formats
+  certifications   String?  // Certifications & Compliance
+  logistics        String?  // Export Logistics & Shipping
+  isActive         Boolean  @default(true)
+  order            Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 }
 
 model TradeInquiry {

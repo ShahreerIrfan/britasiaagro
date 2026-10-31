@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { fallbackServices } from "@/lib/servicesData";
 
 // ==========================================
 // BESPOKE SVG ICONS (NO EMOJIS ALLOWED)
@@ -294,7 +296,7 @@ export default function HomePage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Dynamic products loaded from PostgreSQL database
-  const [productsList, setProductsList] = useState(defaultProducts);
+  const [productsList, setProductsList] = useState<any[]>(fallbackServices);
 
   // RFQ Interactive volume state
   const [rfqVolume, setRfqVolume] = useState("500");
@@ -768,13 +770,24 @@ export default function HomePage() {
                   <div className="product-card-content">
                     <h3 className="product-card-title">{item.name}</h3>
                     <p className="product-card-desc">{item.desc}</p>
-                    <button
-                      onClick={() => openInquiryModal(item.name)}
-                      className="product-card-cta"
-                    >
-                      <span>Explore More</span>
-                      {SvgIcons.arrowRight}
-                    </button>
+                    <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
+                      <Link
+                        href={`/services/${item.slug || item.id}`}
+                        className="product-card-cta"
+                        style={{ flex: 1, textDecoration: "none", textAlign: "center", justifyContent: "center" }}
+                      >
+                        <span>Specifications</span>
+                        {SvgIcons.arrowRight}
+                      </Link>
+                      <button
+                        onClick={() => openInquiryModal(item.name)}
+                        className="product-card-cta"
+                        style={{ background: "rgba(255, 255, 255, 0.2)", padding: "10px 14px" }}
+                        title="Quick Inquiry"
+                      >
+                        <span>Inquire</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}

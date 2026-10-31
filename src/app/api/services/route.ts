@@ -39,7 +39,21 @@ export async function POST(req: Request) {
 
   try {
     const body = await req.json();
-    const { name, desc, image, category, badge, order, isActive } = body;
+    const {
+      name,
+      desc,
+      image,
+      category,
+      badge,
+      breed,
+      farmingMethod,
+      processingMethod,
+      packaging,
+      certifications,
+      logistics,
+      order,
+      isActive,
+    } = body;
 
     if (!name || !desc) {
       return NextResponse.json({ error: "Name and description are required" }, { status: 400 });
@@ -62,6 +76,12 @@ export async function POST(req: Request) {
         image: image || "/assets/product-grocery.svg",
         category: category || "commodities",
         badge: badge || "Bulk Commodities",
+        breed: breed ? String(breed).trim() : null,
+        farmingMethod: farmingMethod ? String(farmingMethod).trim() : null,
+        processingMethod: processingMethod ? String(processingMethod).trim() : null,
+        packaging: packaging ? String(packaging).trim() : null,
+        certifications: certifications ? String(certifications).trim() : null,
+        logistics: logistics ? String(logistics).trim() : null,
         order: order ? parseInt(order, 10) : 0,
         isActive: isActive !== false,
       },
@@ -83,7 +103,22 @@ export async function PUT(req: Request) {
 
   try {
     const body = await req.json();
-    const { id, name, desc, image, category, badge, order, isActive } = body;
+    const {
+      id,
+      name,
+      desc,
+      image,
+      category,
+      badge,
+      breed,
+      farmingMethod,
+      processingMethod,
+      packaging,
+      certifications,
+      logistics,
+      order,
+      isActive,
+    } = body;
 
     if (!id || !name) {
       return NextResponse.json({ error: "ID and name are required" }, { status: 400 });
@@ -97,6 +132,12 @@ export async function PUT(req: Request) {
         image,
         category,
         badge,
+        breed: breed !== undefined ? (breed ? String(breed).trim() : null) : undefined,
+        farmingMethod: farmingMethod !== undefined ? (farmingMethod ? String(farmingMethod).trim() : null) : undefined,
+        processingMethod: processingMethod !== undefined ? (processingMethod ? String(processingMethod).trim() : null) : undefined,
+        packaging: packaging !== undefined ? (packaging ? String(packaging).trim() : null) : undefined,
+        certifications: certifications !== undefined ? (certifications ? String(certifications).trim() : null) : undefined,
+        logistics: logistics !== undefined ? (logistics ? String(logistics).trim() : null) : undefined,
         order: order !== undefined ? parseInt(order, 10) : undefined,
         isActive: isActive !== undefined ? Boolean(isActive) : undefined,
       },
