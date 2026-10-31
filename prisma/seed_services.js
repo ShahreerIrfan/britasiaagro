@@ -5,9 +5,9 @@ const prisma = new PrismaClient();
 const servicesToSeed = [
   {
     slug: "cattle-farming-beef",
-    name: "Cattle Farming & Halal Beef Export",
+    name: "Cattle Farming, Processing & Export Division",
     desc: "Commercial cattle feedlot fattening, 100% certified Halal abattoir dressing, individual RFID traceability, and cryogenic cold-chain beef export.",
-    image: "/assets/product-agro.svg",
+    image: "/services/cattle-farming.jpg",
     category: "agro",
     badge: "Agro Livestock",
     breed: "American Brahman Crosses (heat-tolerant, disease-resilient genetics optimized for lean muscle and superior marbling)",
@@ -21,9 +21,9 @@ const servicesToSeed = [
   },
   {
     slug: "commercial-dairy-farming",
-    name: "Commercial Dairy & Hygienic Milk",
+    name: "Commercial Dairy Farming & Hygienic Milk Division",
     desc: "Selective dairy herd breeding, continuous rotary milking platform, rapid 4°C plate chilling, pasteurization, and aseptic dairy distribution.",
-    image: "/assets/product-agro.svg",
+    image: "/services/dairy-farming.jpg",
     category: "agro",
     badge: "Dairy & Milk",
     breed: "Holstein Friesian & Sahiwal Crosses (selected for maximum lactation yield, disease hardiness, and 3.8%–4.2% butterfat)",
@@ -37,9 +37,9 @@ const servicesToSeed = [
   },
   {
     slug: "goat-farming-halal-mutton",
-    name: "Black Bengal Goat & Halal Mutton",
+    name: "Goat Farming, Mutton Processing & Export Division",
     desc: "Purebred Black Bengal goat breeding on elevated slatted housing, certified Islamic Halal butchering, and fresh chilled mutton air-freighted to GCC destinations.",
-    image: "/assets/product-agro.svg",
+    image: "/services/goat-farming.jpg",
     category: "agro",
     badge: "Small Ruminants",
     breed: "World-Famous Purebred Black Bengal Goat (globally revered for tender, sweet culinary profile, ultra-fine muscle grain, and low intramuscular fat)",
@@ -53,9 +53,9 @@ const servicesToSeed = [
   },
   {
     slug: "chicken-poultry-processing",
-    name: "Commercial Broiler & Poultry Processing",
+    name: "Chicken & Poultry Processing Division",
     desc: "Climate-controlled tunnel-ventilated housing, automated evisceration, certified zero-antibiotic diet, and -40°C cryogenic IQF blast-frozen Grade-A chicken portions.",
-    image: "/assets/product-agro.svg",
+    image: "/services/poultry-farming.jpg",
     category: "agro",
     badge: "Poultry & Avian",
     breed: "Commercial Broiler & Sonali Strains (calibrated live weight targeting 1.6–2.0 kg for uniform Grade-A cut portions)",
@@ -69,9 +69,9 @@ const servicesToSeed = [
   },
   {
     slug: "duck-farming-processing",
-    name: "Haor Wetland Duck & Waterfowl",
+    name: "Duck Farming & Avian Processing Division",
     desc: "Free-range foraging in natural Haor wetland pastures, natural aquatic nutrition, specialized wax defeathering, and calibrated whole export ducks.",
-    image: "/assets/product-agro.svg",
+    image: "/services/duck-farming.jpg",
     category: "agro",
     badge: "Waterfowl Division",
     breed: "Indigenous Nageswari & White Pekin Waterfowl (lean, firm muscle texture with high mineral and natural iron content)",
@@ -85,9 +85,9 @@ const servicesToSeed = [
   },
   {
     slug: "aquaculture-fish-farming",
-    name: "Freshwater Aquaculture & Seafood",
+    name: "Fish Farming & Aquaculture Processing Division",
     desc: "Scientific aerated freshwater earthen ponds, probiotic limnological management, automated filleting, Modified Atmosphere Packaging (MAP), and EU/US-FDA compliance.",
-    image: "/assets/product-agro.svg",
+    image: "/services/fish-aquaculture.jpg",
     category: "agro",
     badge: "Fisheries & Marine",
     breed: "GIFT Tilapia (Oreochromis niloticus), Pangasius, Rohu (Labeo rohita), Black Tiger & Vannamei Shrimp",
@@ -103,7 +103,7 @@ const servicesToSeed = [
     slug: "agro-feed-mill-plant",
     name: "Automated Agro Feed Milling Plant",
     desc: "Dedicated animal nutrition formulation, high-temperature steam conditioning, and computerized extrusion ensuring 100% antibiotic-free feed security.",
-    image: "/assets/product-fertilizer.svg",
+    image: "/services/sustainable-farmland.png",
     category: "agro",
     badge: "Upstream Nutrition",
     breed: "Calibrated feed diets for Ruminants (Cattle/Goats), Poultry (Broilers/Layers/Ducks), and Aquaculture (Floating pellets)",
@@ -119,7 +119,7 @@ const servicesToSeed = [
     slug: "cold-chain-logistics",
     name: "Subzero Cold-Chain & Reefer Shipping",
     desc: "5,000+ MT high-bay -22°C automated cold storage, real-time IoT temperature telemetry, and global 40ft High-Cube super reefer maritime logistics.",
-    image: "/assets/product-agro.svg",
+    image: "/services/sustainable-farmland.png",
     category: "agro",
     badge: "Cold-Chain Export",
     breed: "Multimodal logistics infrastructure serving fresh chilled (0°C to 4°C) and deep-frozen (-18°C to -40°C) agro commodities",
@@ -135,7 +135,7 @@ const servicesToSeed = [
     slug: "agro-qa-laboratory",
     name: "Central QA Diagnostic & Testing Lab",
     desc: "ISO 17025 compliant diagnostic testing, real-time PCR microbiology assays, veterinary pathology screening, and statutory export compliance.",
-    image: "/assets/product-agro.svg",
+    image: "/services/sustainable-farmland.png",
     category: "agro",
     badge: "Quality Assurance",
     breed: "Cross-vertical testing across Livestock, Dairy, Poultry, Waterfowl, Aquaculture, and Animal Nutrition inputs",
@@ -151,7 +151,7 @@ const servicesToSeed = [
     slug: "grocery",
     name: "Fresh Grocery & Grains",
     desc: "High-grade bulk rice, pulses, wheat, and essential food staples sourced from verified farming belts with strict quality grading.",
-    image: "/assets/product-grocery.svg",
+    image: "/services/fresh-grocery.png",
     category: "commodities",
     badge: "Bulk Commodities",
     breed: "Premium Basmati & Non-Basmati Rice, Red Lentils, Milling Wheat, and Yellow Peas",
@@ -167,7 +167,7 @@ const servicesToSeed = [
     slug: "sugar",
     name: "Pure Sugar",
     desc: "Clean refined cane sugar and raw crystal sugar meeting stringent ICUMSA 45 food-grade specifications for industrial and retail use.",
-    image: "/assets/product-sugar.svg",
+    image: "/services/pure-sugar.png",
     category: "commodities",
     badge: "Bulk Commodities",
     breed: "Cane Sugar (ICUMSA 45 Refined White & VHP Raw Sugar)",
@@ -183,7 +183,7 @@ const servicesToSeed = [
     slug: "spices",
     name: "Natural Spices",
     desc: "Aromatic whole and ground turmeric, chili, coriander, ginger, and cumin rich in natural essential oils and authentic culinary aroma.",
-    image: "/assets/product-spices.svg",
+    image: "/services/natural-spices.png",
     category: "commodities",
     badge: "Bulk Commodities",
     breed: "Curcuma longa (Turmeric), Capsicum annuum (Red Chili), Coriandrum sativum, Zingiber officinale",
@@ -199,7 +199,7 @@ const servicesToSeed = [
     slug: "hms",
     name: "HMS 1&2 Heavy Melting Scrap",
     desc: "Premium ferrous scrap conforming to ISRI 200–206 standards for electric arc furnace (EAF) and induction steel manufacturing.",
-    image: "/assets/product-hms.svg",
+    image: "/services/industrial-steel.png",
     category: "steel",
     badge: "Steel & Metals",
     breed: "Heavy Melting Steel Scrap (HMS 1: 80% min 1/4 inch thickness; HMS 2: 20% min 1/8 inch thickness)",
@@ -215,7 +215,7 @@ const servicesToSeed = [
     slug: "steel",
     name: "Strong Steel & Rebars",
     desc: "High-tensile deformed rebar (500W / Grade 60/75/80), prime billets, and structural coils engineered for mega infrastructure projects.",
-    image: "/assets/product-steel.svg",
+    image: "/services/industrial-steel.png",
     category: "steel",
     badge: "Steel & Metals",
     breed: "Thermo-Mechanically Treated (TMT) 500W / 500D Rebar, B500B, ASTM A615 Grade 60/75, Prime Steel Billets",
@@ -231,7 +231,7 @@ const servicesToSeed = [
     slug: "fertilizer",
     name: "Quality Fertilizer",
     desc: "Balanced granular Urea, DAP, MOP, and enriched organic compost supporting sustainable soil fertility and high crop yield.",
-    image: "/assets/product-fertilizer.svg",
+    image: "/services/quality-fertilizer.png",
     category: "agro",
     badge: "Agriculture",
     breed: "Granular Urea (46% N), Di-Ammonium Phosphate (DAP 18-46-0), Muriate of Potash (MOP 60% K2O), Bio-Organic Compost",
@@ -247,7 +247,7 @@ const servicesToSeed = [
     slug: "agro",
     name: "Agro Corporate Division",
     desc: "Comprehensive vertically integrated agro-farming, processing, cold-chain logistics, and global export solutions.",
-    image: "/assets/product-agro.svg",
+    image: "/services/sustainable-farmland.png",
     category: "agro",
     badge: "Agriculture",
     breed: "Integrated Livestock, Dairy, Poultry, Waterfowl & Freshwater Aquaculture Verticals",
@@ -262,7 +262,7 @@ const servicesToSeed = [
 ];
 
 async function main() {
-  console.log("Seeding / Updating services in database...");
+  console.log("Seeding / Updating services in database with renamed titles and primary images...");
   for (const s of servicesToSeed) {
     const existing = await prisma.service.findUnique({
       where: { slug: s.slug },
@@ -287,15 +287,15 @@ async function main() {
           isActive: s.isActive,
         },
       });
-      console.log(`Updated: ${s.slug}`);
+      console.log(`Updated: ${s.name} (${s.slug}) -> image: ${s.image}`);
     } else {
       await prisma.service.create({
         data: s,
       });
-      console.log(`Created: ${s.slug}`);
+      console.log(`Created: ${s.name} (${s.slug}) -> image: ${s.image}`);
     }
   }
-  console.log("Seeding finished successfully!");
+  console.log("Database update completed successfully!");
   process.exit(0);
 }
 
@@ -303,4 +303,3 @@ main().catch((e) => {
   console.error("Seed error:", e);
   process.exit(1);
 });
-
