@@ -768,26 +768,19 @@ export default function HomePage() {
                   />
                   <div className="product-card-overlay"></div>
                   <div className="product-card-content">
-                    <h3 className="product-card-title">{item.name}</h3>
-                    <p className="product-card-desc">{item.desc}</p>
-                    <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
-                      <Link
-                        href={`/services/${item.slug || item.id}`}
-                        className="product-card-cta"
-                        style={{ flex: 1, textDecoration: "none", textAlign: "center", justifyContent: "center" }}
-                      >
-                        <span>Specifications</span>
-                        {SvgIcons.arrowRight}
+                    <h3 className="product-card-title">
+                      <Link href={`/services/${item.slug || item.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                        {item.name}
                       </Link>
-                      <button
-                        onClick={() => openInquiryModal(item.name)}
-                        className="product-card-cta"
-                        style={{ background: "rgba(255, 255, 255, 0.2)", padding: "10px 14px" }}
-                        title="Quick Inquiry"
-                      >
-                        <span>Inquire</span>
-                      </button>
-                    </div>
+                    </h3>
+                    <p className="product-card-desc">{item.desc}</p>
+                    <Link
+                      href={`/services/${item.slug || item.id}`}
+                      className="product-card-cta"
+                    >
+                      <span>Explore More</span>
+                      {SvgIcons.arrowRight}
+                    </Link>
                   </div>
                 </div>
               ))}
