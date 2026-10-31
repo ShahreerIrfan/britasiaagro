@@ -79,6 +79,11 @@ export default async function ServiceDetailPage({
         packaging: dbService.packaging,
         certifications: dbService.certifications,
         logistics: dbService.logistics,
+        step1Image: dbService.step1Image,
+        step2Image: dbService.step2Image,
+        step3Image: dbService.step3Image,
+        step4Image: dbService.step4Image,
+        step5Image: dbService.step5Image,
         order: dbService.order,
         isActive: dbService.isActive,
       };

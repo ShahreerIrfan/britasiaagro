@@ -1,3 +1,11 @@
+export interface PipelineStep {
+  stepNumber: number;
+  stepTag: string;
+  title: string;
+  desc: string;
+  image: string;
+}
+
 export interface ServiceItem {
   id: string;
   slug: string;
@@ -12,6 +20,11 @@ export interface ServiceItem {
   packaging?: string | null;
   certifications?: string | null;
   logistics?: string | null;
+  step1Image?: string | null;
+  step2Image?: string | null;
+  step3Image?: string | null;
+  step4Image?: string | null;
+  step5Image?: string | null;
   isActive?: boolean;
   order?: number;
 }
@@ -22,7 +35,7 @@ export const fallbackServices: ServiceItem[] = [
     slug: "cattle-farming-beef",
     name: "Cattle Farming, Processing & Export Division",
     desc: "Commercial cattle feedlot fattening, 100% certified Halal abattoir dressing, individual RFID traceability, and cryogenic cold-chain beef export.",
-    image: "/services/cattle-farming.jpg",
+    image: "/services/cattle/primary.jpg",
     category: "agro",
     badge: "Agro Livestock",
     breed: "American Brahman Crosses (heat-tolerant, disease-resilient genetics optimized for lean muscle and superior marbling)",
@@ -31,6 +44,11 @@ export const fallbackServices: ServiceItem[] = [
     packaging: "Vacuum skin packaging (VSP), prime cuts (Ribeye, Tenderloin, Striploin, Chops), and heavy-duty 5-ply export master cartons",
     certifications: "100% Halal Certified (Islamic Foundation), HACCP & GMP certified abattoir, ISO 22000, and DLS Veterinary Health Clearance",
     logistics: "40ft High-Cube Super Reefer (-20°C to -25°C) continuous temperature telematics via Chattogram/Mongla ports directly to UK, Europe, and GCC markets",
+    step1Image: "/services/cattle/step1.jpg",
+    step2Image: "/services/cattle/step2.jpg",
+    step3Image: "/services/cattle/step3.jpg",
+    step4Image: "/services/cattle/step4.jpg",
+    step5Image: "/services/cattle/step5.jpg",
     order: 1,
     isActive: true,
   },
@@ -39,7 +57,7 @@ export const fallbackServices: ServiceItem[] = [
     slug: "commercial-dairy-farming",
     name: "Commercial Dairy Farming & Hygienic Milk Division",
     desc: "Selective dairy herd breeding, continuous rotary milking platform, rapid 4°C plate chilling, pasteurization, and aseptic dairy distribution.",
-    image: "/services/dairy-farming.jpg",
+    image: "/services/dairy/primary.jpg",
     category: "agro",
     badge: "Dairy & Milk",
     breed: "Holstein Friesian & Sahiwal Crosses (selected for maximum lactation yield, disease hardiness, and 3.8%–4.2% butterfat)",
@@ -48,6 +66,11 @@ export const fallbackServices: ServiceItem[] = [
     packaging: "Hermetically heat-sealed VFFS liquid milk pouches, traditional clarified butter (Ghee) jars, artisanal cheese blocks, and export bulk dairy powder",
     certifications: "ISO 22000 Food Safety, HACCP, Somatic Cell Count (SCC) tested, and zero chemical/antibiotic residue validation",
     logistics: "Dedicated insulated stainless-steel road tankers and temperature-controlled reefer fleet operating at constant 2°C to 4°C",
+    step1Image: "/services/dairy/step1.jpg",
+    step2Image: "/services/dairy/step2.jpg",
+    step3Image: "/services/dairy/step3.jpg",
+    step4Image: "/services/dairy/step4.jpg",
+    step5Image: "/services/dairy/step5.jpg",
     order: 2,
     isActive: true,
   },
@@ -56,7 +79,7 @@ export const fallbackServices: ServiceItem[] = [
     slug: "goat-farming-halal-mutton",
     name: "Goat Farming, Mutton Processing & Export Division",
     desc: "Purebred Black Bengal goat breeding on elevated slatted housing, certified Islamic Halal butchering, and fresh chilled mutton air-freighted to GCC destinations.",
-    image: "/services/goat-farming.jpg",
+    image: "/services/goat/primary.jpg",
     category: "agro",
     badge: "Small Ruminants",
     breed: "World-Famous Purebred Black Bengal Goat (globally revered for tender, sweet culinary profile, ultra-fine muscle grain, and low intramuscular fat)",
@@ -65,6 +88,11 @@ export const fallbackServices: ServiceItem[] = [
     packaging: "Targeted 12–16 kg whole carcasses, vacuum-packed primal cuts, chops, shanks, diced curry cuts with digital batch QR code traceability",
     certifications: "Certified Halal Attestation, HACCP compliant slaughter line, DLS disease-free quarantine certificate, and zero non-therapeutic antibiotics",
     logistics: "Daily chilled air-freight cargo flights (0°C to 2°C) to Dubai, Doha, and Riyadh; plus containerized maritime reefer shipments",
+    step1Image: "/services/goat/step1.jpg",
+    step2Image: "/services/goat/step2.jpg",
+    step3Image: "/services/goat/step3.jpg",
+    step4Image: "/services/goat/step4.jpg",
+    step5Image: "/services/goat/step5.jpg",
     order: 3,
     isActive: true,
   },
@@ -73,7 +101,7 @@ export const fallbackServices: ServiceItem[] = [
     slug: "chicken-poultry-processing",
     name: "Chicken & Poultry Processing Division",
     desc: "Climate-controlled tunnel-ventilated housing, automated evisceration, certified zero-antibiotic diet, and -40°C cryogenic IQF blast-frozen Grade-A chicken portions.",
-    image: "/services/poultry-farming.jpg",
+    image: "/services/poultry/primary.jpg",
     category: "agro",
     badge: "Poultry & Avian",
     breed: "Commercial Broiler & Sonali Strains (calibrated live weight targeting 1.6–2.0 kg for uniform Grade-A cut portions)",
@@ -82,6 +110,11 @@ export const fallbackServices: ServiceItem[] = [
     packaging: "Skinless boneless breast fillets, drumsticks, leg quarters, wingettes, and whole grillers in MAP gas-flushed trays and export master boxes",
     certifications: "HACCP & GMP Certified, ISO 22000, Islamic Foundation Halal Certified, and batch laboratory PCR screening for Salmonella and E. coli",
     logistics: "GPS live-telemetered subzero insulated reefers maintaining continuous -18°C from farm dispatch to destination ports",
+    step1Image: "/services/poultry/step1.jpg",
+    step2Image: "/services/poultry/step2.jpg",
+    step3Image: "/services/poultry/step3.jpg",
+    step4Image: "/services/poultry/step4.jpg",
+    step5Image: "/services/poultry/step5.jpg",
     order: 4,
     isActive: true,
   },
@@ -90,7 +123,7 @@ export const fallbackServices: ServiceItem[] = [
     slug: "duck-farming-processing",
     name: "Duck Farming & Avian Processing Division",
     desc: "Free-range foraging in natural Haor wetland pastures, natural aquatic nutrition, specialized wax defeathering, and calibrated whole export ducks.",
-    image: "/services/duck-farming.jpg",
+    image: "/services/duck/primary.jpg",
     category: "agro",
     badge: "Waterfowl Division",
     breed: "Indigenous Nageswari & White Pekin Waterfowl (lean, firm muscle texture with high mineral and natural iron content)",
@@ -99,6 +132,11 @@ export const fallbackServices: ServiceItem[] = [
     packaging: "Vacuum skin packaging, whole oven-ready calibrated carcasses, and blast-frozen export master cartons tailored for Chinese & European culinary trade",
     certifications: "Avian influenza continuous screening, ISO 22000, Halal certified, and Department of Livestock Services health endorsement",
     logistics: "Multimodal maritime reefer ocean dispatch from Chattogram port to UK, Europe, and international hotel/restaurant chains",
+    step1Image: "/services/duck/step1.jpg",
+    step2Image: "/services/duck/step2.jpg",
+    step3Image: "/services/duck/step3.jpg",
+    step4Image: "/services/duck/step4.jpg",
+    step5Image: "/services/duck/step5.jpg",
     order: 5,
     isActive: true,
   },
@@ -107,7 +145,7 @@ export const fallbackServices: ServiceItem[] = [
     slug: "aquaculture-fish-farming",
     name: "Fish Farming & Aquaculture Processing Division",
     desc: "Scientific aerated freshwater earthen ponds, probiotic limnological management, automated filleting, Modified Atmosphere Packaging (MAP), and EU/US-FDA compliance.",
-    image: "/services/fish-aquaculture.jpg",
+    image: "/services/fish/primary.jpg",
     category: "agro",
     badge: "Fisheries & Marine",
     breed: "GIFT Tilapia (Oreochromis niloticus), Pangasius, Rohu (Labeo rohita), Black Tiger & Vannamei Shrimp",
@@ -116,6 +154,11 @@ export const fallbackServices: ServiceItem[] = [
     packaging: "Modified Atmosphere Packaging (CO2/N2 gas flush MAP trays), vacuum skin thermoformed packs, and ice-glazed export cartons",
     certifications: "EU and US-FDA Seafood HACCP Compliance, ISO 22000, zero antibiotic/malachite green residue assays, and traceability barcodes",
     logistics: "Contracted priority berth windows at Chattogram and Mongla deep-water container terminals with direct liner sailings to Europe and the UK",
+    step1Image: "/services/fish/step1.jpg",
+    step2Image: "/services/fish/step2.jpg",
+    step3Image: "/services/fish/step3.jpg",
+    step4Image: "/services/fish/step4.jpg",
+    step5Image: "/services/fish/step5.jpg",
     order: 6,
     isActive: true,
   },
@@ -290,3 +333,291 @@ export const fallbackServices: ServiceItem[] = [
     isActive: true,
   },
 ];
+
+// Helper to get 5-step pipeline matching attached image-01
+export function getServicePipelineSteps(service: ServiceItem): PipelineStep[] | null {
+  const s = service.slug;
+
+  if (s === "cattle-farming-beef") {
+    return [
+      {
+        stepNumber: 1,
+        stepTag: "➔ STEP 1: FARMING",
+        title: "Pastoral Cattle Grazing",
+        desc: "Healthy American Brahman cattle grazing on natural green grass pastures.",
+        image: service.step1Image || "/services/cattle/step1.jpg",
+      },
+      {
+        stepNumber: 2,
+        stepTag: "➔ STEP 2: PROCESSING",
+        title: "Hygienic Abattoir",
+        desc: "Sanitary meat preparation, carcass dressing & precision cut calibration.",
+        image: service.step2Image || "/services/cattle/step2.jpg",
+      },
+      {
+        stepNumber: 3,
+        stepTag: "➔ STEP 3: PACKAGING",
+        title: "Export Packaging",
+        desc: "Vacuum skin packaging & blast-frozen export master carton packing.",
+        image: service.step3Image || "/services/cattle/step3.jpg",
+      },
+      {
+        stepNumber: 4,
+        stepTag: "➔ STEP 4: MARITIME EXPORT & SHIPPING",
+        title: "Global Reefer Ocean Shipping",
+        desc: "Active vessel loading & temperature-locked reefer logistics to international ports.",
+        image: service.step4Image || "/services/cattle/step4.jpg",
+      },
+      {
+        stepNumber: 5,
+        stepTag: "➔ STEP 5: CULINARY APPLICATION",
+        title: "Gourmet Beef Steak",
+        desc: "Succulent, tender prime ribeye beef steak served in fine restaurants.",
+        image: service.step5Image || "/services/cattle/step5.jpg",
+      },
+    ];
+  }
+
+  if (s === "commercial-dairy-farming") {
+    return [
+      {
+        stepNumber: 1,
+        stepTag: "➔ STEP 1: FARMING",
+        title: "Pastoral Dairy Grazing",
+        desc: "High-yield Holstein & Sahiwal dairy cattle grazing on nutrient-rich pasture with modern free-stall barns.",
+        image: service.step1Image || "/services/dairy/step1.jpg",
+      },
+      {
+        stepNumber: 2,
+        stepTag: "➔ STEP 2: PROCESSING",
+        title: "Hygienic Milk Processing",
+        desc: "Sanitary stainless-steel pasteurization, homogenization, rapid plate chilling & CIP automated systems.",
+        image: service.step2Image || "/services/dairy/step2.jpg",
+      },
+      {
+        stepNumber: 3,
+        stepTag: "➔ STEP 3: PACKAGING",
+        title: "Liquid Milk Pouch Packaging",
+        desc: "Automated vertical form-fill-seal (VFFS) pouch packaging line with precise volumetric filling & hermetic heat sealing.",
+        image: service.step3Image || "/services/dairy/step3.jpg",
+      },
+      {
+        stepNumber: 4,
+        stepTag: "➔ STEP 4: MARITIME EXPORT & SHIPPING",
+        title: "Global Reefer Ocean Shipping",
+        desc: "Active vessel loading & temperature-locked reefer logistics to international destination ports.",
+        image: service.step4Image || "/services/dairy/step4.jpg",
+      },
+      {
+        stepNumber: 5,
+        stepTag: "➔ STEP 5: CULINARY APPLICATION",
+        title: "Artisanal Dairy Delicacies",
+        desc: "Pure fresh milk, clarified butter (Ghee), artisanal cheeses & gourmet dairy desserts served in dining.",
+        image: service.step5Image || "/services/dairy/step5.jpg",
+      },
+    ];
+  }
+
+  if (s === "goat-farming-halal-mutton") {
+    return [
+      {
+        stepNumber: 1,
+        stepTag: "➔ STEP 1: FARMING",
+        title: "Black Bengal Grazing",
+        desc: "Free-range grazing & ethical herd management in lush rural pastures.",
+        image: service.step1Image || "/services/goat/step1.jpg",
+      },
+      {
+        stepNumber: 2,
+        stepTag: "➔ STEP 2: PROCESSING",
+        title: "Hygienic Abattoir",
+        desc: "Precision portioning, carcass dressing & certified Halal butchering.",
+        image: service.step2Image || "/services/goat/step2.jpg",
+      },
+      {
+        stepNumber: 3,
+        stepTag: "➔ STEP 3: PACKAGING",
+        title: "Vacuum Export Packing",
+        desc: "Sanitary vacuum sealing & temperature-monitored boxed export cuts.",
+        image: service.step3Image || "/services/goat/step3.jpg",
+      },
+      {
+        stepNumber: 4,
+        stepTag: "➔ STEP 4: MARITIME EXPORT & SHIPPING",
+        title: "Global Reefer Ocean Shipping",
+        desc: "Active vessel loading & temperature-locked reefer logistics to GCC and global markets.",
+        image: service.step4Image || "/services/goat/step4.jpg",
+      },
+      {
+        stepNumber: 5,
+        stepTag: "➔ STEP 5: CULINARY APPLICATION",
+        title: "Gourmet Mutton Dish",
+        desc: "Herb-crusted roasted tender mutton chops & gourmet braised ribs.",
+        image: service.step5Image || "/services/goat/step5.jpg",
+      },
+    ];
+  }
+
+  if (s === "chicken-poultry-processing") {
+    return [
+      {
+        stepNumber: 1,
+        stepTag: "➔ STEP 1: FARMING",
+        title: "Biosecure Farm Shed",
+        desc: "Environment-controlled automated poultry houses with balanced organic feeding.",
+        image: service.step1Image || "/services/poultry/step1.jpg",
+      },
+      {
+        stepNumber: 2,
+        stepTag: "➔ STEP 2: PROCESSING",
+        title: "Poultry Dressing Plant",
+        desc: "Sanitary evisceration, automated defeathering & hygienic cut calibration.",
+        image: service.step2Image || "/services/poultry/step2.jpg",
+      },
+      {
+        stepNumber: 3,
+        stepTag: "➔ STEP 3: PACKAGING",
+        title: "Export Portion Packing",
+        desc: "Fresh poultry tray vacuum packaging & blast-frozen export boxes.",
+        image: service.step3Image || "/services/poultry/step3.jpg",
+      },
+      {
+        stepNumber: 4,
+        stepTag: "➔ STEP 4: MARITIME EXPORT & SHIPPING",
+        title: "Global Reefer Ocean Shipping",
+        desc: "Active vessel loading & continuous cold-chain maritime logistics.",
+        image: service.step4Image || "/services/poultry/step4.jpg",
+      },
+      {
+        stepNumber: 5,
+        stepTag: "➔ STEP 5: CULINARY APPLICATION",
+        title: "Roasted Chicken Dish",
+        desc: "Succulent, golden roasted whole chicken served on fine dining tables.",
+        image: service.step5Image || "/services/poultry/step5.jpg",
+      },
+    ];
+  }
+
+  if (s === "duck-farming-processing") {
+    return [
+      {
+        stepNumber: 1,
+        stepTag: "➔ STEP 1: FORAGING",
+        title: "Pastoral Duck Grazing",
+        desc: "Flock of healthy ducks grazing naturally along lush wetland pond pastures.",
+        image: service.step1Image || "/services/duck/step1.jpg",
+      },
+      {
+        stepNumber: 2,
+        stepTag: "➔ STEP 2: PROCESSING",
+        title: "Hygienic Abattoir",
+        desc: "Sanitary evisceration line, automated defeathering & hygienic cut calibration.",
+        image: service.step2Image || "/services/duck/step2.jpg",
+      },
+      {
+        stepNumber: 3,
+        stepTag: "➔ STEP 3: PACKAGING",
+        title: "Export Meat Packaging",
+        desc: "Vacuum skin packaging & blast-frozen export master carton packing.",
+        image: service.step3Image || "/services/duck/step3.jpg",
+      },
+      {
+        stepNumber: 4,
+        stepTag: "➔ STEP 4: MARITIME EXPORT & SHIPPING",
+        title: "Global Reefer Ocean Shipping",
+        desc: "Active vessel loading & temperature-locked export transport worldwide.",
+        image: service.step4Image || "/services/duck/step4.jpg",
+      },
+      {
+        stepNumber: 5,
+        stepTag: "➔ STEP 5: CULINARY APPLICATION",
+        title: "Crispy Peking Duck",
+        desc: "Gourmet whole crispy roasted Peking duck served on fine dining tables.",
+        image: service.step5Image || "/services/duck/step5.jpg",
+      },
+    ];
+  }
+
+  if (s === "aquaculture-fish-farming") {
+    return [
+      {
+        stepNumber: 1,
+        stepTag: "➔ STEP 1: AQUACULTURE",
+        title: "Aerated Fish Ponds",
+        desc: "Scientific freshwater aquaculture ponds with continuous paddlewheel aeration.",
+        image: service.step1Image || "/services/fish/step1.jpg",
+      },
+      {
+        stepNumber: 2,
+        stepTag: "➔ STEP 2: PROCESSING",
+        title: "HACCP Filleting Line",
+        desc: "Sanitary de-scaling, filleting, skinning & hygienic fish cut calibration.",
+        image: service.step2Image || "/services/fish/step2.jpg",
+      },
+      {
+        stepNumber: 3,
+        stepTag: "➔ STEP 3: PACKAGING",
+        title: "Export Seafood Packaging",
+        desc: "Vacuum skin packs & IQF blast-frozen master carton export boxing.",
+        image: service.step3Image || "/services/fish/step3.jpg",
+      },
+      {
+        stepNumber: 4,
+        stepTag: "➔ STEP 4: MARITIME EXPORT & SHIPPING",
+        title: "Global Reefer Ocean Shipping",
+        desc: "Port terminal loading & certified cold-chain reefer vessel shipping.",
+        image: service.step4Image || "/services/fish/step4.jpg",
+      },
+      {
+        stepNumber: 5,
+        stepTag: "➔ STEP 5: CULINARY APPLICATION",
+        title: "Gourmet Fish Cuisine",
+        desc: "Succulent pan-seared crispy-skin fish fillet served in fine restaurants.",
+        image: service.step5Image || "/services/fish/step5.jpg",
+      },
+    ];
+  }
+
+  // Generic fallback if step images are provided via admin dashboard
+  if (service.step1Image || service.step2Image || service.step3Image) {
+    return [
+      {
+        stepNumber: 1,
+        stepTag: "➔ STEP 1: PRODUCTION & FARMING",
+        title: "Ethical Rearing & Sourcing",
+        desc: "Primary production and biosecure farming under strict quality controls.",
+        image: service.step1Image || service.image,
+      },
+      {
+        stepNumber: 2,
+        stepTag: "➔ STEP 2: HYGIENIC PROCESSING",
+        title: "Sanitary Processing & Grading",
+        desc: "Certified abattoir processing, automated calibration, and pathogen testing.",
+        image: service.step2Image || service.image,
+      },
+      {
+        stepNumber: 3,
+        stepTag: "➔ STEP 3: EXPORT PACKAGING",
+        title: "Vacuum Sealed Packaging",
+        desc: "Modified atmosphere packaging, vacuum sealing, and temperature-controlled boxing.",
+        image: service.step3Image || service.image,
+      },
+      {
+        stepNumber: 4,
+        stepTag: "➔ STEP 4: MARITIME EXPORT & SHIPPING",
+        title: "Global Reefer Ocean Shipping",
+        desc: "Active vessel loading & temperature-locked reefer logistics to international destinations.",
+        image: service.step4Image || "/services/cattle/step4.jpg",
+      },
+      {
+        stepNumber: 5,
+        stepTag: "➔ STEP 5: CULINARY APPLICATION",
+        title: "Premium Final Application",
+        desc: "End-consumer food service and culinary excellence in retail and hospitality.",
+        image: service.step5Image || service.image,
+      },
+    ];
+  }
+
+  return null;
+}

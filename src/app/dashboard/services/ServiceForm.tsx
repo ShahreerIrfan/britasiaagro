@@ -17,6 +17,11 @@ interface ServiceData {
   packaging?: string;
   certifications?: string;
   logistics?: string;
+  step1Image?: string;
+  step2Image?: string;
+  step3Image?: string;
+  step4Image?: string;
+  step5Image?: string;
   order: number;
   isActive: boolean;
 }
@@ -41,6 +46,11 @@ export default function ServiceForm({
   const [packaging, setPackaging] = useState(initialData?.packaging || "");
   const [certifications, setCertifications] = useState(initialData?.certifications || "");
   const [logistics, setLogistics] = useState(initialData?.logistics || "");
+  const [step1Image, setStep1Image] = useState(initialData?.step1Image || "");
+  const [step2Image, setStep2Image] = useState(initialData?.step2Image || "");
+  const [step3Image, setStep3Image] = useState(initialData?.step3Image || "");
+  const [step4Image, setStep4Image] = useState(initialData?.step4Image || "");
+  const [step5Image, setStep5Image] = useState(initialData?.step5Image || "");
   const [order, setOrder] = useState<number>(initialData?.order ?? 0);
   const [isActive, setIsActive] = useState(initialData?.isActive ?? true);
 
@@ -99,6 +109,23 @@ export default function ServiceForm({
     }
   };
 
+  const handleStepUpload = async (stepNum: 1 | 2 | 3 | 4 | 5, file: File) => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Upload failed");
+      if (stepNum === 1) setStep1Image(data.url);
+      if (stepNum === 2) setStep2Image(data.url);
+      if (stepNum === 3) setStep3Image(data.url);
+      if (stepNum === 4) setStep4Image(data.url);
+      if (stepNum === 5) setStep5Image(data.url);
+    } catch (err: any) {
+      alert("Failed to upload step image: " + (err.message || "Unknown error"));
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -121,6 +148,11 @@ export default function ServiceForm({
         packaging,
         certifications,
         logistics,
+        step1Image,
+        step2Image,
+        step3Image,
+        step4Image,
+        step5Image,
         order: Number(order),
         isActive,
       };
@@ -476,6 +508,165 @@ export default function ServiceForm({
                 value={logistics}
                 onChange={(e) => setLogistics(e.target.value)}
               />
+            </div>
+          </div>
+        </div>
+
+        {/* 2.6 Five-Step Lifecycle Images Card */}
+        <div className="form-section-card" style={{ marginTop: "24px" }}>
+          <div className="form-card-header">
+            <div className="form-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+            <div className="form-card-title-group">
+              <h3>5-Step Commercial Lifecycle Images (Single Service Page Pipeline)</h3>
+              <p>Upload or specify URLs for the 5 lifecycle step images displayed on the single service page (Step 1 to Step 5).</p>
+            </div>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px", marginTop: "16px" }}>
+            {/* Step 1 Image */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Step 1: Farming / Production Image</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. /services/goat/step1.jpg"
+                value={step1Image}
+                onChange={(e) => setStep1Image(e.target.value)}
+              />
+              <div style={{ display: "flex", gap: "10px", alignItems: "center", marginTop: "6px" }}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) handleStepUpload(1, f);
+                  }}
+                  style={{ fontSize: "12px", maxWidth: "200px" }}
+                />
+                {step1Image && (
+                  <img src={step1Image} alt="Step 1 Preview" style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "6px", border: "1px solid #cbd5e1" }} />
+                )}
+              </div>
+            </div>
+
+            {/* Step 2 Image */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Step 2: Processing / Abattoir Image</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. /services/goat/step2.jpg"
+                value={step2Image}
+                onChange={(e) => setStep2Image(e.target.value)}
+              />
+              <div style={{ display: "flex", gap: "10px", alignItems: "center", marginTop: "6px" }}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) handleStepUpload(2, f);
+                  }}
+                  style={{ fontSize: "12px", maxWidth: "200px" }}
+                />
+                {step2Image && (
+                  <img src={step2Image} alt="Step 2 Preview" style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "6px", border: "1px solid #cbd5e1" }} />
+                )}
+              </div>
+            </div>
+
+            {/* Step 3 Image */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Step 3: Packaging / Export Pack Image</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. /services/goat/step3.jpg"
+                value={step3Image}
+                onChange={(e) => setStep3Image(e.target.value)}
+              />
+              <div style={{ display: "flex", gap: "10px", alignItems: "center", marginTop: "6px" }}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) handleStepUpload(3, f);
+                  }}
+                  style={{ fontSize: "12px", maxWidth: "200px" }}
+                />
+                {step3Image && (
+                  <img src={step3Image} alt="Step 3 Preview" style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "6px", border: "1px solid #cbd5e1" }} />
+                )}
+              </div>
+            </div>
+
+            {/* Step 4 Image */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Step 4: Maritime Export &amp; Shipping Image</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. /services/goat/step4.jpg"
+                value={step4Image}
+                onChange={(e) => setStep4Image(e.target.value)}
+              />
+              <div style={{ display: "flex", gap: "10px", alignItems: "center", marginTop: "6px" }}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) handleStepUpload(4, f);
+                  }}
+                  style={{ fontSize: "12px", maxWidth: "200px" }}
+                />
+                {step4Image && (
+                  <img src={step4Image} alt="Step 4 Preview" style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "6px", border: "1px solid #cbd5e1" }} />
+                )}
+              </div>
+            </div>
+
+            {/* Step 5 Image */}
+            <div className="form-field-group">
+              <label className="form-field-label">
+                <span>Step 5: Culinary Application Image</span>
+              </label>
+              <input
+                type="text"
+                className="form-text-input"
+                placeholder="e.g. /services/goat/step5.jpg"
+                value={step5Image}
+                onChange={(e) => setStep5Image(e.target.value)}
+              />
+              <div style={{ display: "flex", gap: "10px", alignItems: "center", marginTop: "6px" }}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) handleStepUpload(5, f);
+                  }}
+                  style={{ fontSize: "12px", maxWidth: "200px" }}
+                />
+                {step5Image && (
+                  <img src={step5Image} alt="Step 5 Preview" style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "6px", border: "1px solid #cbd5e1" }} />
+                )}
+              </div>
             </div>
           </div>
         </div>

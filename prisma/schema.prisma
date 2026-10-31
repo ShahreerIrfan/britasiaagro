@@ -44,6 +44,11 @@ model Service {
   packaging        String?  // Available Cuts & Packaging Formats
   certifications   String?  // Certifications & Compliance
   logistics        String?  // Export Logistics & Shipping
+  step1Image       String?  // Step 1: Farming / Production image
+  step2Image       String?  // Step 2: Processing image
+  step3Image       String?  // Step 3: Packaging image
+  step4Image       String?  // Step 4: Maritime Export & Shipping image
+  step5Image       String?  // Step 5: Culinary Application image
   isActive         Boolean  @default(true)
   order            Int      @default(0)
   createdAt        DateTime @default(now())

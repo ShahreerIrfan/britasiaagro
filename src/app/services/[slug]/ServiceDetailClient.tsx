@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import "./service-detail.css";
-import { ServiceItem } from "@/lib/servicesData";
+import { ServiceItem, getServicePipelineSteps } from "@/lib/servicesData";
 
 // ==========================================
 // BESPOKE SVG ICONS (NO EMOJIS ALLOWED)
@@ -84,6 +84,8 @@ const DetailIcons = {
 };
 
 export default function ServiceDetailClient({ service }: { service: ServiceItem }) {
+  const pipelineSteps = getServicePipelineSteps(service);
+
   // Inquiry Form State
   const [formData, setFormData] = useState({
     name: "",
@@ -223,7 +225,72 @@ export default function ServiceDetailClient({ service }: { service: ServiceItem 
         </div>
       </section>
 
-      {/* 4. MAIN CONTENT & INQUIRY FORM */}
+      {/* 4. 5-STEP COMMERCIAL LIFECYCLE PIPELINE (IMAGE-01 MATCH) */}
+      {pipelineSteps && pipelineSteps.length === 5 && (
+        <section className="sd-pipeline-section">
+          <div className="sd-pipeline-container">
+            <div className="sd-pipeline-header">
+              <span className="sd-pipeline-tag">Commercial Lifecycle Pipeline</span>
+              <h2 className="sd-pipeline-title">From Ethical Production to Global Culinary Excellence</h2>
+              <p className="sd-pipeline-subtitle">
+                Complete institutional supply chain governance ensuring certified Halal standards, cryogenic cold-chain integrity, and direct maritime export logistics.
+              </p>
+            </div>
+
+            {/* Row 1: Top 3 Cards (Steps 1, 2, 3) */}
+            <div className="sd-pipeline-grid-top">
+              {pipelineSteps.slice(0, 3).map((step) => (
+                <div key={step.stepNumber} className="sd-step-card">
+                  <div className="sd-step-tag">
+                    <span>{step.stepTag}</span>
+                  </div>
+                  <div className="sd-step-img-box">
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className="sd-step-img"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = service.image;
+                      }}
+                    />
+                  </div>
+                  <div className="sd-step-content">
+                    <h3 className="sd-step-title">{step.title}</h3>
+                    {step.desc && <p className="sd-step-desc">{step.desc}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2: Bottom 2 Cards Centered (Steps 4, 5) */}
+            <div className="sd-pipeline-grid-bottom">
+              {pipelineSteps.slice(3, 5).map((step) => (
+                <div key={step.stepNumber} className="sd-step-card">
+                  <div className="sd-step-tag">
+                    <span>{step.stepTag}</span>
+                  </div>
+                  <div className="sd-step-img-box">
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className="sd-step-img"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = service.image;
+                      }}
+                    />
+                  </div>
+                  <div className="sd-step-content">
+                    <h3 className="sd-step-title">{step.title}</h3>
+                    {step.desc && <p className="sd-step-desc">{step.desc}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 5. MAIN CONTENT & INQUIRY FORM */}
       <main className="sd-main-section">
         {/* Left Column: Specifications / Core Attributes */}
         <div className="sd-specs-col">
