@@ -411,7 +411,7 @@ export default function HomePage() {
     <div className="page-wrapper">
       {/* ================= MAIN NAVIGATION ================= */}
       <header className="site-header">
-        <div className="container header-container">
+        <div className="header-container">
           <a href="#" className="brand-logo-link" aria-label="British Merchants Home">
             <img
               src="/assets/Logo.svg"
@@ -420,7 +420,7 @@ export default function HomePage() {
             />
           </a>
 
-          <nav>
+          <nav className="main-nav">
             <ul className="nav-menu">
               <li>
                 <a href="#hero" className="nav-link active">
@@ -458,18 +458,7 @@ export default function HomePage() {
           <div className="header-actions">
             <a
               href={isLoggedIn ? "/dashboard" : "/login"}
-              style={{
-                fontSize: "13px",
-                fontWeight: 600,
-                color: "var(--navy-800)",
-                padding: "8px 14px",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-              }}
+              className="header-btn-auth"
             >
               <span>{isLoggedIn ? "Dashboard" : "Login"}</span>
             </a>

@@ -148,12 +148,15 @@ export default function ServiceDetailClient({ service }: { service: ServiceItem 
       {/* 1. TOP NAVBAR */}
       <header className="sd-navbar">
         <div className="sd-navbar-inner">
-          <Link href="/" className="sd-nav-brand">
-            <img src="/Logo.png" alt="British Merchants Limited" className="sd-brand-logo" />
-            <div className="sd-brand-text-group">
-              <span className="sd-brand-title">British Merchants Limited</span>
-              <span className="sd-brand-subtitle">Worldwide Commodity &amp; Agro Trade</span>
-            </div>
+          <Link href="/" className="sd-nav-brand" aria-label="British Merchants Home">
+            <img
+              src="/assets/Logo.svg"
+              alt="British Merchants Connecting The Dots..."
+              className="sd-brand-logo"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = "/logo.png";
+              }}
+            />
           </Link>
 
           <div className="sd-nav-actions">

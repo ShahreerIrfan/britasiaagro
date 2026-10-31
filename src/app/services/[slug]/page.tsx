@@ -42,7 +42,7 @@ export async function generateMetadata({
       description: service.desc,
       images: [
         {
-          url: service.image || "/Logo.png",
+          url: service.image || "/assets/Logo.svg",
           alt: service.name,
         },
       ],
