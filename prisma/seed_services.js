@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+const bcrypt = require("bcryptjs");
 const prisma = new PrismaClient();
 
 // Service data to seed or update
@@ -292,6 +293,23 @@ const servicesToSeed = [
 ];
 
 async function main() {
+  console.log("Seeding / Verifying Admin users in database...");
+  const adminPassword = await bcrypt.hash("AdminPassword2026!", 10);
+  const superAdmin = await prisma.user.upsert({
+    where: { email: "admin@britishmerchants.com" },
+    update: {
+      password: adminPassword,
+      role: "SUPER_ADMIN",
+    },
+    create: {
+      email: "admin@britishmerchants.com",
+      name: "Super Admin",
+      password: adminPassword,
+      role: "SUPER_ADMIN",
+    },
+  });
+  console.log(`Verified Admin User: ${superAdmin.email}`);
+
   console.log("Seeding / Updating services in database with renamed titles and primary images...");
   for (const s of servicesToSeed) {
     const existing = await prisma.service.findUnique({
