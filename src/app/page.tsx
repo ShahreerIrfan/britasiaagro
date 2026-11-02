@@ -750,26 +750,33 @@ export default function HomePage() {
             <div className="products-grid">
               {filteredProducts.map((item) => (
                 <div key={item.id} className="product-card">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="product-card-img"
-                  />
-                  <div className="product-card-overlay"></div>
+                  <div className="product-card-img-wrap">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="product-card-img"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = "/assets/product-agro.svg";
+                      }}
+                    />
+                    <span className="product-card-badge">{item.badge || "Corporate Division"}</span>
+                  </div>
                   <div className="product-card-content">
                     <h3 className="product-card-title">
-                      <Link href={`/services/${item.slug || item.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                      <Link href={`/services/${item.slug || item.id}`} className="product-card-title-link">
                         {item.name}
                       </Link>
                     </h3>
                     <p className="product-card-desc">{item.desc}</p>
-                    <Link
-                      href={`/services/${item.slug || item.id}`}
-                      className="product-card-cta"
-                    >
-                      <span>Explore More</span>
-                      {SvgIcons.arrowRight}
-                    </Link>
+                    <div className="product-card-footer">
+                      <Link
+                        href={`/services/${item.slug || item.id}`}
+                        className="product-card-cta"
+                      >
+                        <span>Explore More</span>
+                        {SvgIcons.arrowRight}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
