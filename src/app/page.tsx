@@ -378,6 +378,29 @@ export default function HomePage() {
     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
   };
 
+  // Mobile Touch Swipe Handlers
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 45) {
+      nextSlide();
+    } else if (distance < -45) {
+      prevSlide();
+    }
+  };
+
   // Dynamic products loaded from PostgreSQL database
   const [productsList, setProductsList] = useState<any[]>(fallbackServices);
 
@@ -630,6 +653,9 @@ export default function HomePage() {
           id="hero"
           onMouseEnter={() => setIsSliderPaused(true)}
           onMouseLeave={() => setIsSliderPaused(false)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           {/* Background slides crossfade layers */}
           {heroSlides.map((slide, idx) => (
@@ -637,7 +663,7 @@ export default function HomePage() {
               key={slide.id || idx}
               className={`hero-slide-bg ${idx === currentSlide ? "active" : ""}`}
               style={{
-                backgroundImage: `linear-gradient(90deg, rgba(11, 17, 32, 0.78) 0%, rgba(11, 17, 32, 0.48) 40%, rgba(11, 17, 32, 0.16) 68%, rgba(11, 17, 32, 0.02) 100%), url("${slide.bgImage || '/images/hero-modern.svg'}")`,
+                backgroundImage: `linear-gradient(90deg, rgba(11, 17, 32, 0.78) 0%, rgba(11, 17, 32, 0.48) 40%, rgba(11, 17, 32, 0.16) 68%, rgba(11, 17, 32, 0.02) 100%), url("${slide.bgImage || '/services/cattle-farming.jpg'}"), url("/services/cattle-farming.jpg")`,
               }}
             />
           ))}
