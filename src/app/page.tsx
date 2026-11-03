@@ -284,6 +284,79 @@ const leaders = [
   },
 ];
 
+interface HeroSlideItem {
+  id: string;
+  title: string;
+  description: string;
+  btn1Text?: string | null;
+  btn1Url?: string | null;
+  btn2Text?: string | null;
+  btn2Url?: string | null;
+  bgImage: string;
+  order: number;
+}
+
+const defaultHeroSlides: HeroSlideItem[] = [
+  {
+    id: "default-1",
+    title: "British Merchants Worldwide Commodity & Steel Trade",
+    description: "British Merchants Limited delivers reliable commodity and steel solutions across Bangladesh and global markets. We ensure quality sourcing, secure logistics, and competitive pricing with trusted partnerships Bangladesh and worldwide.",
+    btn1Text: "Inquiry Products",
+    btn1Url: "#inquiry",
+    btn2Text: "Explore Products",
+    btn2Url: "#products",
+    bgImage: "/images/hero-modern.svg",
+    order: 0,
+  },
+  {
+    id: "default-2",
+    title: "Commercial Agro & Halal Meat Export Division",
+    description: "Commercial cattle feedlot fattening, 100% certified Halal abattoir dressing, individual RFID traceability, and cryogenic cold-chain beef & mutton export.",
+    btn1Text: "Explore Services",
+    btn1Url: "#products",
+    btn2Text: "Inquire Commodity",
+    btn2Url: "#inquiry",
+    bgImage: "/services-images/Cattle Farming, Processing & Export Division/Primary-Image.png",
+    order: 1,
+  },
+  {
+    id: "default-3",
+    title: "Direct Maritime & Reefer Ocean Shipping",
+    description: "Sanitary vacuum packing, global reefer container ocean shipping, and end-to-end logistics connecting Bangladeshi premium produce with international markets.",
+    btn1Text: "Logistics & Process",
+    btn1Url: "#process",
+    btn2Text: "Quick Quote",
+    btn2Url: "#inquiry",
+    bgImage: "/services-images/Goat Farming, Mutton Processing & Export Division/Maritime Export & Shipping.png",
+    order: 2,
+  },
+];
+
+function renderHeroTitle(title: string) {
+  if (!title) return null;
+  if (title.includes("Commodity & Steel Trade")) {
+    const parts = title.split("Commodity & Steel Trade");
+    return (
+      <>
+        {parts[0]}
+        <span className="title-gradient">Commodity &amp; Steel Trade</span>
+        {parts[1]}
+      </>
+    );
+  }
+  const words = title.trim().split(" ");
+  if (words.length > 3) {
+    const firstPart = words.slice(0, words.length - 2).join(" ");
+    const lastPart = words.slice(words.length - 2).join(" ");
+    return (
+      <>
+        {firstPart} <span className="title-gradient">{lastPart}</span>
+      </>
+    );
+  }
+  return title;
+}
+
 export default function HomePage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [testimonialIdx, setTestimonialIdx] = useState(0);
@@ -294,6 +367,41 @@ export default function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Dynamic hero slides state
+  const [heroSlides, setHeroSlides] = useState<HeroSlideItem[]>(defaultHeroSlides);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSliderPaused, setIsSliderPaused] = useState(false);
+
+  useEffect(() => {
+    // Dynamically fetch hero slides from DB
+    fetch("/api/slides")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.slides && data.slides.length > 0) {
+          setHeroSlides(data.slides);
+        }
+      })
+      .catch((err) => {
+        console.warn("Using default hero slides fallback:", err);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (heroSlides.length <= 1 || isSliderPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length, isSliderPaused]);
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  };
 
   // Dynamic products loaded from PostgreSQL database
   const [productsList, setProductsList] = useState<any[]>(fallbackServices);
@@ -541,35 +649,119 @@ export default function HomePage() {
       </header>
 
       <main>
-        {/* ================= HERO SECTION ================= */}
-        <section className="hero-section" id="hero">
+        {/* ================= HERO SECTION (DYNAMIC SLIDER) ================= */}
+        <section
+          className="hero-section"
+          id="hero"
+          onMouseEnter={() => setIsSliderPaused(true)}
+          onMouseLeave={() => setIsSliderPaused(false)}
+        >
+          {/* Background slides crossfade layers */}
+          {heroSlides.map((slide, idx) => (
+            <div
+              key={slide.id || idx}
+              className={`hero-slide-bg ${idx === currentSlide ? "active" : ""}`}
+              style={{
+                backgroundImage: `linear-gradient(105deg, rgba(11, 17, 32, 0.82) 0%, rgba(11, 17, 32, 0.6) 50%, rgba(15, 23, 42, 0.42) 75%, rgba(11, 17, 32, 0.72) 100%), url("${slide.bgImage || '/images/hero-modern.svg'}")`,
+              }}
+            />
+          ))}
+
           <div className="hero-backdrop-glow"></div>
-          <div className="container">
+
+          <div className="container" style={{ position: "relative", zIndex: 3 }}>
             <div className="hero-grid">
               <div className="hero-content">
-                <h1 className="hero-title">
-                  British Merchants Worldwide <span className="title-gradient">Commodity &amp; Steel Trade</span>
-                </h1>
-                <p className="hero-subtitle">
-                  British Merchants Limited delivers reliable commodity and steel solutions across Bangladesh and global markets. We ensure quality sourcing, secure logistics, and competitive pricing with trusted partnerships Bangladesh and worldwide.
-                </p>
-                <div className="hero-actions">
-                  <button
-                    onClick={() => openInquiryModal()}
-                    className="btn-primary"
-                    style={{ padding: "14px 32px", fontSize: "15px" }}
-                  >
-                    <span>Inquiry Products</span>
-                    {SvgIcons.arrowRight}
-                  </button>
-                  <a href="#products" className="btn-hero-secondary">
-                    <span>Explore Products</span>
-                    {SvgIcons.chevronDown}
-                  </a>
-                </div>
+                {heroSlides.map((slide, idx) => {
+                  if (idx !== currentSlide) return null;
+                  return (
+                    <div key={slide.id || idx} className="hero-slide-content-fade">
+                      <h1 className="hero-title">{renderHeroTitle(slide.title)}</h1>
+                      <p className="hero-subtitle">{slide.description}</p>
+                      <div className="hero-actions">
+                        {slide.btn1Text &&
+                          (slide.btn1Url === "#inquiry" ? (
+                            <button
+                              onClick={() => openInquiryModal()}
+                              className="btn-primary"
+                              style={{ padding: "14px 32px", fontSize: "15px" }}
+                            >
+                              <span>{slide.btn1Text}</span>
+                              {SvgIcons.arrowRight}
+                            </button>
+                          ) : (
+                            <a
+                              href={slide.btn1Url || "#products"}
+                              className="btn-primary"
+                              style={{ padding: "14px 32px", fontSize: "15px" }}
+                            >
+                              <span>{slide.btn1Text}</span>
+                              {SvgIcons.arrowRight}
+                            </a>
+                          ))}
+
+                        {slide.btn2Text &&
+                          (slide.btn2Url === "#inquiry" ? (
+                            <button
+                              onClick={() => openInquiryModal()}
+                              className="btn-hero-secondary"
+                            >
+                              <span>{slide.btn2Text}</span>
+                              {SvgIcons.chevronDown}
+                            </button>
+                          ) : (
+                            <a
+                              href={slide.btn2Url || "#products"}
+                              className="btn-hero-secondary"
+                            >
+                              <span>{slide.btn2Text}</span>
+                              {SvgIcons.chevronDown}
+                            </a>
+                          ))}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
+
+          {/* Slider Controls (Only if multiple slides exist) */}
+          {heroSlides.length > 1 && (
+            <>
+              <button
+                onClick={prevSlide}
+                className="hero-arrow-btn prev"
+                aria-label="Previous Slide"
+              >
+                <svg viewBox="0 0 320 512" width="18" height="18" fill="currentColor">
+                  <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg>
+              </button>
+
+              <button
+                onClick={nextSlide}
+                className="hero-arrow-btn next"
+                aria-label="Next Slide"
+              >
+                <svg viewBox="0 0 320 512" width="18" height="18" fill="currentColor">
+                  <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                </svg>
+              </button>
+
+              {/* Slider Dots / Indicator Pills */}
+              <div className="hero-indicators">
+                {heroSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`hero-dot ${idx === currentSlide ? "active" : ""}`}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         {/* ================= METRICS / TRUST BAR ================= */}

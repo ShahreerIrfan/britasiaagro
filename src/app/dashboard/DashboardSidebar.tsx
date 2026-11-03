@@ -41,6 +41,7 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
   // Collapsible parent menu state
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     commerce: true,
+    appearance: true,
     system: true,
   });
 
@@ -48,6 +49,8 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
   useEffect(() => {
     if (pathname.startsWith("/dashboard/services")) {
       setOpenSections((prev) => ({ ...prev, commerce: true }));
+    } else if (pathname.startsWith("/dashboard/appearance")) {
+      setOpenSections((prev) => ({ ...prev, appearance: true }));
     } else if (pathname.startsWith("/dashboard/users")) {
       setOpenSections((prev) => ({ ...prev, system: true }));
     }
@@ -117,6 +120,29 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
               <polyline points="22,6 12,13 2,6" />
             </svg>
           ),
+        },
+      ],
+    },
+    {
+      title: "APPEARANCE",
+      items: [
+        {
+          id: "appearance",
+          name: "Appearance",
+          icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+              <path d="M7 10l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ),
+          children: [
+            {
+              name: "Hero Slides",
+              href: "/dashboard/appearance",
+            },
+          ],
         },
       ],
     },

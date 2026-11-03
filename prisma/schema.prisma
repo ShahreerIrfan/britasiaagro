@@ -68,3 +68,18 @@ model TradeInquiry {
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
 }
+
+model HeroSlide {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  btn1Text    String?  // Button-01 text
+  btn1Url     String?  // Button-01 URL
+  btn2Text    String?  // Button-02 text
+  btn2Url     String?  // Button-02 URL
+  bgImage     String   // Image for slide background
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
