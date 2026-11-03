@@ -662,7 +662,7 @@ export default function HomePage() {
               key={slide.id || idx}
               className={`hero-slide-bg ${idx === currentSlide ? "active" : ""}`}
               style={{
-                backgroundImage: `linear-gradient(105deg, rgba(11, 17, 32, 0.82) 0%, rgba(11, 17, 32, 0.6) 50%, rgba(15, 23, 42, 0.42) 75%, rgba(11, 17, 32, 0.72) 100%), url("${slide.bgImage || '/images/hero-modern.svg'}")`,
+                backgroundImage: `linear-gradient(90deg, rgba(11, 17, 32, 0.74) 0%, rgba(11, 17, 32, 0.42) 36%, rgba(11, 17, 32, 0.12) 65%, rgba(11, 17, 32, 0.02) 100%), url("${slide.bgImage || '/images/hero-modern.svg'}")`,
               }}
             />
           ))}
