@@ -662,10 +662,22 @@ export default function HomePage() {
             <div
               key={slide.id || idx}
               className={`hero-slide-bg ${idx === currentSlide ? "active" : ""}`}
-              style={{
-                backgroundImage: `linear-gradient(90deg, rgba(11, 17, 32, 0.78) 0%, rgba(11, 17, 32, 0.48) 40%, rgba(11, 17, 32, 0.16) 68%, rgba(11, 17, 32, 0.02) 100%), url("${slide.bgImage || '/services/cattle-farming.jpg'}"), url("/services/cattle-farming.jpg")`,
-              }}
-            />
+            >
+              <img
+                src={slide.bgImage || "/services/cattle-farming.jpg"}
+                alt={slide.title}
+                className="hero-slide-img"
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding="async"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (target.src !== "/services/cattle-farming.jpg") {
+                    target.src = "/services/cattle-farming.jpg";
+                  }
+                }}
+              />
+              <div className="hero-slide-overlay" />
+            </div>
           ))}
 
           <div className="hero-backdrop-glow"></div>
