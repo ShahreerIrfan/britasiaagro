@@ -332,31 +332,6 @@ const defaultHeroSlides: HeroSlideItem[] = [
   },
 ];
 
-function renderHeroTitle(title: string) {
-  if (!title) return null;
-  if (title.includes("Commodity & Steel Trade")) {
-    const parts = title.split("Commodity & Steel Trade");
-    return (
-      <>
-        {parts[0]}
-        <span className="title-gradient">Commodity &amp; Steel Trade</span>
-        {parts[1]}
-      </>
-    );
-  }
-  const words = title.trim().split(" ");
-  if (words.length > 3) {
-    const firstPart = words.slice(0, words.length - 2).join(" ");
-    const lastPart = words.slice(words.length - 2).join(" ");
-    return (
-      <>
-        {firstPart} <span className="title-gradient">{lastPart}</span>
-      </>
-    );
-  }
-  return title;
-}
-
 export default function HomePage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [testimonialIdx, setTestimonialIdx] = useState(0);
@@ -662,7 +637,7 @@ export default function HomePage() {
               key={slide.id || idx}
               className={`hero-slide-bg ${idx === currentSlide ? "active" : ""}`}
               style={{
-                backgroundImage: `linear-gradient(90deg, rgba(11, 17, 32, 0.74) 0%, rgba(11, 17, 32, 0.42) 36%, rgba(11, 17, 32, 0.12) 65%, rgba(11, 17, 32, 0.02) 100%), url("${slide.bgImage || '/images/hero-modern.svg'}")`,
+                backgroundImage: `linear-gradient(90deg, rgba(11, 17, 32, 0.78) 0%, rgba(11, 17, 32, 0.48) 40%, rgba(11, 17, 32, 0.16) 68%, rgba(11, 17, 32, 0.02) 100%), url("${slide.bgImage || '/images/hero-modern.svg'}")`,
               }}
             />
           ))}
@@ -676,7 +651,7 @@ export default function HomePage() {
                   if (idx !== currentSlide) return null;
                   return (
                     <div key={slide.id || idx} className="hero-slide-content-fade">
-                      <h1 className="hero-title">{renderHeroTitle(slide.title)}</h1>
+                      <h1 className="hero-title">{slide.title}</h1>
                       <p className="hero-subtitle">{slide.description}</p>
                       <div className="hero-actions">
                         {slide.btn1Text &&
