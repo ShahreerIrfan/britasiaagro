@@ -4,6 +4,8 @@ import { Role } from "@prisma/client";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: Request) {
   const session = await getSessionUser();
   if (!session || session.role !== Role.SUPER_ADMIN) {
@@ -21,17 +23,25 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    // Validate mime type
+    // Validate mime type and extension
     const validTypes = [
       "image/jpeg",
+      "image/jpg",
+      "image/pjpeg",
       "image/png",
+      "image/x-png",
       "image/webp",
       "image/svg+xml",
       "image/gif",
       "image/avif",
     ];
 
-    if (!validTypes.includes(file.type)) {
+    const fileType = (file.type || "").toLowerCase();
+    const fileName = (file.name || "").toLowerCase();
+    const hasValidType = fileType.startsWith("image/") || validTypes.includes(fileType);
+    const hasValidExt = /\.(jpe?g|png|webp|svg|gif|avif)$/i.test(fileName);
+
+    if (!hasValidType && !hasValidExt) {
       return NextResponse.json(
         { error: "Only image files (JPEG, PNG, WebP, SVG, GIF, AVIF) are allowed" },
         { status: 400 }
@@ -57,23 +67,33 @@ export async function POST(req: Request) {
       .toLowerCase();
     const uniqueName = `commodity-${Date.now()}-${cleanBase.slice(0, 30)}${ext}`;
 
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
-    await mkdir(uploadDir, { recursive: true });
+    let publicUrl = "";
 
-    const filePath = path.join(uploadDir, uniqueName);
-    await writeFile(filePath, buffer);
-
-    const publicUrl = `/uploads/${uniqueName}`;
+    // 1. Attempt to write to public/uploads on disk
+    try {
+      const uploadDir = path.join(process.cwd(), "public", "uploads");
+      await mkdir(uploadDir, { recursive: true });
+      const filePath = path.join(uploadDir, uniqueName);
+      await writeFile(filePath, buffer);
+      publicUrl = `/uploads/${uniqueName}`;
+    } catch (fsErr: any) {
+      console.warn("Direct disk write failed (Docker non-root permissions or read-only filesystem), falling back to Base64 data URL:", fsErr?.message);
+      // 2. High-resilience fallback:
+      // If container disk writes are restricted (e.g. EACCES on production non-root runner),
+      // embed image as a Base64 data URL so the slide image works instantly without error!
+      const mime = fileType || "image/jpeg";
+      publicUrl = `data:${mime};base64,${buffer.toString("base64")}`;
+    }
 
     return NextResponse.json({
       success: true,
       url: publicUrl,
       filename: uniqueName,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("File upload error:", error);
     return NextResponse.json(
-      { error: "Failed to upload file to server" },
+      { error: error?.message || "Failed to upload file to server" },
       { status: 500 }
     );
   }

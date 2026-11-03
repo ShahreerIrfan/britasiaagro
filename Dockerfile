@@ -45,8 +45,11 @@ ENV DATABASE_URL="postgresql://postgres:nyWf75NYpnPkoB59IgZO@britishmerchants-br
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-# Copy public static files
-COPY --from=builder /app/public ./public
+# Copy public static files with nextjs ownership
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+
+# Ensure upload directory exists and is writable by nextjs user
+RUN mkdir -p ./public/uploads && chown -R nextjs:nodejs ./public
 
 # Copy Next.js standalone build and static chunks
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./

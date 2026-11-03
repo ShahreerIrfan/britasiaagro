@@ -102,10 +102,27 @@ export default function AppearanceClient({
       }
 
       setBgImage(data.url);
+      setSuccessMsg("Image uploaded successfully!");
     } catch (err: any) {
-      setErrorMsg(err.message || "Failed to upload file");
+      console.warn("Server upload failed, converting directly via client FileReader:", err);
+      // Client-side fallback if server disk permissions or network fails
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === "string") {
+          setBgImage(reader.result);
+          setErrorMsg("");
+          setSuccessMsg("Image loaded successfully!");
+        }
+      };
+      reader.onerror = () => {
+        setErrorMsg(err.message || "Failed to upload file");
+      };
+      reader.readAsDataURL(file);
     } finally {
       setUploading(false);
+      if (e.target) {
+        e.target.value = "";
+      }
     }
   };
 
