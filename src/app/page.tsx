@@ -282,6 +282,15 @@ const leaders = [
       "Mr. Sanjee has results-driven commercial leader with over 19 years of progressive experience in Telecom, Consumer electronics, Technology, FMCG sectors and Enterprise Software Industries. Proven track record of delivering accelerated revenue growth, market expansion, and operational excellence across national and international markets. Experienced in full P&L ownership, strategic sales transformation, channel development, and high-performance team leadership.Recognized for visionary leadership, execution excellence, and the ability to convert competitive challenges into growth opportunities.",
     ],
   },
+  {
+    name: "Waresur Rahman",
+    role: "Business Development Manager",
+    photo: "/assets/leader-waresur.jpg",
+    bio: [
+      "Mr. Waris serves as Business Development Manager at British Merchants Limited, where he is responsible for identifying new business opportunities, developing strategic partnerships, and expanding the company's commercial operations across domestic and international markets. He contributes to the company's business expansion initiatives, particularly in agro-based products, commodity trading, import-export operations, and international trade.",
+      "Through a proactive and relationship-driven approach, Mr. Waris supports British Merchants Limited in strengthening its market presence, building strategic alliances, and pursuing sustainable business growth.",
+    ],
+  },
 ];
 
 interface HeroSlideItem {
