@@ -848,46 +848,126 @@ export default function HomePage() {
         <section className="about-section" id="about">
           <div className="container">
             <div className="about-grid">
-              <div>
+              <div className="about-content-col">
                 <div className="section-tag-row">
                   {SvgIcons.compass}
                   <span>WHO WE ARE</span>
                 </div>
                 <h2 className="about-main-title">About British Merchants Limited</h2>
 
-                <div className="about-body-text">
-                  <p>
-                    <strong>British Merchants Limited</strong> is a Bangladesh-based trade and export-import company with extensive expertise in handling bulk and retail trade, import, and export, especially in the fields of spices, groceries, steel products, and other commodities. The company has focused into two main divisions: Commodity and Steel Metals. British Merchants is incorporated with the Registrar of Joint Stock Companies and Firms, Bangladesh; company registration number: C-207932/2026.
-                  </p>
-                  <p>
-                    The company&apos;s services are comprehensive in terms of the products offered. Although British Merchants is a tender company, the experience behind the stakeholders is enormous. This is the main strength of the company, which has propelled it such a long way in such a short period of time. British Merchants serves clients locally and across the globe.
-                  </p>
-                  <p>
-                    British Merchants serves its clients as a trusted ally, providing them with the loyalty of a business partner and the economics of an outside vendor. We sell, buy, trade, import, and export bulk commodities, using our deep and vast experience spanning decades. We ensure that our clients have what they need to run their businesses as efficiently and reliably as possible.
-                  </p>
+                <p className="about-lead-statement">
+                  A premier Bangladesh-based international trading house connecting domestic supply chains with cross-border commodity, agro, and steel markets.
+                </p>
+
+                <p className="about-overview-text">
+                  <strong>British Merchants Limited</strong> delivers integrated commodity and steel solutions with uncompromising quality sourcing, secure logistics, and competitive economics. Operating with deep industry expertise spanning decades, we serve as a trusted ally—providing our partners with the dedication of an insider and the scale advantages of an established global merchant.
+                </p>
+
+                {/* 2 Core Value Pillars */}
+                <div className="about-pillars-grid">
+                  <div className="about-pillar-card">
+                    <div className="pillar-icon-box">
+                      {SvgIcons.layers}
+                    </div>
+                    <div className="pillar-info">
+                      <h4 className="pillar-title">Dual Core Divisions</h4>
+                      <p className="pillar-desc">
+                        Specialized commercial trading across Bulk Agro Commodities and Heavy Steel Metals &amp; HMS 1&amp;2 Scrap.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="about-pillar-card">
+                    <div className="pillar-icon-box">
+                      {SvgIcons.globe}
+                    </div>
+                    <div className="pillar-info">
+                      <h4 className="pillar-title">Global &amp; Local Network</h4>
+                      <p className="pillar-desc">
+                        Integrated maritime logistics, customs clearance, and dedicated nationwide Bangladesh distribution network.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="about-reg-callout">
-                  {SvgIcons.checkShield}
-                  <div className="reg-callout-text">
-                    <strong>Official Incorporation:</strong> Registered under the Registrar of Joint Stock Companies and Firms (RJSC), Bangladesh. Company Registration Number: <strong>C-207932/2026</strong>.
+                {/* Authority Stats Strip */}
+                <div className="about-stats-strip">
+                  <div className="about-stat-item">
+                    <div className="stat-number">2</div>
+                    <div className="stat-label">Core Divisions</div>
+                  </div>
+                  <div className="about-stat-divider" />
+                  <div className="about-stat-item">
+                    <div className="stat-number">20+</div>
+                    <div className="stat-label">Years Experience</div>
+                  </div>
+                  <div className="about-stat-divider" />
+                  <div className="about-stat-item">
+                    <div className="stat-number">100%</div>
+                    <div className="stat-label">RJSC Certified</div>
+                  </div>
+                  <div className="about-stat-divider" />
+                  <div className="about-stat-item">
+                    <div className="stat-number">Global</div>
+                    <div className="stat-label">&amp; Local Reach</div>
+                  </div>
+                </div>
+
+                {/* Official Corporate Trust Seal */}
+                <div className="about-corporate-seal">
+                  <div className="seal-badge-icon">
+                    {SvgIcons.checkShield}
+                  </div>
+                  <div className="seal-content">
+                    <div className="seal-header">
+                      <span className="seal-org-tag">GOVERNMENT INCORPORATED ENTITY</span>
+                      <span className="seal-country">BANGLADESH</span>
+                    </div>
+                    <div className="seal-legal-text">
+                      Registrar of Joint Stock Companies and Firms (RJSC) &bull; Registration Number: <strong>C-207932/2026</strong>
+                    </div>
                   </div>
                 </div>
               </div>
 
+              {/* Enhanced Visual Column (Layered Composition) */}
               <div className="about-visual-col">
-                <div className="about-image-frame">
-                  <img
-                    src="/assets/about-engineers.svg"
-                    alt="Engineers and stakeholders at British Merchants industrial operations"
-                  />
-                </div>
-                <div className="about-badge-card">
-                  <div className="badge-icon-sq">
-                    {SvgIcons.checkCircle}
+                <div className="about-media-wrapper">
+                  <div className="about-media-backdrop" />
+
+                  {/* Primary Hero Image */}
+                  <div className="about-image-frame primary-frame">
+                    <img
+                      src="/assets/about-engineers.svg"
+                      alt="Engineers and stakeholders at British Merchants industrial operations"
+                      className="about-main-img"
+                    />
+                    <div className="image-overlay-pill">
+                      <span className="pill-dot" />
+                      <span>Commercial Trade Operations</span>
+                    </div>
                   </div>
-                  <div className="badge-text-bold">
-                    Trusted Ally in Bulk &amp; Retail International Trade
+
+                  {/* Overlapping Floating Experience Badge */}
+                  <div className="about-floating-experience">
+                    <div className="exp-icon-sq">
+                      {SvgIcons.award}
+                    </div>
+                    <div>
+                      <div className="exp-title">Decades of Expertise</div>
+                      <div className="exp-sub">Experienced Stakeholder Board</div>
+                    </div>
+                  </div>
+
+                  {/* Floating Trust Pill Badge (Bottom-Right) */}
+                  <div className="about-floating-trust">
+                    <div className="trust-icon-circle">
+                      {SvgIcons.checkCircle}
+                    </div>
+                    <div>
+                      <div className="trust-badge-title">Trusted Ally</div>
+                      <div className="trust-badge-sub">Bulk &amp; Retail International Trade</div>
+                    </div>
                   </div>
                 </div>
               </div>
