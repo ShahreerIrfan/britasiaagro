@@ -901,23 +901,51 @@ export default function HomePage() {
           <div className="container">
             <div className="mv-grid">
               <div className="mv-card mission">
-                <div className="mv-icon-wrapper">
-                  {SvgIcons.compass}
+                <div className="mv-watermark">{SvgIcons.compass}</div>
+                <div className="mv-card-header">
+                  <div className="mv-icon-wrapper">
+                    {SvgIcons.compass}
+                  </div>
+                  <div>
+                    <span className="mv-sub-label">OUR COMMITMENT</span>
+                    <h3 className="mv-heading">Corporate Mission</h3>
+                  </div>
                 </div>
-                <h3 className="mv-heading">Mission</h3>
-                <p className="mv-description">
-                  The company&apos;s mission is to meet customer needs profitably and sustainably by delivering the right products, at the right time, in the right place, and at competitive prices.
+
+                <p className="mv-statement">
+                  To meet customer needs <strong>profitably and sustainably</strong> by delivering the <strong>right products</strong>, at the <strong>right time</strong>, in the <strong>right place</strong>, and at <strong>competitive prices</strong>.
                 </p>
+
+                <div className="mv-pill-row">
+                  <span className="mv-pill-item">Right Products</span>
+                  <span className="mv-pill-item">Right Time</span>
+                  <span className="mv-pill-item">Right Place</span>
+                  <span className="mv-pill-item">Fair Pricing</span>
+                </div>
               </div>
 
               <div className="mv-card vision">
-                <div className="mv-icon-wrapper">
-                  {SvgIcons.globe}
+                <div className="mv-watermark">{SvgIcons.globe}</div>
+                <div className="mv-card-header">
+                  <div className="mv-icon-wrapper">
+                    {SvgIcons.globe}
+                  </div>
+                  <div>
+                    <span className="mv-sub-label">OUR HORIZON</span>
+                    <h3 className="mv-heading">Corporate Vision</h3>
+                  </div>
                 </div>
-                <h3 className="mv-heading">Vision</h3>
-                <p className="mv-description">
-                  To become a leading global organization in the fields of trade, export and import, commodities, and steel and metal industries, recognized for excellence, reliability, and sustainable growth.
+
+                <p className="mv-statement">
+                  To become a <strong>leading global organization</strong> in the fields of trade, commodities, and steel metals—recognized internationally for <strong>excellence, reliability, and sustainable growth</strong>.
                 </p>
+
+                <div className="mv-pill-row">
+                  <span className="mv-pill-item">Global Reach</span>
+                  <span className="mv-pill-item">Trade Excellence</span>
+                  <span className="mv-pill-item">Reliability</span>
+                  <span className="mv-pill-item">Sustainable Growth</span>
+                </div>
               </div>
             </div>
           </div>

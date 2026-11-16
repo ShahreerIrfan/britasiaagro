@@ -911,98 +911,161 @@ button {
    MISSION & VISION SECTION
    ========================================================================== */
 .mv-section {
-  padding: 20px 0 100px;
+  padding: 10px 0 80px;
   background: var(--white);
 }
 
 .mv-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 28px;
 }
 
 .mv-card {
   position: relative;
-  background: var(--slate-50);
+  background: var(--white);
   border: 1px solid var(--slate-200);
   border-radius: var(--radius-xl);
-  padding: 44px;
-  box-shadow: var(--shadow-sm);
+  padding: 38px 40px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
   transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
 }
 
-.mv-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--slate-300);
-  transition: height var(--transition-fast);
-}
-
-.mv-card.mission::before {
-  background: linear-gradient(90deg, var(--primary-red), #e11d48);
-}
-
-.mv-card.vision::before {
-  background: linear-gradient(90deg, #1d4ed8, #0ea5e9);
-}
-
 .mv-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
   border-color: var(--slate-300);
-  background: var(--white);
+}
+
+.mv-watermark {
+  position: absolute;
+  right: -25px;
+  bottom: -25px;
+  width: 170px;
+  height: 170px;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mv-watermark svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--navy-900);
+}
+
+.mv-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .mv-icon-wrapper {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-lg);
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.mv-card:hover .mv-icon-wrapper {
+  transform: scale(1.05);
 }
 
 .mv-card.mission .mv-icon-wrapper {
-  background: var(--primary-red-light);
-  border: 1px solid var(--primary-red-border);
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.15);
 }
 
 .mv-card.mission .mv-icon-wrapper svg {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   fill: var(--primary-red);
 }
 
 .mv-card.vision .mv-icon-wrapper {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.15);
 }
 
 .mv-card.vision .mv-icon-wrapper svg {
-  width: 26px;
-  height: 26px;
-  fill: #1d4ed8;
+  width: 22px;
+  height: 22px;
+  fill: #2563eb;
+}
+
+.mv-sub-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--slate-400);
+  margin-bottom: 3px;
 }
 
 .mv-heading {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--navy-900);
-  margin-bottom: 14px;
+  letter-spacing: -0.015em;
+  margin: 0;
 }
 
-.mv-description {
-  font-size: 16px;
+.mv-statement {
+  font-size: 16.5px;
   line-height: 1.7;
   color: var(--navy-700);
+  margin: 0 0 24px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.mv-statement strong {
+  color: var(--navy-900);
+  font-weight: 700;
+}
+
+.mv-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+}
+
+.mv-pill-item {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--slate-600);
+  background: var(--slate-100);
+  border: 1px solid var(--slate-200);
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: all var(--transition-fast);
+}
+
+.mv-card.mission:hover .mv-pill-item {
+  background: rgba(220, 38, 38, 0.05);
+  border-color: rgba(220, 38, 38, 0.18);
+  color: var(--navy-900);
+}
+
+.mv-card.vision:hover .mv-pill-item {
+  background: rgba(37, 99, 235, 0.05);
+  border-color: rgba(37, 99, 235, 0.18);
+  color: var(--navy-900);
 }
 
 /* ==========================================================================
@@ -2605,7 +2668,15 @@ button {
     gap: 18px;
   }
   .mv-card {
-    padding: 24px 20px;
+    padding: 26px 22px;
+  }
+  .mv-statement {
+    font-size: 15px;
+    margin-bottom: 18px;
+  }
+  .mv-pill-item {
+    font-size: 11px;
+    padding: 4px 10px;
   }
   .steps-timeline-grid {
     grid-template-columns: 1fr;
