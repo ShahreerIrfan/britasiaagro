@@ -1307,107 +1307,227 @@ button {
 .logistics-section {
   padding: 110px 0;
   background: var(--white);
+  position: relative;
 }
 
 .section-centered-header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 64px;
+  margin: 0 auto 56px;
+}
+
+.section-centered-header .section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-red);
+  background: var(--primary-red-light);
+  border: 1px solid var(--primary-red-border);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+.section-centered-header .section-eyebrow svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
 }
 
 .section-centered-header h2 {
   font-size: 40px;
   font-weight: 800;
   color: var(--navy-900);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
 }
 
 .section-centered-header p {
   font-size: 16px;
   color: var(--navy-700);
-  margin-top: 10px;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.steps-process-container {
+  position: relative;
+}
+
+.steps-connecting-track {
+  position: absolute;
+  top: 54px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, #e2e8f0 0%, #cbd5e1 50%, #e2e8f0 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .steps-timeline-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 24px;
   position: relative;
+  z-index: 2;
 }
 
 .timeline-step-card {
-  background: var(--slate-50);
+  background: var(--white);
   border: 1px solid var(--slate-200);
-  border-radius: var(--radius-xl);
-  padding: 32px 24px;
+  border-radius: 20px;
+  padding: 28px 22px 22px;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all var(--transition-normal);
+  box-shadow: 0 4px 18px -4px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.timeline-step-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-red);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .timeline-step-card:hover {
   transform: translateY(-6px);
   background: var(--white);
-  border-color: var(--primary-red-border);
-  box-shadow: var(--shadow-xl);
+  border-color: rgba(186, 12, 47, 0.28);
+  box-shadow: 0 20px 35px -10px rgba(186, 12, 47, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.timeline-step-card:hover::before {
+  opacity: 1;
 }
 
 .step-header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .step-icon-box {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-lg);
-  background: var(--white);
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #f8fafc;
   border: 1px solid var(--slate-200);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
+  color: var(--navy-900);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.step-icon-box svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
 }
 
 .timeline-step-card:hover .step-icon-box {
-  background: var(--primary-red-light);
-  border-color: var(--primary-red-border);
-}
-
-.step-icon-box img,
-.step-icon-box svg {
-  width: 28px;
-  height: 28px;
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: var(--white);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(186, 12, 47, 0.3);
 }
 
 .step-number-tag {
   font-size: 13px;
   font-weight: 800;
-  color: var(--slate-400);
-  background: var(--slate-200);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
+  color: #64748b;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.02em;
+  transition: all 0.3s ease;
 }
 
 .timeline-step-card:hover .step-number-tag {
   color: var(--white);
-  background: var(--primary-red);
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  transform: scale(1.06);
+}
+
+.step-phase-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary-red);
+  margin-bottom: 8px;
 }
 
 .step-title {
-  font-size: 19px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--navy-900);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  line-height: 1.35;
 }
 
 .step-description {
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 13.5px;
+  line-height: 1.6;
   color: var(--navy-700);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.step-card-footer {
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.step-milestone-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  transition: color 0.3s ease;
+}
+
+.timeline-step-card:hover .step-milestone-label {
+  color: var(--navy-900);
+}
+
+.step-dot-active {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  transition: all 0.3s ease;
+}
+
+.timeline-step-card:hover .step-dot-active {
+  background: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(186, 12, 47, 0.2);
 }
 
 /* ==========================================================================
@@ -2338,6 +2458,9 @@ button {
   }
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .steps-connecting-track {
+    display: none;
   }
   .steps-timeline-grid {
     grid-template-columns: repeat(2, 1fr);

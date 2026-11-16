@@ -88,6 +88,26 @@ const SvgIcons = {
       <path d="M432 320H400a16 16 0 00-16 16v96H64V128h96a16 16 0 0016-16V80a16 16 0 00-16-16H48A48 48 0 000 112v352a48 48 0 0048 48h352a48 48 0 0048-48V336a16 16 0 00-16-16zM488 0H360c-21.37 0-32.05 25.91-17 41l49.2 49.2L167 315.4c-9.37 9.37-9.37 24.57 0 33.94l23.66 23.66c9.37 9.37 24.57 9.37 33.94 0L449.8 147.8 499 197c15.1 15.1 41 4.4 41-17V24a24 24 0 00-24-24z" />
     </svg>
   ),
+  clipboardCheck: (
+    <svg viewBox="0 0 384 512">
+      <path d="M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM192 48c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16zm112.5 186.7l-128 128c-6.2 6.2-16.4 6.2-22.6 0l-64-64c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L165 328.4l116.7-116.7c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4.2 23z" />
+    </svg>
+  ),
+  fileContract: (
+    <svg viewBox="0 0 384 512">
+      <path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9zM88 184h112c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H88c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8zm192 144H104c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h176c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8zm0-64H104c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h176c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8zm-80 128H104c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h104c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8z" />
+    </svg>
+  ),
+  ship: (
+    <svg viewBox="0 0 640 512">
+      <path d="M631.5 352.5l-44-110.1C580.4 224.6 563.2 212 544.1 212H448V96c0-17.7-14.3-32-32-32H224c-17.7 0-32 14.3-32 32v116H95.9c-19.1 0-36.3 12.6-43.4 30.4L8.5 352.5C2.9 366.4 0 381.1 0 396c0 64.1 51.9 116 116 116 42.4 0 79.5-22.9 99.8-57 20.3 34.1 57.4 57 99.8 57s79.5-22.9 99.8-57c20.3 34.1 57.4 57 99.8 57 42.4 0 79.5-22.9 99.8-57 20.3 34.1 57.4 57 64.1 0 116-51.9 116-116 0-14.9-2.9-29.6-8.5-43.5zM240 112h160v100H240V112zm-35.8 144h231.6l25.6 64H178.6l25.6-64z" />
+    </svg>
+  ),
+  warehouse: (
+    <svg viewBox="0 0 640 512">
+      <path d="M504 352H136c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8zm0 64H136c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8zm-136-128H136c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h232c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8zM634.9 203.7L576 156.6V32c0-8.8-7.2-16-16-16h-64c-8.8 0-16 7.2-16 16v43.4L337.1 3.7c-10.4-8.3-25.7-8.3-36.2 0L5.1 203.7c-7.6 6.1-8.9 17.2-2.8 24.8l15.4 19.3c6.1 7.6 17.2 8.9 24.8 2.8L64 233.5V480c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32V233.5l21.4 17.1c7.6 6.1 18.7 4.8 24.8-2.8l15.4-19.3c6.2-7.5 4.9-18.7-2.7-24.8z" />
+    </svg>
+  ),
 };
 
 // ==========================================
@@ -155,27 +175,35 @@ const defaultProducts = [
 const logisticsSteps = [
   {
     number: "01",
+    phase: "Phase 01: Scoping",
     title: "Request & Planning",
-    desc: "We deliver to the final destination, handle final checks, and confirm successful beautiful world receipt with proof of delivery.",
-    icon: "/assets/icon-cart.svg",
+    desc: "Initial cargo inquiry, technical volume analysis, commercial quotation, and trade route scheduling tailored to buyer specifications.",
+    highlight: "Inquiry & Routing",
+    iconKey: "clipboardCheck" as const,
   },
   {
     number: "02",
-    title: "Pickup & Documentation",
-    desc: "We deliver to the final destination, handle final checks, and confirm successful beautiful world receipt with proof of delivery.",
-    icon: "/assets/icon-doc.svg",
+    phase: "Phase 02: Compliance",
+    title: "Sourcing & Documentation",
+    desc: "Quality inspection, phytosanitary and mill test certifications, customs clearance manifests, and Letter of Credit (L/C) compliance.",
+    highlight: "Certification & L/C",
+    iconKey: "fileContract" as const,
   },
   {
     number: "03",
+    phase: "Phase 03: Transit",
     title: "Transport & Tracking",
-    desc: "We deliver to the final destination, handle final checks, and confirm successful beautiful world receipt with proof of delivery.",
-    icon: "/assets/icon-truck.svg",
+    desc: "Secure containerization, bulk cargo vessel chartering, and 24/7 multimodal tracking from port of origin to destination waters.",
+    highlight: "Maritime Tracking",
+    iconKey: "ship" as const,
   },
   {
     number: "04",
+    phase: "Phase 04: Fulfillment",
     title: "Delivery & Confirmation",
-    desc: "We deliver to the final destination, handle final checks, and confirm successful beautiful world receipt with proof of delivery.",
-    icon: "/assets/icon-delivery.svg",
+    desc: "Chattogram and Mongla port offloading, bonded customs clearance, depot transfer, and final verified Proof of Delivery (POD).",
+    highlight: "Clearance & POD",
+    iconKey: "warehouse" as const,
   },
 ];
 
@@ -1042,23 +1070,36 @@ export default function HomePage() {
         <section className="logistics-section" id="process">
           <div className="container">
             <div className="section-centered-header">
+              <div className="section-eyebrow">
+                {SvgIcons.compass}
+                <span>Operational Workflow</span>
+              </div>
               <h2>Logistics in Four Steps</h2>
               <p>End-to-end supply chain orchestration delivering excellence on every route</p>
             </div>
 
-            <div className="steps-timeline-grid">
-              {logisticsSteps.map((step) => (
-                <div key={step.number} className="timeline-step-card">
-                  <div className="step-header-row">
-                    <div className="step-icon-box">
-                      <img src={step.icon} alt={step.title} />
+            <div className="steps-process-container">
+              <div className="steps-connecting-track" aria-hidden="true" />
+
+              <div className="steps-timeline-grid">
+                {logisticsSteps.map((step) => (
+                  <div key={step.number} className="timeline-step-card">
+                    <div className="step-header-row">
+                      <div className="step-icon-box" aria-hidden="true">
+                        {SvgIcons[step.iconKey]}
+                      </div>
+                      <span className="step-number-tag">{step.number}</span>
                     </div>
-                    <span className="step-number-tag">Step {step.number}</span>
+                    <span className="step-phase-tag">{step.phase}</span>
+                    <h3 className="step-title">{step.title}</h3>
+                    <p className="step-description">{step.desc}</p>
+                    <div className="step-card-footer">
+                      <span className="step-milestone-label">{step.highlight}</span>
+                      <span className="step-dot-active" aria-hidden="true" />
+                    </div>
                   </div>
-                  <h3 className="step-title">{step.title}</h3>
-                  <p className="step-description">{step.desc}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
