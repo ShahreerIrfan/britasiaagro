@@ -1309,9 +1309,12 @@ export default function HomePage() {
           <div className="footer-top-grid">
             <div className="footer-brand-col">
               <img
-                src="/assets/Logo.svg"
+                src="/assets/Logo-white.svg"
                 alt="British Merchants"
                 className="footer-brand-logo"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = "/assets/logo-white.png";
+                }}
               />
               <p className="footer-tagline">
                 Delivering reliable commodity and steel solutions across Bangladesh and global markets with uncompromising quality and logistics excellence.
