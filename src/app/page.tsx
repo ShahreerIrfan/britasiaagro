@@ -258,6 +258,17 @@ const leaders = [
     ],
   },
   {
+    name: "Mr. Michael Sander",
+    role: "Business Advisor | UK & Europe",
+    photo: "/assets/leader-sander.jpg",
+    bio: [
+      "Mr. Sander as a Business Advisor to British Merchants Limited, focusing on strengthening the company's international business presence and establishing strategic commercial connections across the United Kingdom and European markets. His responsibility is to facilitate cross-border business opportunities, develop strategic partnerships, and connect British Merchants Limited with potential buyers, suppliers and industry stakeholders. The key areas of focus include agro-based commodities, agricultural products, and scrap metal trading, with an emphasis on expanding international trade networks and accelerating sustainable business growth.",
+      "Through his market connections, commercial insights, and business development initiatives, his aim to support British Merchants Limited in identifying new opportunities, facilitating international transactions, and building long-term relationships with reputable business partners across the UK and Europe.",
+      "Mr’s Sander’s objective is to position British Merchants Limited as a competitive and reliable international trading partner, creating meaningful commercial opportunities and driving its long-term growth in the global agro and metals industries.",
+      "Prior to joining British Merchants, Mr Sander built a successful 24-year career as a Financial and Business Advisor, working across diverse industries such as Banking, Real Estate and Precious Metals industry.",
+    ],
+  },
+  {
     name: "Kaikobad MM Meah",
     role: "Director",
     photo: "/assets/leader-meah.svg",
