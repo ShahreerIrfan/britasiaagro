@@ -25,7 +25,7 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=2048"
-ENV DATABASE_URL="postgresql://postgres:nyWf75NYpnPkoB59IgZO@britishmerchants-britishmerchants-tmndcg:5432/BritishMerchantsDB"
+ENV DATABASE_URL="postgresql://postgres:936NqfNbcXQPSnyYpNIB@britasia-britasiaagro-pr0nsu:5432/britasiaagro"
 
 RUN npx prisma generate
 RUN npm run build || npm run build
@@ -40,7 +40,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
-ENV DATABASE_URL="postgresql://postgres:nyWf75NYpnPkoB59IgZO@britishmerchants-britishmerchants-tmndcg:5432/BritishMerchantsDB"
+ENV DATABASE_URL="postgresql://postgres:936NqfNbcXQPSnyYpNIB@britasia-britasiaagro-pr0nsu:5432/britasiaagro"
 
 # Non-root security user
 RUN addgroup --system --gid 1001 nodejs && \
