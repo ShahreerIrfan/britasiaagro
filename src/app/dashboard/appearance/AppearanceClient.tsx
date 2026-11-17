@@ -641,7 +641,7 @@ export default function AppearanceClient({
                 <input
                   type="text"
                   required
-                  placeholder="e.g. British Merchants Worldwide Commodity & Steel Trade"
+                  placeholder="e.g. BritAsia Agro Limited | Worldwide Commodity & Agro Trade"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   style={{

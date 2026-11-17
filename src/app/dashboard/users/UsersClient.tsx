@@ -414,7 +414,7 @@ export default function UsersClient({
                 <input
                   type="email"
                   required
-                  placeholder="e.g. user@britishmerchants.com"
+                  placeholder="e.g. user@britasiaagro.com"
                   className="form-input"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}

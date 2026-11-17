@@ -8,5 +8,5 @@ export async function POST() {
 
 export async function GET() {
   await clearSessionCookie();
-  return NextResponse.redirect(new URL("/login", "https://britishmerchants.com"));
+  return NextResponse.redirect(new URL("/login", "https://britasiaagro.com"));
 }

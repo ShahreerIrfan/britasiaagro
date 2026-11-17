@@ -775,7 +775,7 @@ export default function InquiriesClient({
             {/* Modal Footer Actions */}
             <div className="inquiry-modal-footer">
               <a
-                href={`mailto:${selectedInquiry.email}?subject=British Merchants RFQ - ${selectedInquiry.commodity}`}
+                href={`mailto:${selectedInquiry.email}?subject=BritAsia Agro RFQ - ${selectedInquiry.commodity}`}
                 className="btn-modal-primary"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor">

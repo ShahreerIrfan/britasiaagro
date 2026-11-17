@@ -148,10 +148,10 @@ export default function ServiceDetailClient({ service }: { service: ServiceItem 
       {/* 1. TOP NAVBAR */}
       <header className="sd-navbar">
         <div className="sd-navbar-inner">
-          <Link href="/" className="sd-nav-brand" aria-label="British Merchants Home">
+          <Link href="/" className="sd-nav-brand" aria-label="BritAsia Agro Home">
             <img
               src="/assets/Logo.svg"
-              alt="British Merchants Connecting The Dots..."
+              alt="BritAsia Agro Connecting The Dots..."
               className="sd-brand-logo"
               onError={(e) => {
                 (e.currentTarget as HTMLImageElement).src = "/logo.png";
@@ -301,7 +301,7 @@ export default function ServiceDetailClient({ service }: { service: ServiceItem 
             <span className="sd-section-tag">DIVISIONAL CAPABILITIES &amp; STANDARDS</span>
             <h2 className="sd-section-title">Technical Specifications &amp; Governance</h2>
             <p className="sd-section-subtitle">
-              Comprehensive operational overview aligned with British Merchants Corporate Agro Profile.
+              Comprehensive operational overview aligned with BritAsia Agro Corporate Profile.
             </p>
           </div>
 
@@ -377,7 +377,7 @@ export default function ServiceDetailClient({ service }: { service: ServiceItem 
           {/* Corporate Trust & Assurance Highlights */}
           <div className="sd-trust-banner">
             <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#0b1120" }}>
-              The British Merchants Export Guarantee
+              The BritAsia Agro Export Guarantee
             </h3>
             <p style={{ fontSize: "0.86rem", color: "#64748b", marginTop: "4px" }}>
               Every commercial contract is backed by rigorous institutional governance and quality assurance:
@@ -566,7 +566,7 @@ export default function ServiceDetailClient({ service }: { service: ServiceItem 
                 </button>
 
                 <p className="sd-form-privacy-note">
-                  🔒 Strictly Confidential &amp; Protected by British Merchants Commercial Trade Governance.
+                  🔒 Strictly Confidential &amp; Protected by BritAsia Agro Commercial Trade Governance.
                 </p>
               </form>
             )}
@@ -580,7 +580,7 @@ export default function ServiceDetailClient({ service }: { service: ServiceItem 
           <div className="sd-footer-top">
             <div>
               <h4 style={{ color: "#ffffff", fontWeight: 700, fontSize: "1.05rem" }}>
-                British Merchants Limited
+                BritAsia Agro Limited
               </h4>
               <p style={{ fontSize: "0.82rem", color: "#94a3b8", marginTop: "2px" }}>
                 Corporate Agro &amp; Commodity Trade Infrastructure • RJSC: C-207932/2026
@@ -594,13 +594,13 @@ export default function ServiceDetailClient({ service }: { service: ServiceItem 
               </span>
               <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 {DetailIcons.mail}
-                export@britishmerchants.com
+                export@britasiaagro.com
               </span>
             </div>
           </div>
 
           <p className="sd-footer-copy">
-            &copy; {new Date().getFullYear()} British Merchants Limited. All rights reserved. Registered Office: Mohakhali DOHS, Dhaka, Bangladesh.
+            &copy; {new Date().getFullYear()} BritAsia Agro Limited. All rights reserved. Registered Office: Mohakhali DOHS, Dhaka, Bangladesh.
           </p>
         </div>
       </footer>

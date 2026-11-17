@@ -22,52 +22,51 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://britishmerchants.com"),
-  title: "British Merchants Limited | Worldwide Commodity & Steel Trade",
+  metadataBase: new URL("https://britasiaagro.com"),
+  title: "BritAsia Agro Limited | Worldwide Commodity & Agro Trade",
   description:
-    "British Merchants Limited delivers reliable commodity and steel solutions across Bangladesh and global markets. Specializing in Bulk Groceries, Agro, HMS 1&2, Strong Steel, Pure Sugar, Natural Spices, and Quality Fertilizers.",
+    "BritAsia Agro Limited delivers reliable agro, livestock, and commodity solutions across Bangladesh and global markets. Specializing in Commercial Cattle, Black Bengal Goats, Poultry, Dairy, Haor Waterfowl, Sustainable Aquaculture, and Quality Commodities.",
   keywords: [
-    "British Merchants Limited",
+    "BritAsia Agro Limited",
+    "BritAsia Agro",
+    "Agro Livestock Bangladesh",
+    "Halal Meat Export",
+    "Black Bengal Goat Export",
+    "Freshwater Aquaculture Bangladesh",
     "Commodity Trade Bangladesh",
-    "Steel Metals Import Export",
-    "HMS 1&2 scrap",
-    "Fresh Grocery",
-    "Pure Sugar",
-    "Natural Spices",
-    "Quality Fertilizer",
     "Mohakhali DOHS Dhaka",
   ],
-  authors: [{ name: "British Merchants Limited" }],
+  authors: [{ name: "BritAsia Agro Limited" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://britishmerchants.com",
-    siteName: "British Merchants Limited",
-    title: "British Merchants Limited | Worldwide Commodity & Steel Trade",
+    url: "https://britasiaagro.com",
+    siteName: "BritAsia Agro Limited",
+    title: "BritAsia Agro Limited | Worldwide Commodity & Agro Trade",
     description:
-      "British Merchants Limited delivers reliable commodity and steel solutions across Bangladesh and global markets. Specializing in Bulk Groceries, Agro, HMS 1&2, Strong Steel, Pure Sugar, Natural Spices, and Quality Fertilizers.",
+      "BritAsia Agro Limited delivers reliable agro, livestock, and commodity solutions across Bangladesh and global markets. Specializing in Commercial Cattle, Black Bengal Goats, Poultry, Dairy, Haor Waterfowl, Sustainable Aquaculture, and Quality Commodities.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "British Merchants Limited",
+        alt: "BritAsia Agro Limited",
         type: "image/png",
       },
       {
         url: "/logo-square.png",
         width: 600,
         height: 600,
-        alt: "British Merchants Limited Logo",
+        alt: "BritAsia Agro Limited Logo",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "British Merchants Limited | Worldwide Commodity & Steel Trade",
+    title: "BritAsia Agro Limited | Worldwide Commodity & Agro Trade",
     description:
-      "British Merchants Limited delivers reliable commodity and steel solutions across Bangladesh and global markets.",
+      "BritAsia Agro Limited delivers reliable agro, livestock, and commodity solutions across Bangladesh and global markets.",
     images: ["/og-image.png"],
   },
   icons: {

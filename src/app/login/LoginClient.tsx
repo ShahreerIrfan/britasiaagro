@@ -176,7 +176,7 @@ export default function LoginClient() {
         >
           <div>
             <div style={{ color: "#38bdf8", fontWeight: 700, letterSpacing: "1px", marginBottom: "16px" }}>
-              GLOBAL COMMODITY &amp; STEEL MERCHANTS
+              GLOBAL AGRO &amp; COMMODITY TRADE
             </div>
             <h1 style={{ fontSize: "44px", fontWeight: 800, lineHeight: 1.2, margin: "0 0 20px 0" }}>
               Connecting Global Supply Chains with Proven Logistics
@@ -279,7 +279,7 @@ export default function LoginClient() {
           <div style={{ textAlign: "center", marginBottom: "18px" }}>
             <img
               src="/assets/Logo.svg"
-              alt="British Merchants Limited"
+              alt="BritAsia Agro Limited"
               style={{ height: "46px", width: "auto", display: "inline-block" }}
             />
           </div>

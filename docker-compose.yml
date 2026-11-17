@@ -1,9 +1,9 @@
 services:
-  british-merchants:
+  britasia-agro:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: british-merchants-frontend
+    container_name: britasia-agro-frontend
     restart: always
     ports:
       - "3000:3000"

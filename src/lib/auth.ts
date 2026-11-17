@@ -3,8 +3,8 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { Role } from "@prisma/client";
 
-const JWT_SECRET = process.env.JWT_SECRET || "british-merchants-secret-key-2026-secure-jwt-token-9988";
-const COOKIE_NAME = "bm_session_token";
+const JWT_SECRET = process.env.JWT_SECRET || "britasia-agro-secret-key-2026-secure-jwt-token-9988";
+const COOKIE_NAME = "britasia_session_token";
 
 export interface SessionUser {
   id: string;
@@ -45,7 +45,7 @@ export function verifyToken(token: string): SessionUser | null {
 
 export async function getSessionUser(): Promise<SessionUser | null> {
   const cookieStore = await cookies();
-  const token = cookieStore.get(COOKIE_NAME)?.value;
+  const token = cookieStore.get(COOKIE_NAME)?.value || cookieStore.get("bm_session_token")?.value;
   if (!token) return null;
   return verifyToken(token);
 }

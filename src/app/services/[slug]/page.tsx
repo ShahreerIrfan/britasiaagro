@@ -28,17 +28,17 @@ export async function generateMetadata({
 
   if (!service) {
     return {
-      title: "Service Not Found | British Merchants Limited",
+      title: "Service Not Found | BritAsia Agro Limited",
     };
   }
 
   return {
-    title: `${service.name} | British Merchants Limited`,
+    title: `${service.name} | BritAsia Agro Limited`,
     description:
       service.desc ||
-      "Commercial agro and commodity export specifications by British Merchants Limited.",
+      "Commercial agro and commodity export specifications by BritAsia Agro Limited.",
     openGraph: {
-      title: `${service.name} | British Merchants Limited`,
+      title: `${service.name} | BritAsia Agro Limited`,
       description: service.desc,
       images: [
         {

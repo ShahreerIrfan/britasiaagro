@@ -86,7 +86,7 @@ export default async function DashboardPage() {
         <div>
           <h1 className="page-main-title">Admin Dashboard</h1>
           <p className="page-sub-title">
-            Real-time overview of British Merchants commodity trading operations &amp; inquiries
+            Real-time overview of BritAsia Agro commodity trading operations &amp; inquiries
           </p>
         </div>
       </div>

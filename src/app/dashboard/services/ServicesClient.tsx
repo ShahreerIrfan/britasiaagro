@@ -162,7 +162,7 @@ export default function ServicesClient({
           <div className="services-banner-tag">SERVICES &amp; PRODUCTS</div>
           <h1 className="services-banner-title">Commodities &amp; Services</h1>
           <p className="services-banner-sub">
-            Manage live commodity cards displayed on the British Merchants public catalog. Add, edit or organize commodities across different divisions.
+            Manage live commodity cards displayed on the BritAsia Agro public catalog. Add, edit or organize commodities across different divisions.
           </p>
         </div>
 

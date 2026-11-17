@@ -9,7 +9,6 @@ function getEffectiveDatabaseUrl(): string | undefined {
   if (process.env.NODE_ENV === "production" && envUrl.includes("31.97.239.234")) {
     return envUrl
       .replace("31.97.239.234:5434", "britasia-britasiaagro-pr0nsu:5432")
-      .replace("31.97.239.234:5433", "britishmerchants-britishmerchants-tmndcg:5432")
       .replace("31.97.239.234", "britasia-britasiaagro-pr0nsu");
   }
 

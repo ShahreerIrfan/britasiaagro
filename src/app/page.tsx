@@ -210,19 +210,19 @@ const logisticsSteps = [
 const testimonials = [
   {
     quote:
-      "For bulk grocery supply, British Merchants is one of the most dependable companies we have worked with. They ensure proper quality control and smooth logistics. Their experience in import and export really shows in the way they handle operations.",
+      "For bulk agro and food supply, BritAsia Agro is one of the most dependable companies we have worked with. They ensure proper quality control and smooth logistics. Their experience in import and export really shows in the way they handle operations.",
     author: "Nusrat Jahan",
-    role: "Grocery Distributor",
+    role: "Agro Commodities Distributor",
   },
   {
     quote:
-      "British Merchants Limited has been our trusted partner for scrap steel and heavy metals procurement. Their transparent documentation, competitive pricing, and punctual delivery timelines make them stand out in global trade.",
+      "BritAsia Agro Limited has been our trusted partner for livestock processing and Halal meat procurement. Their transparent documentation, competitive pricing, and punctual delivery timelines make them stand out in global trade.",
     author: "K. R. Ahmed",
     role: "Industrial Procurement Lead",
   },
   {
     quote:
-      "Their deep knowledge of regional trade routes and import-export compliance ensures our bulk agro and spice shipments arrive in pristine condition without regulatory delay.",
+      "Their deep knowledge of regional trade routes and import-export compliance ensures our bulk agro and livestock shipments arrive in pristine condition without regulatory delay.",
     author: "Tanvir Hossain",
     role: "Commodity Trading Partner",
   },
@@ -230,14 +230,14 @@ const testimonials = [
 
 const faqs = [
   {
-    question: "What products does British Merchants Limited trade?",
+    question: "What products does BritAsia Agro Limited trade?",
     answer:
-      "British Merchants Limited specializes in bulk and retail trade across two main divisions: Commodities (including fresh grocery, agro products, pure sugar, natural spices, and quality fertilizer) and Steel Metals (including heavy melting scrap HMS 1&2 and structural strong steel).",
+      "BritAsia Agro Limited specializes in commercial agriculture, livestock farming, Halal meat exports, and global commodity trade across core divisions: Commercial Cattle, Black Bengal Goats, Poultry & Broiler Farming, Dairy, Haor Waterfowl, Sustainable Aquaculture, and Quality Commodities.",
   },
   {
     question: "Do you handle both local and international shipments?",
     answer:
-      "Yes, British Merchants Limited handles both domestic distribution across Bangladesh and cross-border international import-export operations with full freight forwarding, customs clearance, and secure transport coordination.",
+      "Yes, BritAsia Agro Limited handles both domestic distribution across Bangladesh and cross-border international import-export operations with full freight forwarding, customs clearance, and secure transport coordination.",
   },
   {
     question: "What regions or countries do you operate in?",
@@ -282,7 +282,7 @@ const leaders = [
     photo: "/assets/leader-chowdhury.svg",
     bio: [
       "Mr. Chowdhury brings over 20 years of extensive professional experience in property management, the hospitality sector, and corporate security services. Throughout his career, he has developed a strong and versatile business portfolio, including active involvement in import and export operations across various industries.",
-      "With his broad strategic insight and operational expertise, Mr. Chowdhury has now dedicated his full experience and leadership capabilities to strengthening and advancing British Merchants Limited as a dynamic new venture.",
+      "With his broad strategic insight and operational expertise, Mr. Chowdhury has now dedicated his full experience and leadership capabilities to strengthening and advancing BritAsia Agro Limited as a dynamic new venture.",
     ],
   },
   {
@@ -290,10 +290,10 @@ const leaders = [
     role: "Business Advisor | UK & Europe",
     photo: "/assets/leader-sander.jpg",
     bio: [
-      "Mr. Sander as a Business Advisor to British Merchants Limited, focusing on strengthening the company's international business presence and establishing strategic commercial connections across the United Kingdom and European markets. His responsibility is to facilitate cross-border business opportunities, develop strategic partnerships, and connect British Merchants Limited with potential buyers, suppliers and industry stakeholders. The key areas of focus include agro-based commodities, agricultural products, and scrap metal trading, with an emphasis on expanding international trade networks and accelerating sustainable business growth.",
-      "Through his market connections, commercial insights, and business development initiatives, his aim to support British Merchants Limited in identifying new opportunities, facilitating international transactions, and building long-term relationships with reputable business partners across the UK and Europe.",
-      "Mr’s Sander’s objective is to position British Merchants Limited as a competitive and reliable international trading partner, creating meaningful commercial opportunities and driving its long-term growth in the global agro and metals industries.",
-      "Prior to joining British Merchants, Mr Sander built a successful 24-year career as a Financial and Business Advisor, working across diverse industries such as Banking, Real Estate and Precious Metals industry.",
+      "Mr. Sander serves as a Business Advisor to BritAsia Agro Limited, focusing on strengthening the company's international business presence and establishing strategic commercial connections across the United Kingdom and European markets. His responsibility is to facilitate cross-border business opportunities, develop strategic partnerships, and connect BritAsia Agro Limited with potential buyers, suppliers and industry stakeholders. The key areas of focus include agro-based commodities, agricultural products, and trading, with an emphasis on expanding international trade networks and accelerating sustainable business growth.",
+      "Through his market connections, commercial insights, and business development initiatives, his aim is to support BritAsia Agro Limited in identifying new opportunities, facilitating international transactions, and building long-term relationships with reputable business partners across the UK and Europe.",
+      "Mr Sander’s objective is to position BritAsia Agro Limited as a competitive and reliable international trading partner, creating meaningful commercial opportunities and driving its long-term growth in global agro industries.",
+      "Prior to joining BritAsia Agro, Mr Sander built a successful 24-year career as a Financial and Business Advisor, working across diverse industries such as Banking, Real Estate and Financial Services.",
     ],
   },
   {
@@ -301,8 +301,8 @@ const leaders = [
     role: "Director",
     photo: "/assets/leader-meah.svg",
     bio: [
-      "Mr. Meah serves as the International Development Manager at British Merchants Limited. He is responsible for formulating and executing strategies that expand the company's local and international business operations, sales performance, and service capabilities. He plays a central role in strengthening the company's global market presence while promoting a culture of consistently high service standards that delivers measurable value and a superior experience to clients worldwide.",
-      "Prior to joining British Merchants Limited, Mr. Meah worked as a market analyst and professional trader in the global financial markets, bringing strong analytical discipline and in-depth market expertise to his leadership responsibilities. He holds a Bachelor of Business Administration (BBA), a Higher Diploma in Management and Leadership, and a Master of Business Administration (MBA) in Entrepreneurship. He has also completed specialized studies in the Business of Mining at Curtin University and Social Sciences at the University of Oxford.",
+      "Mr. Meah serves as the International Development Manager at BritAsia Agro Limited. He is responsible for formulating and executing strategies that expand the company's local and international business operations, sales performance, and service capabilities. He plays a central role in strengthening the company's global market presence while promoting a culture of consistently high service standards that delivers measurable value and a superior experience to clients worldwide.",
+      "Prior to joining BritAsia Agro Limited, Mr. Meah worked as a market analyst and professional trader in global financial markets, bringing strong analytical discipline and in-depth market expertise to his leadership responsibilities. He holds a Bachelor of Business Administration (BBA), a Higher Diploma in Management and Leadership, and a Master of Business Administration (MBA) in Entrepreneurship. He has also completed specialized studies in the Business of Mining at Curtin University and Social Sciences at the University of Oxford.",
     ],
   },
   {
@@ -310,7 +310,7 @@ const leaders = [
     role: "Director",
     photo: "/assets/leader-mizanur.svg",
     bio: [
-      "Mr. Chowdhury serves as the Director and Company Administrator of British Merchants Limited. In his leadership role, he oversees strategic planning, corporate governance, and overall administrative operations to ensure the company functions with efficiency and compliance. With strong organizational capabilities and practical business insight, he plays a key role in coordinating internal management, regulatory matters, and operational execution. His guidance supports the company's structured growth and reinforces its commitment to professionalism and reliability in both local and international markets.",
+      "Mr. Chowdhury serves as the Director and Company Administrator of BritAsia Agro Limited. In his leadership role, he oversees strategic planning, corporate governance, and overall administrative operations to ensure the company functions with efficiency and compliance. With strong organizational capabilities and practical business insight, he plays a key role in coordinating internal management, regulatory matters, and operational execution. His guidance supports the company's structured growth and reinforces its commitment to professionalism and reliability in both local and international markets.",
     ],
   },
   {
@@ -326,8 +326,8 @@ const leaders = [
     role: "Business Development Manager",
     photo: "/assets/leader-waresur.jpg",
     bio: [
-      "Mr. Waris serves as Business Development Manager at British Merchants Limited, where he is responsible for identifying new business opportunities, developing strategic partnerships, and expanding the company's commercial operations across domestic and international markets. He contributes to the company's business expansion initiatives, particularly in agro-based products, commodity trading, import-export operations, and international trade.",
-      "Through a proactive and relationship-driven approach, Mr. Waris supports British Merchants Limited in strengthening its market presence, building strategic alliances, and pursuing sustainable business growth.",
+      "Mr. Waris serves as Business Development Manager at BritAsia Agro Limited, where he is responsible for identifying new business opportunities, developing strategic partnerships, and expanding the company's commercial operations across domestic and international markets. He contributes to the company's business expansion initiatives, particularly in agro-based products, commodity trading, import-export operations, and international trade.",
+      "Through a proactive and relationship-driven approach, Mr. Waris supports BritAsia Agro Limited in strengthening its market presence, building strategic alliances, and pursuing sustainable business growth.",
     ],
   },
 ];
@@ -347,8 +347,8 @@ interface HeroSlideItem {
 const defaultHeroSlides: HeroSlideItem[] = [
   {
     id: "default-1",
-    title: "British Merchants Worldwide Commodity & Steel Trade",
-    description: "British Merchants Limited delivers reliable commodity and steel solutions across Bangladesh and global markets. We ensure quality sourcing, secure logistics, and competitive pricing with trusted partnerships Bangladesh and worldwide.",
+    title: "BritAsia Agro Worldwide Commodity & Agro Trade",
+    description: "BritAsia Agro Limited delivers reliable agro, livestock, and commodity solutions across Bangladesh and global markets. We ensure quality sourcing, secure logistics, and competitive pricing with trusted partnerships Bangladesh and worldwide.",
     btn1Text: "Inquiry Products",
     btn1Url: "#inquiry",
     btn2Text: "Explore Products",
@@ -566,10 +566,10 @@ export default function HomePage() {
       {/* ================= MAIN NAVIGATION ================= */}
       <header className="site-header">
         <div className="header-container">
-          <a href="#" className="brand-logo-link" aria-label="British Merchants Home">
+          <a href="#" className="brand-logo-link" aria-label="BritAsia Agro Home">
             <img
               src="/assets/Logo.svg"
-              alt="British Merchants Connecting The Dots..."
+              alt="BritAsia Agro Connecting The Dots..."
               className="brand-logo-img"
             />
           </a>
@@ -872,7 +872,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ================= ABOUT BRITISH MERCHANTS LIMITED ================= */}
+        {/* ================= ABOUT BRITASIA AGRO LIMITED ================= */}
         <section className="about-section" id="about">
           <div className="container">
             <div className="about-grid">
@@ -881,14 +881,14 @@ export default function HomePage() {
                   {SvgIcons.compass}
                   <span>WHO WE ARE</span>
                 </div>
-                <h2 className="about-main-title">About British Merchants Limited</h2>
+                <h2 className="about-main-title">About BritAsia Agro Limited</h2>
 
                 <div className="about-body-text">
                   <p>
-                    <strong>British Merchants Limited</strong> is a Bangladesh-based trade and export-import company with extensive expertise in handling bulk and retail trade, import, and export, especially in the fields of spices, groceries, steel products, and other commodities. The company is structured into two core divisions: <strong>Commodity</strong> and <strong>Steel Metals</strong>.
+                    <strong>BritAsia Agro Limited</strong> is a Bangladesh-based agro and export-import enterprise with extensive expertise in handling commercial agriculture, livestock farming, Halal meat exports, and global commodity trade. The company operates across high-standard agricultural and livestock divisions, backed by certified biosecure facilities and international cold-chain logistics.
                   </p>
                   <p>
-                    Although British Merchants is a dynamic enterprise, the experience behind our stakeholder board spans decades. This deep industry background enables us to deliver reliable sourcing, secure maritime logistics, and smooth nationwide distribution across domestic and international markets.
+                    Although BritAsia Agro is a dynamic enterprise, the experience behind our stakeholder board spans decades. This deep industry background enables us to deliver reliable sourcing, secure maritime logistics, and smooth nationwide distribution across domestic and international markets.
                   </p>
                   <p>
                     We serve our clients as a trusted ally—combining the dedication and loyalty of a business partner with the commercial scale and cost advantages of an established merchant.
@@ -908,7 +908,7 @@ export default function HomePage() {
                 <div className="about-image-frame">
                   <img
                     src="/assets/about-engineers.svg"
-                    alt="Engineers and stakeholders at British Merchants industrial operations"
+                    alt="Engineers and stakeholders at BritAsia Agro industrial operations"
                   />
                 </div>
                 <div className="about-badge-card">
@@ -1235,7 +1235,7 @@ export default function HomePage() {
                 <div className="faq-icon-badge">{SvgIcons.arrowRight}</div>
                 <h2 className="faq-heading-main">Frequently Asked Questions</h2>
                 <p className="faq-desc-p">
-                  British Merchants Limited supports clients across local and international markets with reliable commodity and steel trading services. We focus on efficient sourcing, proper documentation, secure transport coordination, and transparent communication. Our experienced team ensures every shipment is handled professionally, meeting quality standards and delivery timelines with consistency and care.
+                  BritAsia Agro Limited supports clients across local and international markets with reliable agro and commodity trading services. We focus on efficient sourcing, proper documentation, secure transport coordination, and transparent communication. Our experienced team ensures every shipment is handled professionally, meeting quality standards and delivery timelines with consistency and care.
                 </p>
                 <button
                   onClick={() => openInquiryModal()}
@@ -1282,7 +1282,7 @@ export default function HomePage() {
             <div className="partners-center-col">
               <h2>Our Trusted Business Partners</h2>
               <p>
-                British Merchants Limited collaborates with reliable suppliers, manufacturers, logistics providers, and global trading partners to ensure consistent quality and dependable delivery. Our partnerships are built on transparency, mutual growth, and long-term commitment across commodity and steel metal markets. Through strong organizational connections and local expertise, we maintain efficient sourcing, secure transport coordination, and seamless trade execution for every client we serve.
+                BritAsia Agro Limited collaborates with reliable suppliers, manufacturers, logistics providers, and global trading partners to ensure consistent quality and dependable delivery. Our partnerships are built on transparency, mutual growth, and long-term commitment across agricultural and commodity markets. Through strong organizational connections and local expertise, we maintain efficient sourcing, secure transport coordination, and seamless trade execution for every client we serve.
               </p>
             </div>
 
@@ -1346,7 +1346,7 @@ export default function HomePage() {
           <div className="hq-map-banner">
             <img
               src="/assets/dhaka-map.svg"
-              alt="British Merchants Location - Mohakhali DOHS Road 29 Dhaka"
+              alt="BritAsia Agro Location - Mohakhali DOHS Road 29 Dhaka"
               className="hq-map-img"
             />
             <div className="hq-address-card">
@@ -1354,7 +1354,7 @@ export default function HomePage() {
                 {SvgIcons.mapPin}
                 <span>Corporate Headquarters</span>
               </div>
-              <h3 className="hq-card-title">British Merchants Limited</h3>
+              <h3 className="hq-card-title">BritAsia Agro Limited</h3>
               <p className="hq-card-address">
                 Mohakhali DOHS, House No-412, Flat-3/A &amp; 3/B, Road No-29, Dhaka, Bangladesh
               </p>
@@ -1380,14 +1380,14 @@ export default function HomePage() {
             <div className="footer-brand-col">
               <img
                 src="/assets/Logo-white.svg"
-                alt="British Merchants"
+                alt="BritAsia Agro"
                 className="footer-brand-logo"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).src = "/assets/logo-white.png";
                 }}
               />
               <p className="footer-tagline">
-                Delivering reliable commodity and steel solutions across Bangladesh and global markets with uncompromising quality and logistics excellence.
+                Delivering reliable agro, livestock, and commodity solutions across Bangladesh and global markets with uncompromising quality and logistics excellence.
               </p>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "#94a3b8" }}>
                 {SvgIcons.checkShield}
@@ -1398,11 +1398,11 @@ export default function HomePage() {
             <div>
               <h4 className="footer-col-title">Core Divisions</h4>
               <ul className="footer-links-list">
-                <li><a href="#products" className="footer-link-item">Commodities Division</a></li>
-                <li><a href="#products" className="footer-link-item">Steel &amp; Metals Division</a></li>
-                <li><a href="#products" className="footer-link-item">HMS 1&amp;2 Heavy Scrap</a></li>
-                <li><a href="#products" className="footer-link-item">Bulk Sugar &amp; Spices</a></li>
-                <li><a href="#products" className="footer-link-item">Agro &amp; Quality Fertilizer</a></li>
+                <li><a href="#products" className="footer-link-item">Agro &amp; Livestock Division</a></li>
+                <li><a href="#products" className="footer-link-item">Halal Meat &amp; Processing</a></li>
+                <li><a href="#products" className="footer-link-item">Poultry &amp; Broiler Farming</a></li>
+                <li><a href="#products" className="footer-link-item">Commercial Dairy Farming</a></li>
+                <li><a href="#products" className="footer-link-item">Freshwater Aquaculture</a></li>
               </ul>
             </div>
 
@@ -1438,7 +1438,7 @@ export default function HomePage() {
 
           <div className="footer-bottom-row">
             <p className="footer-copyright">
-              &copy; 2026 British Merchants Limited. All Rights Reserved.
+              &copy; 2026 BritAsia Agro Limited. All Rights Reserved.
             </p>
             <div className="footer-legal-links">
               <a href="#">Privacy Policy</a>
@@ -1472,7 +1472,7 @@ export default function HomePage() {
         <a
           href="tel:+8801711034971"
           className="widget-circle-btn widget-call-btn"
-          aria-label="Direct call to British Merchants trade desk"
+          aria-label="Direct call to BritAsia Agro trade desk"
         >
           {SvgIcons.phone}
         </a>
@@ -1523,7 +1523,7 @@ export default function HomePage() {
                     Inquiry Transmitted Successfully
                   </h4>
                   <p style={{ color: "var(--navy-700)", fontSize: 15, lineHeight: 1.6 }}>
-                    Thank you. Our trading desk at British Merchants Limited has logged your request for <strong>{selectedProduct}</strong>. A dedicated commercial trade officer will contact you shortly with full pricing specifications.
+                    Thank you. Our trading desk at BritAsia Agro Limited has logged your request for <strong>{selectedProduct}</strong>. A dedicated commercial trade officer will contact you shortly with full pricing specifications.
                   </p>
                 </div>
               ) : (

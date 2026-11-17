@@ -191,7 +191,7 @@ export default function DashboardSidebar({ user }: { user: SessionUser }) {
         <Link href="/dashboard" className="sidebar-brand-link">
           <img
             src="/assets/Logo.svg"
-            alt="British Merchants Connecting The Dots..."
+            alt="BritAsia Agro Connecting The Dots..."
             className="sidebar-logo"
           />
         </Link>
