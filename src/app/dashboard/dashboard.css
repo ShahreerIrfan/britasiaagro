@@ -60,9 +60,10 @@ body {
 }
 
 .sidebar-logo {
-  height: 48px;
+  height: 58px;
   width: auto;
   display: block;
+  object-fit: contain;
 }
 
 .sidebar-admin-badge {

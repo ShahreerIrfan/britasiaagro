@@ -140,7 +140,7 @@ export default function LoginClient() {
             alignItems: "center",
           }}
         >
-          <img src="/assets/Logo.svg" alt="" style={{ height: "42px" }} />
+          <img src="/assets/Logo.svg" alt="" style={{ height: "56px" }} />
           <div style={{ display: "flex", gap: "24px", color: "#475569", fontWeight: 600 }}>
             <span>Home</span>
             <span>About Us</span>
@@ -280,7 +280,7 @@ export default function LoginClient() {
             <img
               src="/assets/Logo.svg"
               alt="BritAsia Agro Limited"
-              style={{ height: "46px", width: "auto", display: "inline-block" }}
+              style={{ height: "60px", width: "auto", display: "inline-block" }}
             />
           </div>
 
